@@ -181,7 +181,7 @@ pre code {
 }
 /* ======= Promo Section ======= */
 .promo {
-  background: #17baef;
+  background-image: url("/assets/images/community.JPG");
   color: #fff;
   padding-top: 150px;
 }
