@@ -1,0 +1,25 @@
+Name: Denis Marchin (group 6)
+Group Problem Space: Tackling Sleep Inertia
+Sub-problem space for this assignment: Sleep deprivation in medical professionals.
+
+Sleep deprivation in doctors
+1. This journal article talks about how long hours on call can cause large amounts of sleep deprivation in
+doctors and other medical professionals. The author talks about a recent study that showed that lack of sleep (less than 6 hours of sleep) resulted in higher rates of surgical complications. Doctors and nurses who work more hours than
+they are allowed per week are generally the ones that are sleep deprived. The article suggests a solution to this problem, arguing that "licensing, accreditation, insurance and government institutions need to establish minimum best practice standards for maximum work and minimum uninterrupted sleep hours." The article also argues that it is a challenge for these institutions to enforce that doctors stay within their work hour restrictions and follow minimum sleep hour standards. 
+
+Effects of Sleep Inertia on Cognition
+2. This article conducted a study about cognitive performance immediately after waking. The participants of the study were 9 paid volunteers (8 men and 1 woman) with no mental or sleep disorders as well as free of any medications and/or recreational drugs. Participants maintained regular 8 hour sleep per night schedules for 3 weeks, followed by a 26 hour sleep deprivation test which was monitored and the participants were tested for performance. After this testing began to measure cognitive performance of the participants after abruptly waking up. During the testing, participants were woken up 30 minutes before their normal scheduled wake time and were tested for cognitive performance 26 seconds after waking up. Six participants were in stage 2 sleep and 3 were in stage 3 sleep prior to waking. Results showed that cognitive performance immediately after waking was worse than the results after 26 hours of sleep deprivation, measured at 65% of peak performance. Between 20 and 60 minutes after waking, performance increased to about 83% to 86% of peak performance. The study concluded that cognitive performance immediately after waking was worse than regular sleep and subsequent sleep deprivation. There were severe impairments for up 3 minutes after waking and some for up to 10 minutes after waking, with noticeable impairments for at least 2 hours post waking. There were no solutions proposed.
+
+The effects of sleep inertia on decision-making performance
+3. This article studied the affects of sleep inertia on decision-making performance. In this study, 12 subjects were monitored while they slept for one night. During their sleep, the subjects were abruptly woken up by a fire alarm twice. Decision-making performance was tested over 10 3-minute trials immediately after waking. Results showed that for the first 3 minutes after waking, performance was nearly half of optimum. The noticeable impact on performance was present for at least 30 minutes post waking. The results also showed that the effects of sleep inertia during the first 9 minutes were more significant in patients who were woken during SWS (slow-wave-sleep) than patients in REM sleep. The study concluded that in order to apply this finding to real life situations, more research is needed on the effects of different stimuli on a subject while asleep and how it effects sleep inertia.
+
+From these articles it is obvious that sleep inertia is a large problem in the area of physicians and other medical professionals. Since many doctors and nurse are required to work long hours, they do not have time to sleep regular 7-9 hour nights due to doctors being on call. This forces doctors to take small naps whenever they can which can then lead to abrupt awakening and sleep inertia. Doctors, surgeons, and nurses are all required to act and perform right after waking up. The journal articles above all show the significant impact of sleep inertia on cognitive, decision making and overall performance. This raises some major safety concerns for those professionals that are responsible for many lives each day. Sleep inertia can cause surgeons to make mistakes in the operating table due to their crippled cognitive performance, or doctors to not act quickly enough to save someone's life due to their hindered decision making ability. Sleep inertia is a very serious problem in medicine and a proper solution to this problem is yet to be introduced.
+
+
+Bibliography:
+
+1. Canadian medical association journal; sleep deprivation in doctors. (2011). NewsRx Health & Science, , 22. Retrieved from http://search.proquest.com/docview/869619134?accountid=14771
+
+2. Wertz AT, Ronda JM, Czeisler CA, Wright KP. Effects of Sleep Inertia on Cognition. JAMA. 2006;295(2):159-164. doi:10.1001/jama.295.2.163.
+
+3. Bruck, D., & Pisani, D. L. (1999). The effects of sleep inertia on decision-making performance. Journal of Sleep Research, 8(2), 95-103. doi:10.1046/j.1365-2869.1999.00150.x

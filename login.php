@@ -4,9 +4,9 @@
             <br>
             <br>
             <h2 class="title text-center">Login</h2>          
-            <form action="#" method="post" class="intro text-center">
+            <form action="login2.php" method="post" class="intro text-center">
                 <input type="text" name="email" placeholder="E-mail" class="inputs"><br>
-                <input type="text" name="email" placeholder="Password" class="inputs"><br>
+                <input type="password" name="pass" placeholder="Password" class="inputs"><br>
                 <input type="submit" class="btn btn-cta-primary">
             </form>
         </div>
