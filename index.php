@@ -1,13 +1,19 @@
 <?php include("assets/templates/header.html"); ?>
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
-        <div class="container text-center">
+        <div class="container text-left">
             <h2 class="title">Community<span class="highlight">Fund</span></h2>
             <p class="intro">A crowd funding platform for raising funds and awareness on community projects.</p>
             <div class="btns">
                 <a class="btn btn-cta-secondary" href="#" target="_blank">Create</a>
                 <a class="btn btn-cta-primary" href="#" target="_blank">Browse</a>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <br>

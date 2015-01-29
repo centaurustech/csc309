@@ -93,7 +93,7 @@ pre code {
 /* ======= Header ======= */
 .header {
   padding: 10px 0;
-  background: #E74C3C;
+  background: #306E73;
   color: #fff;
   position: fixed;
   width: 100%;
@@ -181,15 +181,15 @@ pre code {
 }
 /* ======= Promo Section ======= */
 .promo {
-  background-image: url("/assets/images/clouds.jpg");
+  background-image: url("/assets/images/startup.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  padding-top: 260px;
+  padding-top: 100px;
 }
 .promo .title {
   font-size: 98px;
-  color: #3498DB;
+  color: #306E73;
   margin-top: 0;
 }
 .promo .title .highlight {
@@ -199,7 +199,6 @@ pre code {
   color: #2C3E50;
   font-size: 28px;
   max-width: 680px;
-  margin: 0 auto;
   margin-bottom: 30px;
 }
 .promo .btns .btn {
@@ -222,7 +221,7 @@ pre code {
   color: #074f66;
 }
 .promo .social-media {
-  background: #E74C3C;
+  background: #306E73;
   padding: 10px 0;
   margin: 0 auto;
 }
