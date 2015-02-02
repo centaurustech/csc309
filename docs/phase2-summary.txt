@@ -1,7 +1,8 @@
-2.1 Feature and Functionality Specification
+2.1 Feature and Functionality Specification (Cody)
 	- See project page, summarize required features from there
+	- Talk about what each page does and its functaionality.
 	
-2.2 Project Plan
+2.2 Project Plan (Do together before class)
 	- Weekly meetings Wed before class (write report for TA).
 	- GitHub for source control
 	- Skype meetings if necessary to discuss immediate issues or w/e.
@@ -11,17 +12,18 @@
 	- No individual roles, divide tasks every week based on 
 			necessary work that needs to be done for that week.
 	
-2.3  Software Architecture and High-level Design
+2.3  Software Architecture and High-level Design (ask proff on wed)
 	- See flow chart.
+	- Describe why this design works and stuff
 	
-2.4 Information Representation
+2.4 Information Representation (Akira)
 	- User (userid, name, pass, email, payment info all dat shit)
 	- Projects (creatorid, projectid, total funded, total needed, community, etc)
 	- Funders (funderid, projectid, amount funded, etc).
 	- Communities (userid, community)
 	- userid=creatorid=funderid
 
-2.5 Test Strategy and Test Plan
+2.5 Test Strategy and Test Plan (Farzad)
 	- test the basic functionality of each page
 	- test the flow of pages
 	- create sample test databases with entries.
