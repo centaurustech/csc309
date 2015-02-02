@@ -1,0 +1,30 @@
+2.1 Feature and Functionality Specification
+	- See project page, summarize required features from there
+	
+2.2 Project Plan
+	- Weekly meetings Wed before class (write report for TA).
+	- GitHub for source control
+	- Skype meetings if necessary to discuss immediate issues or w/e.
+	- Facebook yolo.
+	- Democratic decision making.
+	
+	- No individual roles, divide tasks every week based on 
+			necessary work that needs to be done for that week.
+	
+2.3  Software Architecture and High-level Design
+	- See flow chart.
+	
+2.4 Information Representation
+	- User (userid, name, pass, email, payment info all dat shit)
+	- Projects (creatorid, projectid, total funded, total needed, community, etc)
+	- Funders (funderid, projectid, amount funded, etc).
+	- Communities (userid, community)
+	- userid=creatorid=funderid
+
+2.5 Test Strategy and Test Plan
+	- test the basic functionality of each page
+	- test the flow of pages
+	- create sample test databases with entries.
+	- test that data is being manipulated correctly
+	- no individual staff responsibilities, assign roles at weekly meetings
+	- make sure website is intuitive and simple to follow

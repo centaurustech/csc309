@@ -49,7 +49,9 @@ the project helping it reaching a specific goal set by the initiators.</p>
                     </div>
                     <div class="content">
                         <h3 class="sub-title">Designed for developers</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+						
+						
+                        <p>Outline a benefit <script language="javascript" src="http://www.xe.com/pca/link.php?AmountSet=0.30&From=USD&ToSelect=EUR&Link=%240.30%20USD"></script><noscript><a href="http://www.xe.com/pca/input.php?AmountSet=0.30&From=USD&ToSelect=EUR&Link=%240.30%20USD" target="_blank">$0.30 USD</a></noscript>. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->
                 <div class="item col-md-4 col-sm-6 col-xs-12">
