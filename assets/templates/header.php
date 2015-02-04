@@ -49,9 +49,18 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a href="index.php">Home</a></li>
-                        <li class="nav-item"><a href="login.php">Login</a></li>
-                        <li class="nav-item"><a href="register.php">Register</a></li>               
-                        <li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>
+                        <?php 
+                        session_start();
+                        if ($_SESSION['login'] == "1"){
+                            echo '<li class="nav-item"><a href="#">My Account</a></li>';
+                            echo '<li class="nav-item"><a href="logout.php">Logout</a></li>';
+                        }
+                        else{
+                            echo '<li class="nav-item"><a href="login.php">Login</a></li>';
+                            echo '<li class="nav-item"><a href="register.php">Register</a></li>'  ;             
+                            echo '<li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>';
+                        }
+                        ?>      
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->

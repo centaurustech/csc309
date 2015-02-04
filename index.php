@@ -1,4 +1,4 @@
-<?php include("assets/templates/header.html"); ?>
+<?php include("assets/templates/header.php"); ?>
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
         <div class="container text-left">
@@ -38,62 +38,64 @@
             <h2 class="title text-center">What is CommunityFund?</h2>
             <p class="intro text-center">CommunityFund is an online service where an individual (or a group)
 who are interested in helping projects within their community can find interesting projects from
-various project initiators.   Once the funder finds a suitable project they can fund
+various project initiators. Initiators, register on the system and
+provide details of their projects and themselves. Funder, register on the system and search for
+interesting projects to fund, and if found one, they can give fund to the project. Once the funder finds a suitable project they can fund
 the project helping it reaching a specific goal set by the initiators.</p>
             <div class="row">
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-lightbulb-o"></i>
+                        <i class="fa fa-heart"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Initiators</h3>						
-                        <p>Initiators register on the system and provide details of their projects and themselves.</p>
+                        <h3 class="sub-title">Designed for developers</h3>						
+                        <p>Outline a benefit. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-usd"></i>
+                        <i class="fa fa-clock-o"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Funders</h3>
-                        <p>Funders register on the system and search for interesting projects to fund, and if found one, they can fund                         the project.</p>
+                        <h3 class="sub-title">Time saver</h3>
+                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-crosshairs"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Community Based</h3>
-                        <p>Initiators and Funders both specify a communities for the project; which can be based on location or interests, these communities form a social network.</p>
+                        <h3 class="sub-title">UX-centred</h3>
+                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->           
                 <div class="clearfix visible-md"></div>    
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-comments"></i>
+                        <i class="fa fa-tablet"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Social Network</h3>
-                        <p>Once a funder or initiator joins a community she is automatically joining an implicit social network. Members can communicate with each other and learn more about the project from the people around the project.</p>
+                        <h3 class="sub-title">Mobile-friendly</h3>
+                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->                
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-code"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Reputation System</h3>
-                        <p>People within a community can rate and review Funders or Initiators to create an internal reputation system. The reputation score of a initiators is based on ratings that community members provide about in their community social network.</p>
-                    </div>
+                        <h3 class="sub-title">Easy to customise</h3>
+                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+                    </div><!--//content-->
                 </div><!--//item-->
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
-                        <i class="fa fa-globe"></i>
+                        <i class="fa fa-coffee"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Endless Possibilities</h3>
-                        <p>Some shit here</p>
+                        <h3 class="sub-title">LESS files included</h3>
+                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
                     </div><!--//content-->
                 </div><!--//item-->               
             </div><!--//row-->            
