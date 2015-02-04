@@ -52,7 +52,7 @@
                         <?php 
                         session_start();
                         if ($_SESSION['login'] == "1"){
-                            echo '<li class="nav-item"><a href="#">My Account</a></li>';
+                            echo '<li class="nav-item"><a href="profile.php">My Account</a></li>';
                             echo '<li class="nav-item"><a href="logout.php">Logout</a></li>';
                         }
                         else{

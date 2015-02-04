@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 /* create session */
                 session_start();
                 $_SESSION['login'] = "1";
+                $_SESSION['email'] = $email;
                 header ("Location: index.php");
             }
             else {

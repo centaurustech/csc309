@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             //open sessions
 			session_start();
 			$_SESSION['login'] = "1";
-
+            $_SESSION['email'] = $email;
 			header ("Location: index.php");
 		}
 	}

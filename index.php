@@ -5,8 +5,8 @@
             <h2 class="title">Community<span class="highlight">Fund</span></h2>
             <p class="intro">A crowd funding platform for raising funds and awareness on community projects.</p>
             <div class="btns">
-                <a class="btn btn-cta-secondary" href="#" target="_blank">Create</a>
-                <a class="btn btn-cta-primary" href="#" target="_blank">Browse</a>
+                <a class="btn btn-cta-secondary" href="#">Create</a>
+                <a class="btn btn-cta-primary" href="#">Browse</a>
             </div>
             <br>
             <br>
