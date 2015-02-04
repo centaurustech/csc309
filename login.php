@@ -70,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container" class="intro text-center">
             <br>
             <br>
-            <h2 class="title text-center">Login</h2>          
+            <h2 class="title text-center">Login</h2>  
+            <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
             <form action="login.php" method="post" class="intro text-center">
                 <input type="text" name="email" placeholder="E-mail" class="inputs"><br>
                 <input type="password" name="pass" placeholder="Password" class="inputs"><br>
@@ -78,6 +79,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </section>
-
-<?PHP print $errorMessage;?> 
 <?php include("assets/templates/footer.html"); ?>
