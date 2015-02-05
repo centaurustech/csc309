@@ -63,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
         $errorMessage = "SQL error";
     }
-    
 }
 ?>
+
 <?php include("assets/templates/header.php"); ?>
     <section id="register" class="about section">
         <div class="container" class="intro text-center">
