@@ -18,7 +18,8 @@
 	
 2.4 Information Representation (Akira)
 	- User (userid, name, pass, email, payment info all dat shit)
-	- Projects (creatorid, projectid, total funded, total needed, community, etc)
+	
+    - Projects (creatorid, projectid, total funded, total needed, community, etc)
 	- Funders (funderid, projectid, amount funded, etc).
 	- Communities (userid, community)
 	- userid=creatorid=funderid
