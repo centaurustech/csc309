@@ -78,7 +78,22 @@ Akira Kakkar, g3fol\\
 \caption{Website Flowchart \label{overflow}}
 \end{figure}
 
-\item[4.] Information Representation
+\item[4.] Information Representation\\
+User(\underline{userId} name, email, dob, password)\\
+Transaction(\underline{user}, \underline{project}, \underline{date}, amount)\\
+Communities(\underline{cId}, \underline{project})\\
+Project(\underline{pId}, name, description, date, creator, totalAmount, community)\\
+Review(\underline{project}, \underline{rate})\\
+MemberOf(\underline{community}, \underline{user})\\
+\\
+Project(creator) \subseteq User(userId)\\
+Transaction(user) \subseteq User(userId)\\
+MemberOf(user) \subseteq User(userId)\\
+Review(project) \subseteq Project(pId)\\
+Transaction(project) \subseteq Project(pId)\\
+Community(project) \subseteq Project(pId)\\
+MemberOf(community) \subseteq Communities(cId)\\
+Project(community) \subseteq Communities(cId)\\
 \item[5.] Test Strategy and Test Plan	
 \end{enumerate}
 \end{document}
