@@ -6,9 +6,6 @@
     //if ($_SERVER['REQUEST_METHOD'] == 'POST') {}
 ?>
 <?php include("assets/templates/header.php"); ?>
-<style>
-  .about {background-image: url("/assets/images/clouds.jpg");}
-</style>
 	<section class="about section" >
 		<div class="container">
 	        <br>
