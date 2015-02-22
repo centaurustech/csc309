@@ -51,7 +51,8 @@
                         <li class="active nav-item sr-only"><a href="index.php">Home</a></li>
                         <?php 
                         session_start();
-                        if ($_SESSION['login'] == "1"){
+						//Added a condition to the if clause.
+                        if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                             echo '<li class="nav-item"><a href="profile.php">My Account</a></li>';
                             echo '<li class="nav-item"><a href="logout.php">Logout</a></li>';
                         }

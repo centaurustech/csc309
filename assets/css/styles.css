@@ -219,7 +219,9 @@ pre code {
 }
 /* ======= Promo Section ======= */
 .promo {
-  background-image: url("/assets/images/startup.jpg");
+/*Added the '..' to the url path for the background image. The file styles.css couldn't find the picture because
+it is a direct child of the css folder, not the main csc309 folder.*/
+  background-image: url("../images/startup.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;

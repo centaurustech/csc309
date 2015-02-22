@@ -10,12 +10,12 @@ function quote_smart($value, $handle) {
    }
    return $value;
 }
-
+//This variable needs to be declared outside of the if block so that it is not undefined when people initially load the login page.
+$errorMessage = "";
 /*if page is accessed after attempt */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $errorMessage = "";
     
     /* strip of any sketchy characters */
     $email = htmlspecialchars($email);

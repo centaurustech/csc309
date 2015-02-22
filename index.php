@@ -94,6 +94,7 @@ the project helping it reaching a specific goal set by the initiators.</p>
                     <div class="content">
                         <h3 class="sub-title">Endless Possibilities</h3>
                         <p>Some shit here</p>
+						<p>Denis is a poo brain</p>
                     </div><!--//content-->
                 </div><!--//item-->               
             </div><!--//row-->            

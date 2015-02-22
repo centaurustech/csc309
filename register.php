@@ -10,7 +10,8 @@ function quote_smart($value, $handle) {
    }
    return $value;
 }
-
+//Initialize error message.
+$errorMessage = "";
 /*if page is accessed after attempt */
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$email = $_POST['email'];
