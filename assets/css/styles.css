@@ -31,12 +31,15 @@ select {
     appearance:none;
     cursor:pointer;
 }
+.tb1 {
+    color: #FF6138;
+    border-style: none;
+}
 .select-style {
     border: 1px solid #ccc;
     width: 230px;
     border-radius: 3px;
     overflow: hidden;
-    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
 }
 
 .select-style select {
