@@ -20,7 +20,7 @@
 	        <h2 class="title text-center"> 
 		        <form action="projectinfo.php" method="post" class="intro text-center">
 		        <font color="white">
-		        	I want to start a <select name="type" >
+		        	I want to start a <select name="type" class="select-style">
 			        	<option>Art</option>
 			        	<option>Technology</option>
 			        	<option>Music</option>

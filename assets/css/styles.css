@@ -33,7 +33,9 @@ select {
 }
 .tb1 {
     color: #FF6138;
-    border-style: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
 }
 .select-style {
     border: 1px solid #ccc;
