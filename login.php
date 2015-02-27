@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     /*connect to database */
     $user_name = "root";
-    $pass_word = "root";
+    $pass_word = "csc309";
     $database = "users";
-    $server = "localhost:8888";
+    $server = "localhost";
     
     $db_handle = mysql_connect($server, $user_name, $pass_word);
     $db_found = mysql_select_db($database, $db_handle);
