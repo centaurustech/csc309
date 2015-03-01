@@ -29,9 +29,9 @@ foreach($_POST as $value) {
 $email_body = "Name: " . $sender_name . "\n" . "E-mail: " . $sender_email . "\n" . "Message: " . $sender_message;
 
 //Send the e-mail.
-$mail = new PHPmailer();
+$mail = new PHPmailer;
 //Might not need this.
-/* $mail.isSMTP();    
+/*$mail.isSMTP();    
 $mail->isHTML(true);  */
 $mail->From = $sender_email;
 $mail->FromName = $sender_name;
