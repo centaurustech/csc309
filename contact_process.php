@@ -1,6 +1,7 @@
 <?php
 //Third party library for sending e-mail.
 require_once("PHPMailer/class.phpmailer.php");
+require_once("PHPMailer/class.smtp.php");
 
 //Extract form input.
 $sender_name = trim($_POST["sender_name"]);
@@ -29,15 +30,20 @@ foreach($_POST as $value) {
 $email_body = "Name: " . $sender_name . "\n" . "E-mail: " . $sender_email . "\n" . "Message: " . $sender_message;
 
 //Send the e-mail.
-$mail = new PHPmailer;
-//Might not need this.
-/*$mail.isSMTP();    
-$mail->isHTML(true);  */
+$mail = new PHPmailer();
+$mail->SMTPDebug = 3;
+$mail->IsSMTP();    
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'tls';
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 587;
+$mail->Username = "contactcommunityfund@gmail.com";
+$mail->Password = "community693";
 $mail->From = $sender_email;
 $mail->FromName = $sender_name;
 $mail->Body = $email_body;
-$mail->addAddress("bungalo1@hotmail.com");                                                     
-$mail->Subject = "User Commentary"; //Maybe add a new input field later?
+$mail->addAddress("contactcommunityfund@gmail.com");                                                     
+$mail->Subject = "User Commentary"; //Maybe add a new input field to the contact form later?
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
