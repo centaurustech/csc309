@@ -1,4 +1,5 @@
 <?php 
+session_start();
 function quote_smart($value, $handle) {
 
    if (get_magic_quotes_gpc()) {
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($num_rows > 0) {
                 $errorMessage= "logged on ";
                 /* create session */
-                session_start();
+                
                 $_SESSION['login'] = "1";
                 $_SESSION['email'] = $email;
                 header ("Location: index.php");
