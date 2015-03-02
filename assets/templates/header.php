@@ -1,4 +1,3 @@
-<?session_start();?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -50,8 +49,8 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a href="index.php">Home</a></li>
-                        <?php 
-                        
+                        <?php   
+                        session_start();                     
 						//Added a condition to the if clause.
                         if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                             echo '<li class="nav-item"><a href="profile.php">My Account</a></li>';
