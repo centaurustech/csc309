@@ -53,7 +53,7 @@ class SMTP
     /**
      * Debug level for no output
      */
-    const DEBUG_OFF = 0;
+    const DEBUG_OFF = 1;
 
     /**
      * Debug level to show client -> server messages
