@@ -1,4 +1,5 @@
 <?php 
+
 function quote_smart($value, $handle) {
 
    if (get_magic_quotes_gpc()) {

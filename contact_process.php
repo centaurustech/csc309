@@ -47,10 +47,11 @@ $mail->Subject = "User Commentary"; //Maybe add a new input field to the contact
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    //echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
     echo 'Message has been sent';
 }
 
+header('Refresh: 3;url=index.php');
 //TODO: Add a client side script to bring up a dialogue box confirming that the message was sent.
 ?>
