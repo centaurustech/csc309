@@ -23,7 +23,8 @@
                             <form>
                                 <input type="text" name="website" size="70">
                             </form><br>
-                        <h4><form>Goal: $ <input type="text" name="website" size="10"></form></h4><br>
+                        <h4><form>Goal: $ <input type="text" name="goal" size="10">
+                                By:<input type="date" name="bday"></form></h4><br>
                         <h3>Tier 1</h3>
                         <h4><form>Donation: $ <input type="text" name="teir1" size="10"></form></h4>
                         <h4>Reward:</h4>
