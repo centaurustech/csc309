@@ -37,10 +37,5 @@
             <br>
             <h2 class="title text-center">Welcome to your profile <?=$name?>!</h2> 
         </div>
-        <div class="btns">
-                <a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
-                <a class="btn btn-cta-secondary" href="Display.php">Display</a>
-
-        </div>
     </section>
 <?php include("assets/templates/footer.html"); ?>
