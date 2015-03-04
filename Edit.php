@@ -17,7 +17,7 @@
     $user_name = "root";
     $pass_word = "csc309";
     $database = "users";
-    $server = "104.236.231.174:3306";
+    $server = "104.236.231.174:3306";;
     
     $db_handle = mysql_connect($server, $user_name, $pass_word);
     $db_found = mysql_select_db($database, $db_handle);
@@ -36,11 +36,6 @@
             <br>
             <br>
             <h2 class="title text-center">Welcome to your profile <?=$name?>!</h2> 
-        </div>
-        <div class="btns">
-                <a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
-                <a class="btn btn-cta-secondary" href="Display.php">Display</a>
-
         </div>
     </section>
 <?php include("assets/templates/footer.html"); ?>

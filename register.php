@@ -81,10 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <h2 class="title text-center">Register</h2> 
             <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
             <form action="#" method="post" class="intro text-center">
-                <input type="text" name="name" placeholder="Name" class="inputs"><br>
-                <input type="text" name="email" placeholder="E-mail" class="inputs"><br>
-                <input type="password" name="pass" placeholder="Password" class="inputs"><br>
-                <input type="password" name="pass2" placeholder="Re-enter Password" class="inputs"><br>
+                <input type="text" name="name" placeholder="Name" class="inputs" required><br>
+                <input type="text" name="email" placeholder="E-mail" class="inputs" required><br>
+                <input type="password" name="pass" placeholder="Password" class="inputs" required><br>
+                <input type="password" name="pass2" placeholder="Re-enter Password" class="inputs" required><br>
                 <input type="submit" class="btn btn-cta-primary">
             </form>
         </div>

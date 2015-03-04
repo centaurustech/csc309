@@ -6,7 +6,7 @@
             <p class="intro">A crowd funding platform for raising funds and awareness on community projects.</p>
             <div class="btns">
                 <a class="btn btn-cta-secondary" href="create.php">Create</a>
-                <a class="btn btn-cta-primary" href="#">Browse</a>
+                <a class="btn btn-cta-primary" href="browse.php">Browse</a>
             </div>
             <br>
             <br>

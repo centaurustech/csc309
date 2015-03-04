@@ -18,8 +18,8 @@
 	        <br>
 	        <h1 class="title text-center"> <font color="white">Create a</font> <span class="highlight">Project</span></h1>
 	        <h2 class="title text-center"> 
-		        <form action="projectinfo.php" method="post" class="intro text-center">
-		        <font color="white">
+		        <form action="create2.php" method="post" class="intro text-center">
+		        	<font color="white">
 		        	I want to start a <select name="type" class="select-style">
 			        	<option>Art</option>
 			        	<option>Technology</option>
