@@ -31,7 +31,7 @@ $email_body = "Name: " . $sender_name . "\n" . "E-mail: " . $sender_email . "\n"
 
 //Send the e-mail.
 $mail = new PHPmailer();
-$mail->SMTPDebug = 3;
+//$mail->SMTPDebug = 3;
 $mail->IsSMTP();    
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'tls';
