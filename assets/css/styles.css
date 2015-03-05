@@ -31,6 +31,10 @@ select {
     appearance:none;
     cursor:pointer;
 }
+.smallaf{
+  height: 45px;
+  overflow: auto;
+}
 .slide-image {
     width: 100%;
 }
@@ -45,7 +49,7 @@ select {
 }
 
 .caption {
-    height: 130px;
+    height: 200px;
     overflow: hidden;
 }
 
