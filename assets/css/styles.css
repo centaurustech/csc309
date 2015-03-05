@@ -735,6 +735,38 @@ inputs:-webkit-input-placeholder {
     font-size: 18px;
   }
 }
+
+/* ======= Profile ======= */
+
+#basic_info {
+	display: inline-block;
+	background-color: blue;
+}
+
+#recent_activity {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	left: 25%;
+}
+
+#bio {
+	background-color: red;
+}
+
+#profile_projects {
+	float: left;
+	position: relative;
+	left: 12%;
+}
+
+#profile_contributions {
+	float: right;
+	position: relative;
+	right: 12%;
+}
+
+
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */

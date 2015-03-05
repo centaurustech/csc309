@@ -1,15 +1,6 @@
 <?php include("assets/templates/header.php"); ?>
-<?php	
-	function quote_smart($value, $handle) {
-	   if (get_magic_quotes_gpc()) {
-	       $value = stripslashes($value);
-	   }
-
-	   if (!is_numeric($value)) {
-	       $value = "'" . mysql_real_escape_string($value, $handle) . "'";
-	   }
-	   return $value;
-	}
+<?php
+//TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.	
 	$email = $_SESSION['email'];
 	$email = htmlspecialchars($email);
 
@@ -35,12 +26,46 @@
         <div class="container" class="intro text-center">
             <br>
             <br>
-            <h2 class="title text-center">Welcome to your profile <?=$name?>!</h2> 
-        </div>
-        <div class="btns">
-                <a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
-                <a class="btn btn-cta-secondary" href="Display.php">Display</a>
-
+            <h2 class="title text-center">Welcome to your profile <?=$name?>!</h2>
+			<div id="basic_info">
+				<img id="profile_pic" src="assets/images/profile_pics/user_5_pic.jpg" alt="Profile Picture" width=250 height=250>
+				<p id="reputation">Reputation Score:</p>
+				<p id="location">Location:</p>
+				<p id="join date">Date Joined:</p>
+			</div>
+			<div id="recent_activity">
+				<h2>My recent Activity</h2>
+				<ul>
+					<li>Activity 1</li>
+					<li>Activity 2</li>
+					<li>Activity 3</li>
+				</ul>
+			</div>
+			<div id="bio">
+				<h3>About Me</h3
+				<p>This is a big splerge about my life and how it exists as a thing that requires multiple lines of blah
+				blah blah blah blah blahblah blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+				blahblahblahblahblahblahblahblahblahblahblahblahhttp blah blah bah bahbahbahbahbahbahbahbah bahbah
+				bahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbahbah
+				bahbahbahbahbahbahbahbahbah
+				</p>
+			</div>
+			<div id="profile_projects">
+				<h2>My recent projects</h2>
+				<ul>
+					<li>P1</li>
+					<li>P2</li>
+					<li>P3</li>
+				</ul>
+			</div>
+			<div id="profile_contributions">
+				<h2>My recent contributions<h2>
+				<ul>
+					<li>P1</li>
+					<li>P2</li>
+					<li>P3</li>
+				</ul>
+			</div>
         </div>
     </section>
 <?php include("assets/templates/footer.html"); ?>
