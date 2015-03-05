@@ -49,8 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errorMessage= "logged on ";
                 /* create session */
                 session_start();
+                $row = mysql_fetch_array($result, MYSQL_ASSOC);
                 $_SESSION['login'] = "1";
                 $_SESSION['email'] = $email;
+                $_SESSION['name'] = $row['name'];
                 header ("Location: index.php");
             }
             else {
