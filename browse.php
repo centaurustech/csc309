@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <p class="lead">Categories</p>
+                    <h3><font color="#E74C3C">Categories</h3>
                     <div class="list-group">
                         <a href="browse.php" class="list-group-item">All</a>
                         <a href="browse.php?category=<?='Technology'?>" class="list-group-item">Technology</a>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-md-10">
-                    <p class="lead">Projects</p>
+                    <h3>Projects</h3>
                     <div class="row">
                         <?php          
                             /*connect to database */

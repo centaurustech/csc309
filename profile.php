@@ -16,11 +16,11 @@
     $SQL = "SELECT * FROM users WHERE email = $email";
     $result = mysql_query($SQL);
 
-    //retrieve data from sql server
-    while($row = mysql_fetch_array($result, MYSQL_ASSOC)){
-    	$name = $row['name'];
-  		$email = $row['email'];
-    }
+    //retrieve user data from sql server
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    $name = $row['name'];
+	$email = $row['email'];
+	$date = $row['date'];
 ?>
     <section id="profile" class="about section">
         <div class="container" class="intro text-center">
@@ -31,7 +31,7 @@
 				<img id="profile_pic" src="assets/images/profile_pics/user_5_pic.jpg" alt="Profile Picture" width=250 height=250>
 				<p id="reputation">Reputation Score:</p>
 				<p id="location">Location:</p>
-				<p id="join date">Date Joined:</p>
+				<p id="join date">Date Joined: <?=$date?></p>
 			</div>
 			<div id="recent_activity">
 				<h2>My recent Activity</h2>
