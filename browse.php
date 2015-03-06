@@ -39,6 +39,9 @@
                                 $creator = $row['creator'];
                                 $goal = $row['goal'];
                                 $date = $row['date'];
+                                $community = $row['community'];
+                                $funded = $row['funded'];
+                                $percentage = round(($funded / $goal) * 100);
 
                                 //get the name of the owner of project
                                 $SQL2 = "SELECT * FROM users WHERE email = '$creator'";
@@ -49,22 +52,47 @@
                                 ?> 
                                 <div class="col-sm-6 col-lg-6">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/320x150" alt="">
-                                        <div class="caption">         
-                                            <h5><a href="#"><?=$title?></a>
-                                            </h5>
-                                            <p>Goal: $<?=$goal?></p>
-                                            <p><?=$desc?></p>
-                                        </div>
-                                        <div class="ratings">
-                                            <p class="pull-right">15 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            </p>
+                                        <div class="caption">
+                                            <?php
+                                            if ($percentage >= 100){ ?>
+                                                <h4><a href="#"><?=$title?></a>
+                                                <span class="glyphicon glyphicon-ok"></span></h4>   
+                                            <? } else { ?>
+                                                <h4><a href="#"><?=$title?></a></h4>
+                                            <? } ?>         
+                                            <p>Created by: <?=$name?></p>                      
+                                            <p class="smallaf"><?=$desc?></p>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <p>
+                                                    <span class="glyphicon glyphicon-globe"></span>
+                                                    <?=$community?></p>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <p><span class="glyphicon glyphicon-usd"></span>
+                                                    <?=number_format($funded)?> funded.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="progress">
+                                                <?php
+                                                if ($percentage == 0){ ?>
+                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
+                                                    aria-valuemin="0" aria-valuemax="100" style='width:100%'>
+                                                    Not Funded Yet!
+                                                    </div>
+                                                <? } elseif ($percentage >= 100){ ?>
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?=$percentage?>
+                                                    aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
+                                                    <?=$percentage?>% of $<?=number_format($goal)?>
+                                                    </div>
+                                                <? } else { ?>
+                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=<?=$percentage?>
+                                                    aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
+                                                    <?=$percentage?>% of $<?=number_format($goal)?>
+                                                    </div>
+                                                <? } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
