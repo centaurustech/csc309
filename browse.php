@@ -18,8 +18,7 @@
                 <div class="col-md-10">
                     <p class="lead">Projects</p>
                     <div class="row">
-                        <?php
-                            
+                        <?php          
                             /*connect to database */
                             $user_name = "root";
                             $pass_word = "csc309";
@@ -70,9 +69,9 @@
                                             if ($percentage >= 100){ ?>
                                                 <h4><a href="#"><?=$title?></a>
                                                 <span class="glyphicon glyphicon-ok"></span></h4>   
-                                            <? } else { ?>
+                                            <?php } else { ?>
                                                 <h4><a href="#"><?=$title?></a></h4>
-                                            <? } ?>         
+                                            <?php } ?>         
                                             <p>Created by: <?=$name?></p>                      
                                             <p class="smallaf"><?=$desc?></p>
                                             <div class="row">
@@ -96,24 +95,24 @@
                                                     aria-valuemin="0" aria-valuemax="100" style='width:100%'>
                                                     Not Funded Yet!
                                                     </div>
-                                                <? } elseif ($percentage >= 100){ ?>
+                                                <?php } elseif ($percentage >= 100){ ?>
                                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?=$percentage?>
                                                     aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
                                                     <?=$percentage?>% of $<?=number_format($goal)?>
                                                     </div>
-                                                <? } else { ?>
+                                                <?php } else { ?>
                                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=<?=$percentage?>
                                                     aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
                                                     <?=$percentage?>% of $<?=number_format($goal)?>
                                                     </div>
-                                                <? } ?>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <?php
                             }
-                            ?> 
+                        ?> 
                     </div>
                 </div>
             </div>
