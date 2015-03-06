@@ -742,9 +742,39 @@ inputs:-webkit-input-placeholder {
 
 /* ======= Profile ======= */
 
-#basic_info {
+#profile {
+	background: linear-gradient(to bottom, #2980B9, white);
+}
+
+#profile_pic {
 	display: inline-block;
-	background-color: blue;
+}
+
+.profile_headings {
+	color: #E74C3C;
+}
+
+#basic_info {
+	display: block;
+	border-top-style: ridge;
+	border-top-color: black;
+	border-top-width: thick;
+	border-bottom-style: ridge;
+	border-bottom-color: black;
+	border-bottom-width: medium;
+}
+
+#reputation {
+	width: 22%;
+}
+
+#location {
+	width: 22%;
+}
+
+#join_date {
+	/* background-color: #2980B9; */
+	width: 22%;
 }
 
 #recent_activity {
@@ -755,7 +785,9 @@ inputs:-webkit-input-placeholder {
 }
 
 #bio {
-	background-color: red;
+	border-bottom-width: thin;
+	border-bottom-color: black;
+	border-bottom-style: ridge;
 }
 
 #profile_projects {

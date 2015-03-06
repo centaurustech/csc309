@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="login.php" method="post" class="intro text-center">
                 <input type="text" name="email" placeholder="E-mail" class="inputs" required><br>
                 <input type="password" name="pass" placeholder="Password" class="inputs" required><br>
-                <input type="submit" class="btn btn-cta-primary">
+                <input type="submit" value="Login" class="btn btn-cta-primary">
             </form>
         </div>
     </section>
