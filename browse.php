@@ -5,20 +5,21 @@
                 <div class="col-md-2">
                     <p class="lead">Categories</p>
                     <div class="list-group">
-                        <a href="#" class="list-group-item">Art</a>
-                        <a href="#" class="list-group-item">Technology</a>
-                        <a href="#" class="list-group-item">Music</a>
-                        <a href="#" class="list-group-item">Photography</a>
-                        <a href="#" class="list-group-item">Food</a>
-                        <a href="#" class="list-group-item">Film and Video</a>
-                        <a href="#" class="list-group-item">Design</a>
-                        <a href="#" class="list-group-item">Games</a>
+                        <a href="browse.php?category=<?='Art'?>" class="list-group-item">Art</a>
+                        <a href="browse.php?category=<?='Technology'?>" class="list-group-item">Technology</a>
+                        <a href="browse.php?category=<?='Music'?>" class="list-group-item">Music</a>
+                        <a href="browse.php?category=<?='Photography'?>" class="list-group-item">Photography</a>
+                        <a href="browse.php?category=<?='Food'?>" class="list-group-item">Food</a>
+                        <a href="browse.php?category=<?='Film and Video'?>" class="list-group-item">Film and Video</a>
+                        <a href="browse.php?category=<?='Design'?>" class="list-group-item">Design</a>
+                        <a href="browse.php?category=<?='Games'?>" class="list-group-item">Games</a>
                     </div>
                 </div>
                 <div class="col-md-10">
                     <p class="lead">Projects</p>
                     <div class="row">
                         <?php
+                            
                             /*connect to database */
                             $user_name = "root";
                             $pass_word = "csc309";
@@ -28,8 +29,15 @@
                             $db_handle = mysql_connect($server, $user_name, $pass_word);
                             $db_found = mysql_select_db($database, $db_handle);
 
+                            //Check if filter is set
+                            if (isset($_GET['category'])) {
+                                $category = $_GET['category'];
+                                $SQL = "SELECT * FROM projects WHERE category = '$category'";
+                            } else {
+                                $SQL = "SELECT * FROM projects";
+                            }
                             //add this to add filters
-                            $SQL = "SELECT * FROM projects";
+                            
                             $result = mysql_query($SQL);
 
                             //retrieve data from sql server
@@ -48,12 +56,17 @@
                                 $result2 = mysql_query($SQL2);
                                 $row2 = mysql_fetch_array($result2, MYSQL_ASSOC);
                                 $name = $row2['name'];
-                                //html
+
+                                //render project box
                                 ?> 
                                 <div class="col-sm-6 col-lg-6">
                                     <div class="thumbnail">
                                         <div class="caption">
+
+                                            <!-- Project Descriptions and stuff -->
                                             <?php
+
+                                            //add a checkmark if project is fully funded
                                             if ($percentage >= 100){ ?>
                                                 <h4><a href="#"><?=$title?></a>
                                                 <span class="glyphicon glyphicon-ok"></span></h4>   
@@ -70,10 +83,12 @@
                                                 </div>
                                                 <div class="col-sm-6 col-lg-6">
                                                     <p><span class="glyphicon glyphicon-usd"></span>
-                                                    <?=number_format($funded)?> funded.
+                                                    <?=number_format($funded)?> funded!
                                                     </p>
                                                 </div>
                                             </div>
+
+                                            <!-- Progress bar -->
                                             <div class="progress">
                                                 <?php
                                                 if ($percentage == 0){ ?>
