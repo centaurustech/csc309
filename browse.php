@@ -5,9 +5,10 @@
                 <div class="col-md-2">
                     <p class="lead">Categories</p>
                     <div class="list-group">
-                        <a href="browse.php?category=<?='Art'?>" class="list-group-item">Art</a>
+                        <a href="browse.php" class="list-group-item">All</a>
                         <a href="browse.php?category=<?='Technology'?>" class="list-group-item">Technology</a>
                         <a href="browse.php?category=<?='Music'?>" class="list-group-item">Music</a>
+                        <a href="browse.php?category=<?='Art'?>" class="list-group-item">Art</a>
                         <a href="browse.php?category=<?='Photography'?>" class="list-group-item">Photography</a>
                         <a href="browse.php?category=<?='Food'?>" class="list-group-item">Food</a>
                         <a href="browse.php?category=<?='Film and Video'?>" class="list-group-item">Film and Video</a>
