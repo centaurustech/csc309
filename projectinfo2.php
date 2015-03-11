@@ -1,4 +1,51 @@
 <?php include("assets/templates/header.php"); ?>
+<?php
+function process_date($raw_date) {
+    $date_elements[0] = substr($raw_date, 0, 4);
+    $date_elements[1] = substr($raw_date, 5, 2);
+    $date_elements[2] = substr($raw_date, 8, 2);
+    switch ($date_elements[1]) {
+        case "01":
+            $month ="January";
+            break;
+        case "02":
+            $month ="February";
+            break;
+        case "03":
+            $month ="March";
+            break;
+        case "04":
+            $month ="April";
+            break;
+        case "05":
+            $month ="May";
+            break;
+        case "06":
+            $month ="June";
+            break;
+        case "07":
+            $month ="July";
+            break;
+        case "08":
+            $month ="August";
+            break;
+        case "09":
+            $month ="September";
+            break;
+        case "10":
+            $month ="October";
+            break;
+        case "11":
+            $month ="November";
+            break;
+        case "12":
+            $month ="December";
+            break;
+    }
+    return $month . " " . $date_elements[2] . ", " . $date_elements[0];
+}
+
+?>
 <?php          
     /*connect to database */
     $user_name = "root";
@@ -19,15 +66,13 @@
     $desc = $row['description'];
     $creator = $row['creator'];
     $goal = $row['goal'];
-    $date = $row['date'];
+    $date = process_date($row['date']);
     $community = $row['community'];
     $funded = $row['funded'];
     $percentage = round(($funded / $goal) * 100);
 ?>
 
 <!-- Page Content -->
-    <br>
-    <br>
     <br>
     <br>
     <br>
@@ -61,6 +106,7 @@
                 <hr>
 
                 <!-- Post Content -->
+                <h4> Project Description </h4>
                 <p class="lead"><?=$desc?></p>
 
                 <hr>
@@ -127,50 +173,46 @@
             <br>
             <div class="col-md-4">
 
-                <!-- Blog Search Well -->
+                <!-- Funding Info Well -->
                 <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
-
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>Blog Categories</h4>
+                    <h4>Funding</h4>
+                    <!-- Project Descriptions and stuff -->
                     <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
+                        <div class="col-sm-6 col-lg-6">
+                            <p>
+                            <span class="glyphicon glyphicon-globe"></span>
+                            <?=$community?></p>
                         </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
+                        <div class="col-sm-6 col-lg-6">
+                            <p><span class="glyphicon glyphicon-usd"></span>
+                            <?=number_format($funded)?> funded!
+                            </p>
                         </div>
                     </div>
-                    <!-- /.row -->
+                    <!-- Progress bar -->
+                    <div class="progress">
+                        <?php
+                        if ($percentage == 0){ ?>
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
+                            aria-valuemin="0" aria-valuemax="100" style='width:100%'>
+                            Not Funded Yet!
+                            </div>
+                        <?php } elseif ($percentage >= 100){ ?>
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?=$percentage?>
+                            aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
+                            <?=$percentage?>% of $<?=number_format($goal)?>
+                            </div>
+                        <?php } else { ?>
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=<?=$percentage?>
+                            aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
+                            <?=$percentage?>% of $<?=number_format($goal)?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <!-- Fund Button -->
+                    <p>You can support this project by funding it. To fund, press the button below!</p>
+                    <h2><a class="btn btn-cta-secondary" href="fund.php?id=<?=$id?>">Fund this project!</a></h2>
+
                 </div>
 
                 <!-- Side Widget Well -->
