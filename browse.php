@@ -43,6 +43,7 @@
                             //retrieve data from sql server
                             while($row = mysql_fetch_array($result, MYSQL_ASSOC)){
                                 $title = $row['title'];
+                                $id = $row['pID'];
                                 $desc = $row['description'];
                                 $creator = $row['creator'];
                                 $goal = $row['goal'];
@@ -68,10 +69,10 @@
 
                                             //add a checkmark if project is fully funded
                                             if ($percentage >= 100){ ?>
-                                                <h4><a href="#"><?=$title?></a>
+                                                <h4><a href="projectinfo.php?id=<?=$id?>"><?=$title?></a>
                                                 <span class="glyphicon glyphicon-ok"></span></h4>   
                                             <?php } else { ?>
-                                                <h4><a href="#"><?=$title?></a></h4>
+                                                <h4><a href="projectinfo.php?id=<?=$id?>"><?=$title?></a></h4>
                                             <?php } ?>         
                                             <p>Created by: <?=$name?></p>                      
                                             <p class="smallaf"><?=$desc?></p>
