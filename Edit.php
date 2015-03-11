@@ -35,7 +35,9 @@
         <div class="container" class="intro text-center">
             <br>
             <br>
-            <h2 class="title text-center">Welcome to your profile <?=$name?>!</h2> 
+            <h2 class="title text-center">Welcome to Edit profile page</h2> 
+            <br>
+            
         </div>
     </section>
 <?php include("assets/templates/footer.html"); ?>

@@ -81,6 +81,7 @@ function process_date($raw_date) {
         <div class="container">
             <br>
             <br>
+            <h2 class="btn btn-cta-secondary" href="Edit.php">Edit</h2>
             <h2 class="title text-center profile_headings">Welcome to your profile <?=$name?>!</h2>
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 			<div id="recent_activity">
