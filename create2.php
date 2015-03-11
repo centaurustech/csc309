@@ -61,6 +61,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 }
 ?>
+
+<head>
+<style>
+.left {
+    width: 30%;
+    float: left;
+    text-align: right;
+}
+.right {
+    width: 65%;
+    margin-left: 10px;
+    float:left;
+}
+.button {
+    display:block;
+    text-align:center;
+}
+</style>
+</head>
+
 <?php include("assets/templates/header.php"); ?>
     <section id="register" class="about section">
         <div class="container" class="intro text-center">
@@ -68,15 +88,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <br>
             <h2 class="title text-center">Tell us more about <?=$title?>!</h2> 
             <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
-            <form action="#" method="post" class="intro text-center">
-                Project Title: <input type="text" name="title" value=<?=$title?> class="inputs" required><br>
-                Project Description: <textarea name="desc" placeholder="Description" class="inputs" required></textarea><br>
-                Community: <input type="text" name="community" placeholder="Community" class="inputs" required><br>
-                Funding Goal: <input type="number" name="goal" placeholder="Funding Goal" class="inputs" required><br>
-                Your Email: <input type="text" name="email" value=<?=$_SESSION['email']?> class="inputs" required><br>
-                Category: <input type="text" name="type" value=<?=$_POST['type']?> class="inputs" required><br>
-                <input type="submit" class="btn btn-cta-primary">
-            </form>
+            <div>
+                <div class="left">
+                    <h4>Title:</h4>
+                </div>
+                <div class="right">
+                    <input type="text" name="title" class="inputs" required>
+                </div>
+            </div>
+            <div>
+                <div class="left">
+                    <h4>Description:</h4>
+                </div>
+                <div class="right">
+                    <textarea name="desc" placeholder="Description" class="inputs" required></textarea>
+                </div>
+            </div>     
+            <div>
+                <div class="left">
+                    Community: 
+                </div>
+                <div class="right">
+                    <select>
+                        <option value="op1">Hackers</option>
+                        <option value="op2">CSC309</option>
+                        <option value="op3">Toronto</option>
+                        <option value="op4">Ontario</option>
+                    </select><Br>
+                </div>
+            </div>
+            <div>
+                <div class="left">
+                    Image: 
+                </div>
+                    <div class="right">
+                        <input type="file" name="datafile" size="40"></p>
+                    </div>
+            </div>
+            <div>
+                <div class="left">
+                    <h4>Youtube Video Embed:</h4>
+                </div>
+                <div class="right">
+                    <input type="text" name="video" class="inputs" required>
+                </div>
+            </div> 
+            <div>
+                <div class="left">
+                    <h4>Funding Goal:</h4>
+                </div>
+                <div class="right">
+                    <input type="number" name="goal" placeholder="Funding Goal" class="inputs" required>
+                </div>
+            </div>     
+            <div>
+                <div class="left">
+                    <h4>Amount:</h4>
+                </div>
+                <div class="right">
+                    <input type="number" name="amount" placeholder="Reward Amount" class="inputs" required>
+                </div>
+            </div>        
+            <div>
+                <div class="left">
+                    <h4>Reward:</h4>
+                </div>
+                <div class="right">
+                    <textarea name="reward" placeholder="Reward" class="inputs" required></textarea>
+                </div>
+            </div>
+        <span class="button">
+    <button type="button">Create!</button>
+</span>
         </div>
+
+        
     </section>
 <?php include("assets/templates/footer.html"); ?>
