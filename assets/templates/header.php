@@ -29,6 +29,8 @@
 </head> 
 
 <body data-spy="scroll">
+<div id="wrapper">
+    <div id="header">
     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
         <div class="container">            
@@ -57,7 +59,7 @@
                             echo '<li class="nav-item"><a href="logout.php">Logout</a></li>';
                         }
                         else{
-                            echo '<li class="nav-item"><a href="login.php">Login</a></li>';
+                            echo '<li class="nav-item"><a href="login_new.php">Login</a></li>';
                             echo '<li class="nav-item"><a href="register.php">Register</a></li>'  ;             
                             echo '<li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>';
                         }
@@ -67,5 +69,7 @@
             </nav><!--//main-nav-->
         </div>
     </header><!--//header-->
+    </div>
+    <div id="content">
 
     
