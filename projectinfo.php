@@ -2,42 +2,21 @@
 	<section class="about section">
 		<div class="container">
                         <h1>"project title"</h1> <!--as filled out on previous page-->
-                        <h2>By: "name"</h2><br> <!--user's name as registered-->
-                        <h4>Community: <!--communities the user belongs to-->
-                            <select>
-                                <option value="To">Toronto</option>
-                                <option value="309">CSC309</option>
-                                <option value="stud">Students</option>
-                                <option value="hack">Hackers</option>
-                            </select></h4><br>
-                        <h4>Description:</h4>
-                                <textarea rows="10" cols="70"></textarea><br><br>
-                        <h4>Image: 
-                            <form><input type="file" name="uploadField" />
-                            </form></h4><br>
-                        <h4>Website:</h4>
-                            <form>
-                                <input type="text" name="website" size="70">
-                            </form><br>
-                        <h4>Video URL:</h4>
-                            <form>
-                                <input type="text" name="website" size="70">
-                            </form><br>
-                        <h4><form>Goal: $ <input type="text" name="goal" size="10">
-                                By:<input type="date" name="bday"></form></h4><br>
-                        <h3>Tier 1</h3>
-                        <h4><form>Donation: $ <input type="text" name="teir1" size="10"></form></h4>
-                        <h4>Reward:</h4>
-                        <textarea rows="6" cols="50"></textarea><br><br>  
-                        <h3>Tier 2</h3>
-                        <h4><form>Donation: $ <input type="text" name="teir2" size="10"></form></h4>
-                        <h4>Reward:</h4>
-                        <textarea rows="6" cols="50"></textarea><br><br> 
-                        <h3>Tier 3</h3>
-                        <h4><form>Donation: $ <input type="text" name="teir3" size="10"></form></h4>
-                        <h4>Reward:</h4>
-                        <textarea rows="6" cols="50"></textarea><br><br> 
-                        <button type="button">Create Project!</button>
+                        <h4>By: "name"</h4> <!--user's name as registered-->
+                        <h3>Community: "Comp Sci"<h3>
+                        <img src="http://upload.wikimedia.org/wikipedia/commons/2/27/ORDbot_quantum.jpg" alt="Mountain View" style="width:304px;height:228px"><br><br>
+                        <p>
+                        "This is a project yay. y'all should fund me hey. <br>
+                        I want ur money, so fund me."<br>
+                        </p><br>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/l9ZISxSo2X0" frameborder="0" allowfullscreen></iframe><br><br>
+                        <h4>Fund x to receive y.</h4><br>
+                        <h2>$100/$1,000 funded<h2><br>
+                        <button type="button">Fund!</button>
+                        
 		</div>
+            
+
+
 	</section>
 <?php include("assets/templates/footer.html"); ?>
