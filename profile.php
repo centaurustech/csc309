@@ -75,7 +75,11 @@ function process_date($raw_date) {
 	$bio = $row['bio'];
 	
 	$date = process_date($raw_date);
-	$profile_pic_location = "user_" . $user_id . "_pic.jpg" //Might have to add code which checks the file format.
+	$profile_pic_location = "user_" . $user_id . "_pic.jpg"; //Might have to add code which checks the file format.
+
+	$SQL2 = "SELECT * FROM projects WHERE creator = '$email'";
+    $result2 = mysql_query($SQL2);
+
 ?>
     <section id="profile">
         <div class="container">
@@ -104,11 +108,18 @@ function process_date($raw_date) {
 				<p><?=$bio?></p>
 			</div>
 			<div id="profile_projects">
-				<h2 class="profile_headings">My recent projects</h2>
+				<h2 class="profile_headings">My Projects</h2>
 				<ul>
-					<li>P1</li>
-					<li>P2</li>
-					<li>P3</li>
+				<?php
+					while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
+						$title = $row2['title'];
+						$id = $row2['pID'];
+				?>
+					
+					<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
+				<?php 
+						}
+				 ?>
 				</ul>
 			</div>
 			<div id="profile_contributions">
