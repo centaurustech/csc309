@@ -30,21 +30,41 @@
     	$name = $row['name'];
   		$email = $row['email'];
     }
+    echo getcwd() . "\n";
 ?>
     <section id="profile" class="about section">
-        <div class="container" class="intro text-center">
             <br>
             <br>
             <h2 class="title text-center">Welcome to Edit profile page</h2> 
             <br>
-        
+    <div class="wrap">
+        <div class="floatleft">
         <form action="upload.php" method="post" enctype="multipart/form-data">
-         Select image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
-        </form>
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload" >
+            <br>
+            Login Information<br>
+            <input type="text" name="nameInput" class="inputs" placeholder="Name"><br>
+            <input type="text" name="passwordInput" class="inputs" placeholder="Password"><br>
+            <input type="text" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
+            <input type="text" name="emailInput" class="inputs" placeholder="E-mail"><br>
+            <br>
+            <input type="submit" name="submit" class="btn btn-cta-secondary">
+        </div> 
+        <div class="floatcenter">
+            Address<br>
+            <input type="text" name="cityInput" class="inputs" placeholder="City"><br>
+            <input type="text" name="stateInput" class="inputs" placeholder="State"><br>
+            <input type="text" name="CountryInput" class="inputs" placeholder="Country"><br>
+            <br>
+            <br>
+            Talk about yourself:<br>
+            <textarea rows="6" cols="50" name="bioInput" class="inputs" placeholder="Comments"></textarea>
+            <br>
         </div>
-    
+        </form>
+    <div style="clear: both;">
+
 
     </section>
 

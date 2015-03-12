@@ -746,6 +746,7 @@ inputs:-webkit-input-placeholder {
     font-size: 18px;
   }
 }
+textarea { height: auto; }
 
 /* ======= Profile ======= */
 
@@ -841,3 +842,27 @@ inputs:-webkit-input-placeholder {
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */
+
+
+/* page split */
+.wrap {
+    width: 100%;
+}
+
+.floatleft {
+    float:left; 
+    margin: 10px;
+    width: 30%;
+    height: 400px;
+}
+
+.floatright {
+float: right;
+    height: 400px;
+    width: calc(30% - 10px);
+}
+.floatcenter {
+  float: center;
+  height: 400px;
+  width: 30%;
+}
