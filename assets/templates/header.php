@@ -60,10 +60,12 @@
                         }
                         else{
                             echo '<li class="nav-item"><a href="login_new.php">Login</a></li>';
-                            echo '<li class="nav-item"><a href="register.php">Register</a></li>'  ;             
-                            echo '<li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>';
+                            echo '<li class="nav-item"><a href="register.php">Register</a></li>';             
                         }
-                        ?>      
+                        ?>
+						<li class="nav-item">
+							<a href="contact.html">Contact</a>
+						</li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->

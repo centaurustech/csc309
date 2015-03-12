@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           <li><span class="fa fa-check text-success"></span> Join/Create Communities</li>
                           <li><span class="fa fa-check text-success"></span> Takes only 2 minutes</li>
                       </ul>
-                      <p><a href="/new-customer/" class="btn btn-info btn-block">Register now!</a></p>
+                      <p><a href="register.php" class="btn btn-info btn-block">Register now!</a></p>
                   </div>
               </div>
           </div>
