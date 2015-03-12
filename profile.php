@@ -48,7 +48,7 @@ function process_date($raw_date) {
 
 ?>
 <?php
-//TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.	
+//TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.
 	$email = $_SESSION['email'];
 	$email = htmlspecialchars($email);
 
@@ -64,7 +64,7 @@ function process_date($raw_date) {
     $SQL = "SELECT * FROM users WHERE email = $email";
     $result = mysql_query($SQL);
 
-    //retrieve user data from sql server
+    //retrieve user data from sql server and web server.
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
     $name = $row['name'];
 	$email = $row['email'];
@@ -73,13 +73,20 @@ function process_date($raw_date) {
 	$reputation = $row['reputation'];
 	$location = $row['location'];
 	$bio = $row['bio'];
-	
 	$date = process_date($raw_date);
 	$profile_pic_location = "user_" . $user_id . "_pic.jpg"; //Might have to add code which checks the file format.
-
+	
+	//Find projects initiated by the current user.
 	$SQL2 = "SELECT * FROM projects WHERE creator = '$email'";
     $result2 = mysql_query($SQL2);
-
+	
+	//Find projects contributed to by the current user.
+	$SQL3 = "CREATE OR REPLACE VIEW current_contributions AS SELECT pID, user FROM transactions WHERE user = '$email'";
+	mysql_query($SQL3);
+	
+	//Find info for projects contributed to by the current user.
+	$SQL4 = "SELECT projects.pID, title FROM projects JOIN current_contributions WHERE projects.pID = current_contributions.pID";
+	$result3 = mysql_query($SQL4);
 ?>
     <section id="profile">
         <div class="container">
@@ -90,7 +97,7 @@ function process_date($raw_date) {
             <h2 class="title text-center profile_headings">Welcome to your profile <?=$name?>!</h2>
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 			<div id="recent_activity">
-				<h2 class="profile_headings">My recent activity</h2>
+				<h2 class="profile_headings">My Recent Activity</h2>
 				<ul>
 					<li>A1</li>
 					<li>A2</li>
@@ -126,9 +133,16 @@ function process_date($raw_date) {
 			<div id="profile_contributions">
 				<h2 class="profile_headings">My contributions</h2>
 				<ul>
-					<li>P1</li>
-					<li>P2</li>
-					<li>P3</li>
+					<?php
+					while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
+						$title = $row3['title'];
+						$id = $row3['pID'];
+				?>
+					
+					<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
+				<?php 
+						}
+				 ?>
 				</ul>
 			</div>
         </div>

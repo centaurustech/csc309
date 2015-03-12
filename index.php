@@ -5,7 +5,15 @@
             <h2 class="title">Community<span class="highlight">Fund</span></h2>
             <p class="intro">A crowd funding platform for raising funds and awareness on community projects.</p>
             <div class="btns">
-                <a class="btn btn-cta-secondary" href="create.php">Create</a>
+				<?php
+					if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
+						$create_permission = "create.php";
+					}
+					else {
+						$create_permission = "login_new.php";
+					}
+				?>
+                <a class="btn btn-cta-secondary" href=<?=$create_permission?>>Create</a>
                 <a class="btn btn-cta-primary" href="browse.php">Browse</a>
             </div>
             <br>

@@ -1,5 +1,8 @@
-<?php          
-    /*connect to database */
+<?php
+	
+	session_start();
+    
+	/*connect to database */
     $user_name = "root";
     $pass_word = "csc309";
     $database = "users";
@@ -27,5 +30,11 @@
 
     $SQL2 = "UPDATE projects SET funded=$new_amount WHERE pID = $id";
     mysql_query($SQL2);
-    header ("Location: projectinfo2.php?id=$id");
+	
+	//Alter the transactions table in the database.
+	$funder_email = $_SESSION['email'];
+	$SQL3 = "INSERT INTO transactions VALUES(DEFAULT, $id, $funder_email, $amount, DEFAULT)";
+	$result = mysql_query($SQL3);
+    
+	header ("Location: projectinfo2.php?id=$id");
 ?>

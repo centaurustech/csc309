@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($db_found) {
         /*prevent SQL injection */
         $email = quote_smart($email, $db_handle);
-    $pass = quote_smart($pass, $db_handle);
+		$pass = quote_smart($pass, $db_handle);
         
         /* build sql query */
         $SQL = "SELECT * FROM users WHERE email = $email AND password = $pass";
