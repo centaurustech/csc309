@@ -33,11 +33,12 @@
     echo getcwd() . "\n";
 ?>
     <section id="profile" class="about section">
+        <div class="container">
             <br>
             <br>
             <h2 class="title text-center">Welcome to Edit profile page</h2> 
             <br>
-    <div class="wrap">
+        <div class="wrap">
         <div class="floatleft">
         <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
@@ -50,22 +51,20 @@
             <input type="text" name="emailInput" class="inputs" placeholder="E-mail"><br>
             <br>
             <input type="submit" name="submit" class="btn btn-cta-secondary">
+        </form>
         </div> 
-        <div class="floatcenter">
+        <div class="floatright">
             Address<br>
             <input type="text" name="cityInput" class="inputs" placeholder="City"><br>
             <input type="text" name="stateInput" class="inputs" placeholder="State"><br>
             <input type="text" name="CountryInput" class="inputs" placeholder="Country"><br>
             <br>
-            <br>
             Talk about yourself:<br>
             <textarea rows="6" cols="50" name="bioInput" class="inputs" placeholder="Comments"></textarea>
             <br>
         </div>
-        </form>
-    <div style="clear: both;">
-
-
+        <div style="clear: both;"/>
+        </div>
     </section>
 
 

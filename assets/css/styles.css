@@ -846,23 +846,19 @@ textarea { height: auto; }
 
 /* page split */
 .wrap {
-    width: 100%;
+    width: 80%;
+    float:left;
+    margin: 15px 0 15px 9%;
+    height: 400px
 }
 
 .floatleft {
     float:left; 
-    margin: 10px;
-    width: 30%;
-    height: 400px;
+    width: 40%;
+    height 
 }
 
 .floatright {
-float: right;
-    height: 400px;
-    width: calc(30% - 10px);
-}
-.floatcenter {
-  float: center;
-  height: 400px;
-  width: 30%;
+    float: left ;
+    width: 40%
 }
