@@ -1,0 +1,31 @@
+<?php          
+    /*connect to database */
+    $user_name = "root";
+    $pass_word = "csc309";
+    $database = "users";
+    $server = "104.236.231.174:3306";;
+    
+    $db_handle = mysql_connect($server, $user_name, $pass_word);
+    $db_found = mysql_select_db($database, $db_handle);
+
+    $id = $_GET['id'];
+    $SQL = "SELECT * FROM projects WHERE pID = $id";
+    $result = mysql_query($SQL);
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+
+    //get project info
+    $title = $row['title'];
+    $desc = $row['description'];
+    $creator = $row['creator'];
+    $goal = $row['goal'];
+    $date = $row['date'];
+    $community = $row['community'];
+    $funded = $row['funded'];
+    $amount = $_POST['amount'];
+    $percentage = round(($funded / $goal) * 100);
+    $new_amount = $funded + $amount;
+
+    $SQL2 = "UPDATE projects SET funded=$new_amount WHERE pID = $id";
+    mysql_query($SQL2);
+    header ("Location: projectinfo2.php?id=$id");
+?>
