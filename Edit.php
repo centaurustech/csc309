@@ -37,7 +37,16 @@
             <br>
             <h2 class="title text-center">Welcome to Edit profile page</h2> 
             <br>
-            
+        
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+         Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+        </form>
         </div>
+    
+
     </section>
+
+
 <?php include("assets/templates/footer.html"); ?>
