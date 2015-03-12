@@ -70,6 +70,12 @@ function process_date($raw_date) {
     $community = $row['community'];
     $funded = $row['funded'];
     $percentage = round(($funded / $goal) * 100);
+	
+	//get creator info
+	$SQL = "SELECT * FROM users WHERE email = '$creator'";
+	$result = mysql_query($SQL);
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+	$creator = $row['name'];
 ?>
 
 <!-- Page Content -->
@@ -90,7 +96,7 @@ function process_date($raw_date) {
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#"><?=$creator?></a>
+                    by <a href="profile.php"><?=$creator?></a>
                 </p>
 
                 <hr>

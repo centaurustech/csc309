@@ -750,7 +750,7 @@ inputs:-webkit-input-placeholder {
 /* ======= Profile ======= */
 
 #profile {
-	background: linear-gradient(to bottom, #2980B9, white);
+	//background: linear-gradient(to bottom, #2980B9, white);
 }
 
 #profile_pic {

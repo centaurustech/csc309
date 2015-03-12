@@ -122,7 +122,7 @@ function process_date($raw_date) {
 				</ul>
 			</div>
 			<div id="profile_contributions">
-				<h2 class="profile_headings">My recent contributions</h2>
+				<h2 class="profile_headings">My contributions</h2>
 				<ul>
 					<li>P1</li>
 					<li>P2</li>
