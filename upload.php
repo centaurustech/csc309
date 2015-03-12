@@ -39,7 +39,7 @@
     echo "Error updating record: " . mysqli_error($sql3);
 	}
 
-	mysqli_close($conn);
+	mysqli_close($db_handle);
 ?>
 <?php
 $target_dir = "assets/images/profile_pics";
