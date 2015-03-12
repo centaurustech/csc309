@@ -40,6 +40,15 @@ Akira Kakkar, g3fol\\
 \newpage
 \section*{Description}
 \begin{enumerate}
+
+\item[0.]
+
+\textbf{URL}
+http://104.236.231.174/
+
+\textbf{Phase3 Code Snapshot}
+https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
+
 \item[1.] Feature and Functionality Specification
 
 \textbf{Homepage}
@@ -171,6 +180,8 @@ Week8: Additional Debuggging and Development Overflow
 \caption{Software Components \label{overflow}}
 \end{figure}
 
+We are using PHP as our server-side language. For our front-end we will be using Javascript and JQuery. For our html and css design, we are going to be using bootstrap3.
+
 We will have a central MySql database which keeps track of all the data associated with each of the various webpages. This will be the central repository from which all of the information webpages will request information when displaying webpages to users. It will also serve as the storehouse for transaction logging.
 
 We will also have a database connector module that will be used by all of the webpages, so as to avoid code duplication.
@@ -184,6 +195,9 @@ The transaction manager will require interaction with the central repository, si
 The review manager provides the functionality to each project page which allows for funders to comment on projects as well as the reviews of other funders. It will need to be decomposed into both a rating system as well as a comment system.
 
 The admin analytics componentt subserves the unique features of the admin view. It interacts with the central database, using the data stored there to compute statistics. This will need to be further decomposed into various functions that compute said statistics.
+
+In terms of errors, we will display the corresponding error to the user. If the database is down and a user tries to access it, we will report to the user that database servers are down. All of this is already implemented for phase 3.
+
 
 Finally, the user authentication system will be utilized wherever any kind of authentication is necessary. Since the process should generally be the same irrespective of the reason for authentication, it can be modularized.
 
