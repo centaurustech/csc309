@@ -23,7 +23,6 @@
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
     $user_id = $row['userid'];
     
-    $date = process_date($raw_date);
     $profile_pic_location = "user_" . $user_id . "_pic.jpg"; //Might have to add code which checks the file format.
 
     $username = htmlspecialchars($_POST['nameInput']);
