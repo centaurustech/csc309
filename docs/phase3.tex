@@ -14,7 +14,7 @@
 % HEADING SECTIONS
 %----------------------------------------------------------------------------------------
 \HRule \\[0.4cm]
-{ \huge \bfseries Phase 2}\\[0.4cm] % Title of your document
+{ \huge \bfseries Phase 3}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
 \begin{minipage}{0.4\textwidth}
 \begin{center} \large
@@ -49,10 +49,19 @@ http://104.236.231.174/
 \textbf{Phase3 Code Snapshot}
 https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
 
-\item[1.] Feature and Functionality Specification
+\textbf{Summary Of Changes}
+
+-Revised the feature and functionality section to be more descriptive of the user experience.
+
+-Revised the software architecture section by adding more detail.
+
+-Altered the project milestones section in light of current developments
+
+\item[1.] Key Feature and Functionality Specification
 
 \textbf{Homepage}
 
+Features:
 -Login button
 
 -Register button
@@ -61,15 +70,45 @@ https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
 
 -Create button
 
+Description: The user should be able to register, login, and reach the contact form from here.
+Trying to create a project before the ser logs in should result in a redirect to the login page.
+The user should, however, be able to browse projects, and only need to login in if they are going to fund it.
+
 \textbf{Register Page}
+Features:
 -Email box
 
 -Password box
 
 -Re-enter password box
 
+Description:
+The user should be able to register via the given form.
+Blank fields and emails without proper format should result in prompts to the user to correct these issues.
+Some form of spam filtering should be present.
+Once the form is submitted, the user should be redirected to the page they came from.
+
+\textbf{Create profile page}
+
+Features:
+-Name box
+
+-Email box
+
+-Location box
+
+-Image upload section
+
+-Bio text area
+
+-Password box
+
+Description:
+Here, the user should be able to edit any aspect of their profile which they see fit, and which is not related to their activity
+on the website (such as reputation score, project lists etc...)
 \textbf{Profile page}
 
+Features:
 -Profile picture
 
 -Name
@@ -82,24 +121,37 @@ https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
 
 -Bio
 
--Skills/Experience (maybe)
+-Location
+
+-Date joined
+
+-Recent Activity section
+
+Description:
+The profile should contain all of the basic public information for a given user. The name, location, biography should all be
+alterable by the user.
+
+The date joined, and reputation score are not alterable by the user, but determined automatically.
+The reputation score will be a numeric value computed by combining all of the ratings for projects initiated by the given user with 
+the number of likes their comments have recieved. In this way, a person's reputation is determined by their behaviour as both an initiator
+and as a broader member of the community.
+
+The page should also contain a feed, which displays a user's most recent activity, in the form of comments made on projects, ratings of projects,
+likes of other community member's comments.
+
+Moreover, there should also be a list of the projects initiated by the user, as well as a list of those to which the user has made contributions.
 
 \textbf{Browse projects page}
 
 -Search bar
 
--Pre-made filters for various project rankings(ex: most funded, closest to goal, high reviews etc...)
-
 -Category button to filter by project categories (within a user's communities)
 
-\textbf{Browse community page}
-
--Search bar
-
--Subscribe button to join a community once found.
+-Project info box
 
 \textbf{Create project page}
 
+Features:
 -Project name box
 
 -Funding goal box
@@ -112,30 +164,55 @@ https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
 
 -Project initiator  box
 
+Description:
+As the name suggests, this page is to allow users to provide the details of their project for the project info page.
+
 \textbf{Project page}
 
--All of the information from the create project page
+-Project video and or image
+
+-Creator name
+
+-Project location
+
+-Funding goal
+
+-Current funding amount
 
 -Fund button
 
 -Project Review section (to comment on and rate projects)
 
--Reviews can also be rated by other users for their usefullness
-
+Description:
+This is the online pitch that other community members see when deciding to fund a project.
+It should include a video or representative image of the project as well as a written description detailing the 
+project and its founders.
+Other users within the community should be able to rate the project (on a 5 point scale), as well as leace comments/reviews
+concerning the product. The funding funding page should be accessible from this point, and all of the information pertaining
+to the funding goal, how much they currently have, and how much is left to fund should be present.
 \textbf{Fund page}
 
 -Funding amount entry box
 
 -Payment method selection box
 
+Description:
+Users should be able to enter their payment information details as well as the amount of money they want to donate to
+the given project.
+It should redirect the user back to the project from whence they came upon completetion of the payment process.
+
 \textbf{Admin page}
 
+Features:
 -Total number of projects
 
 -Total number of projects funded
 
 -Average time to reach a funding goal
 
+Description:
+The admin page will provide the administrator with the capacity to select for viewing a number of important pre-specified statisitics.
+These pre-specified statisticas will include those in the feature list, as well as any additional decided upon as development progresses.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=200mm]{flowchart1.pdf}
@@ -153,6 +230,8 @@ Team Roles: These will be contingent on the phase of development, and assigned f
 
 Problem resolution: All decisions are made democratically by vote.
 
+Hosting of Source: GitHub
+
 \textbf{Milestones}
 
 Note 1: The following schedule is ordered according to the perceived dependencies of the various features of the website. First the raw skeletons, then the database underlying all of the website information, followed by suitable integration between the database and web pages so that they display all of their content properly. Then, the more dynamic functionality is built weekly on top of this static base. 
@@ -165,9 +244,9 @@ Week3: Project/Community/Profile page information is integrated with the databas
 
 Week4: Search functionality for all types of pages is operational.
 
-Week5: Review System
+Week5: Additional project and profile page development
 
-Week6: Payment System
+Week6: Payment System and Payment System
 
 Week7: Admin Analytics
 
