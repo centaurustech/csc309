@@ -13,14 +13,14 @@
     
     $db_handle = mysql_connect($server, $user_name, $pass_word, $database);
     if (!$db_handle) {
-    die("Connection failed: " . mysqli_connect_error());
+    	die("Connection failed: " . mysqli_connect_error());
 	}
 
-    $SQL = "SELECT * FROM users WHERE email = $email";
-    $result = mysql_query($SQL);
+    $SQL = "SELECT userid FROM $database WHERE email = $email";
+    $result = mysqli_query($db_handle, $SQL);
 
     //retrieve user data from sql server
-    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    $row = mysql_fetch_assoc($result);
     $user_id = $row['userid'];
     
     $profile_pic_location = "user_" . $user_id . "_pic.jpg"; //Might have to add code which checks the file format.
@@ -33,16 +33,14 @@
     $email = htmlspecialchars($_POST['emailInput']);
 
     $sql3 = "UPDATE $database SET name=$username, password=$pass, location=$location, bio=$bio, email=$email WHERE id=$user_id";
-    if (mysqli_query($db_handle, $sql3)) {
-    	echo "Record updated successfully";
-	} else {
-    echo "Error updating record: " . mysqli_error($sql3);
-	}
+    if (!mysqli_query($db_handle, $sql3)) {
+    	//Done 
+	} 
 
 	mysqli_close($db_handle);
 ?>
 <?php
-$target_dir = "assets/images/profile_pics";
+$target_dir = "assets/images/profile_pics/";
 $target_file = $target_dir . $profile_pic_location;
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -84,5 +82,10 @@ if ($uploadOk == 0) {
 
 
 
-?>  
+?> 
+<html>
+  <body onload="document.getElementById('lnkhome').click();">
+    <a href="profile.php" id="lnkhome">Go to Home Page</a>
+  </body>
+</html>
  

@@ -50,6 +50,7 @@
             <input type="text" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
             <input type="text" name="emailInput" class="inputs" placeholder="E-mail"><br>
             <br>
+            <a class="btn btn-cta-secondary" href="profile.php">Back</a>
             <input type="submit" name="submit" class="btn btn-cta-secondary">
         </form>
         </div> 
