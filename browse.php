@@ -11,7 +11,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             var parent = $(this);
 
             if (name=='up'){
-                $(this).fadeIn(100).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $(this).fadeIn(100).html('<img src="/assets/images/loading.gif" height="42" width="42"/>');
                 $.ajax
                 ({
                     type: "POST",
@@ -24,7 +24,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     } 
                 });
             } else {
-                $(this).fadeIn(10).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $(this).fadeIn(10).html('<img src="/assets/images/loading.gif" height="42" width="42"/>');
                 $.ajax
                 ({
                     type: "POST",
