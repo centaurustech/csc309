@@ -64,7 +64,7 @@ function process_date($raw_date) {
     //get project info
     $title = $row['title'];
     $desc = $row['description'];
-    $creator = $row['creator'];
+    $creatoremail = $row['creator'];
     $goal = $row['goal'];
     $date = process_date($row['date']);
     $community = $row['community'];
@@ -72,7 +72,7 @@ function process_date($raw_date) {
     $percentage = round(($funded / $goal) * 100);
 	
 	//get creator info
-	$SQL = "SELECT * FROM users WHERE email = '$creator'";
+	$SQL = "SELECT * FROM users WHERE email = '$creatoremail'";
 	$result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$creator = $row['name'];
@@ -99,11 +99,27 @@ function process_date($raw_date) {
                     by <a href="profile.php"><?=$creator?></a>
                 </p>
 
+
+
                 <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
-
+                 <p><span class="glyphicon glyphicon-globe"></span> Communities:
+                    <?php
+                        $commz = array();
+                        $results = mysql_query("SELECT * FROM communities WHERE pID=$id");
+                        while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
+                            $community = $row['community'];
+                                if (!(in_array($community, $commz))) {
+                                $commz[] = $community;
+                            ?>
+                            <a href="browse.php?community=<?=$community?>"><?=$community?></a>
+                            <?php
+                            }
+                        } ?>
+                </p>  
+                
                 <hr>
 
                 <!-- Preview Image -->
@@ -179,22 +195,38 @@ function process_date($raw_date) {
             <br>
             <div class="col-md-4">
 
+
                 <!-- Funding Info Well -->
                 <div class="well">
-                    <h4>Funding</h4>
+                    <!-- Edit and Delete idea buttons -->
+                    <?php 
+                    $currentemail = $_SESSION['email'];
+                    $creatoremail = "'".$creatoremail."'";
+                    $currentemail = strtolower($currentemail);
+                    $creatoremail = strtolower($creatoremail);
+                    if (strcmp($currentemail, $creatoremail) == 0){
+                        ?>
+                        <!-- Side Widget Well -->
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a class="btn btn-success" href="editproject.php?id=<?=$id?>">Edit Project!</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="deleteproject.php?id=<?=$id?>">Delete Project!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    ?>
+                    <hr>
+                    <h4 class="text-center">Funding</h4>
                     <!-- Project Descriptions and stuff -->
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-6">
-                            <p>
-                            <span class="glyphicon glyphicon-globe"></span>
-                            <?=$community?></p>
-                        </div>
-                        <div class="col-sm-6 col-lg-6">
-                            <p><span class="glyphicon glyphicon-usd"></span>
-                            <?=number_format($funded)?> funded!
-                            </p>
-                        </div>
-                    </div>
+
+                    <p class="text-center"><span class="glyphicon glyphicon-usd"></span>
+                    <?=number_format($funded)?> funded of $<?=$goal?> goal!
+                    </p>
                     <!-- Progress bar -->
                     <div class="progress">
                         <?php
@@ -215,9 +247,11 @@ function process_date($raw_date) {
                             </div>
                         <?php } ?>
                     </div>
+
+                    <hr>
                     <!-- Fund Button -->
                     <p>You can support this project by funding it. To fund, press the button below!</p>
-                    <h2><a class="btn btn-cta-secondary" href="fund.php?id=<?=$id?>">Fund this project!</a></h2>
+                    <h2 class="text-center"><a class="btn btn-cta-secondary" href="fund.php?id=<?=$id?>">Fund this project!</a></h2>
 
                 </div>
 
