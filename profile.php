@@ -49,8 +49,7 @@ function process_date($raw_date) {
 ?>
 <?php
 //TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.
-	$email = $_SESSION['email'];
-	$email = htmlspecialchars($email);
+	$userid = $_GET['id'];
 
 	/*connect to database */
     $user_name = "root";
@@ -61,7 +60,7 @@ function process_date($raw_date) {
     $db_handle = mysql_connect($server, $user_name, $pass_word);
     $db_found = mysql_select_db($database, $db_handle);
 
-    $SQL = "SELECT * FROM users WHERE email = $email";
+    $SQL = "SELECT * FROM users WHERE userid = '$userid'";
     $result = mysql_query($SQL);
 
     //retrieve user data from sql server and web server.

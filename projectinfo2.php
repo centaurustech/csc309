@@ -126,6 +126,7 @@ function process_date($raw_date) {
 	$result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$creator = $row['name'];
+    $creatorid= $row['userid'];
 ?>
 
 <!-- Page Content -->
@@ -146,7 +147,7 @@ function process_date($raw_date) {
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="profile.php"><?=$creator?></a>
+                    by <a href="profile.php?id=<?=$creatorid?>"><?=$creator?></a>
                 </p>
 
 

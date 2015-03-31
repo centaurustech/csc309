@@ -138,6 +138,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 $result2 = mysql_query($SQL2);
                                 $row2 = mysql_fetch_array($result2, MYSQL_ASSOC);
                                 $name = $row2['name'];
+                                $creatorid = $row2['userid'];
 
                                 //render project box
                                 ?> 
@@ -155,7 +156,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                             <?php } else { ?>
                                                 <h4><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></h4>
                                             <?php } ?>         
-                                            <p>Created by: <?=$name?></p>
+                                            <p>Created by <a href="profile.php?id=<?=$creatorid?>"><?=$name?></a></p>
+
                                             <p><?=$category?> </p>
 
 
@@ -174,14 +176,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                                     } ?>
                                             </p>                      
                                             <p class="smallaf"><?=$desc?></p>
-                                            <div class="row">
+
+                                            <p class="text-center"><span class="glyphicon glyphicon-usd"></span>
+                                            <?=number_format($funded)?> funded of $<?=$goal?> goal!
+                                            </p>
                                                 
-                                                <div class="col-sm-6 col-lg-6">
-                                                    <p><span class="glyphicon glyphicon-usd"></span>
-                                                    <?=number_format($funded)?> funded!
-                                                    </p>
-                                                </div>
-                                            </div>
 
                                             <!-- Progress bar -->
                                             <div class="progress">
@@ -194,12 +193,12 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                                 <?php } elseif ($percentage >= 100){ ?>
                                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?=$percentage?>
                                                     aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
-                                                    <?=$percentage?>% of $<?=number_format($goal)?>
+                                                    <?=$percentage?>%
                                                     </div>
                                                 <?php } else { ?>
                                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=<?=$percentage?>
                                                     aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
-                                                    <?=$percentage?>% of $<?=number_format($goal)?>
+                                                    <?=$percentage?>%
                                                     </div>
                                                 <?php } ?>
                                             </div>
