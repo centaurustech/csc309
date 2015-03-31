@@ -14,59 +14,59 @@ function quote_smart($value, $handle) {
 $errorMessage = "";
 /*if page is accessed after attempt */
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-	$email = $_POST['email'];
+    $email = $_POST['email'];
     $name = $_POST['name'];
-	$pass = $_POST['pass'];
+    $pass = $_POST['pass'];
     
     //make sure all fields are set
     if (!empty($email) && !empty($pass) && !empty($name)){
         
-	/* strip of any sketchy characters */
+    /* strip of any sketchy characters */
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $pass = htmlspecialchars($pass);
 
     /*connect to database */
-	$user_name = "root";
+    $user_name = "root";
     $pass_word = "csc309";
     $database = "users";
     $server = "104.236.231.174:3306";
 
-	$db_handle = mysql_connect($server, $user_name, $pass_word);
-	$db_found = mysql_select_db($database, $db_handle);
+    $db_handle = mysql_connect($server, $user_name, $pass_word);
+    $db_found = mysql_select_db($database, $db_handle);
 
-	if ($db_found) {
+    if ($db_found) {
 
-		$email = quote_smart($email, $db_handle);
+        $email = quote_smart($email, $db_handle);
         $name = quote_smart($name, $db_handle);
-		$pass = quote_smart($pass, $db_handle);
+        $pass = quote_smart($pass, $db_handle);
         
         /*check if user exists */
         
-		$SQL = "SELECT * FROM users WHERE email = $email";
-		$result = mysql_query($SQL);
-		$num_rows = mysql_num_rows($result);
+        $SQL = "SELECT * FROM users WHERE email = $email";
+        $result = mysql_query($SQL);
+        $num_rows = mysql_num_rows($result);
 
-		if ($num_rows > 0) {
-			$errorMessage = "Username already taken";
-		}
-		else {
+        if ($num_rows > 0) {
+            $errorMessage = "Username already taken";
+        }
+        else {
 
-			$SQL = "INSERT INTO users (email, name, password) VALUES ($email, $name, $pass)";
+            $SQL = "INSERT INTO users (email, name, password) VALUES ($email, $name, $pass)";
             $errorMessage= "registered!";
-			$result = mysql_query($SQL);
-			mysql_close($db_handle);
+            $result = mysql_query($SQL);
+            mysql_close($db_handle);
                 
             //open sessions
-			session_start();
-			$_SESSION['login'] = "1";
+            session_start();
+            $_SESSION['login'] = "1";
             $_SESSION['email'] = $email;
-			header ("Location: index.php");
-		}
-	}
-	else {
-		$errorMessage = "Database Not Found";
-	}
+            header ("Location: index.php");
+        }
+    }
+    else {
+        $errorMessage = "Database Not Found";
+    }
 }
     else {
         $errorMessage = "Please enter all the fields!";
@@ -74,19 +74,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 ?>
 <?php include("assets/templates/header.php"); ?>
-    <section id="register" class="about section">
-        <div class="container" class="intro text-center">
-            <br>
-            <br>
-            <h2 class="title text-center">Register</h2> 
-            <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
-            <form action="#" method="post" class="intro text-center">
-                <input type="text" name="name" placeholder="Name" class="inputs" required><br>
-                <input type="text" name="email" placeholder="E-mail" class="inputs" required><br>
-                <input type="password" name="pass" placeholder="Password" class="inputs" required><br>
-                <input type="password" name="pass2" placeholder="Re-enter Password" class="inputs" required><br>
-                <input type="submit" class="btn btn-cta-primary">
-            </form>
-        </div>
-    </section>
-<?php include("assets/templates/footer.html"); ?>
+<br>
+<br>
+    <div id="login-overlay" class="modal-dialog" style="margin-top:100px">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Register</h4>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="well">
+                          <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
+                          <form action="register.php" method="post" class="intro text-center">
+                              <div class="form-group">
+                                  <label for="username" class="control-label">Name</label>
+                                  <input  class="form-control" type="text" name="name" placeholder="Name" class="inputs" required><br>
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="username" class="control-label">Email</label>
+                                  <input  class="form-control" type="text" name="email" placeholder="Email" class="inputs" required><br>
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="password" class="control-label">Password</label>
+                                  <input  class="form-control" type="password" name="pass" placeholder="Password" class="inputs" required><br>
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="password" class="control-label">Re-enter Password</label>
+                                  <input class="form-control" type="password" name="pass2" placeholder="Re-enter Password" class="inputs" required><br>
+                                  <span class="help-block"></span>
+                              </div>
+                              <button type="submit" class="btn btn-theme btn-block">Register</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<?php include("assets/templates/footer.php"); ?>

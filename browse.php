@@ -1,4 +1,62 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $(".like").click(function()
+        {
+            var id=$(this).attr("id");
+            var name=$(this).attr("name");
+            var dataString = 'id='+ id;
+            var parent = $(this);
+
+            if (name=='up'){
+                $(this).fadeIn(100).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "upvote.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html)
+                    {
+                        parent.html(html);
+                    } 
+                });
+            } else {
+                $(this).fadeIn(10).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "downvote.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html)
+                    {
+                        parent.html(html);
+                    } 
+                });
+            }
+        });
+
+        // Close button action
+        $(".close").click(function()
+        {
+            $("#votebox").slideUp("slow");
+        });
+    });
+</script>
 <?php include("assets/templates/header.php"); ?>
+<?php
+    /*connect to database */
+    $user_name = "root";
+    $pass_word = "csc309";
+    $database = "users";
+    $server = "104.236.231.174:3306";;
+
+    $db_handle = mysql_connect($server, $user_name, $pass_word);
+    $db_found = mysql_select_db($database, $db_handle);
+?>
     <section class="about section">
         <div class="container">
             <div class="row">
@@ -15,19 +73,29 @@
                         <a href="browse.php?category=<?='Design'?>" class="list-group-item">Design</a>
                         <a href="browse.php?category=<?='Games'?>" class="list-group-item">Games</a>
                     </div>
+                    <!-- communities -->
+                    <h3>Communities</h3>
+                    <div class="list-group">
+                        <?php
+                        $comitems = array();
+                        $comresult = mysql_query("SELECT * FROM communities");
+                        while ($row = mysql_fetch_array($comresult, MYSQL_ASSOC)){
+                            $com = $row['community'];
+                            
+                            if (!(in_array($com, $comitems))) {
+                                $comitems[] = $com;
+                        ?>
+                        <a href="browse.php?community=<?=$com?>" class="list-group-item"><?=$com?></a>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="col-md-10">
                     <h3>Projects</h3>
                     <div class="row">
                         <?php          
-                            /*connect to database */
-                            $user_name = "root";
-                            $pass_word = "csc309";
-                            $database = "users";
-                            $server = "104.236.231.174:3306";;
-                            
-                            $db_handle = mysql_connect($server, $user_name, $pass_word);
-                            $db_found = mysql_select_db($database, $db_handle);
 
                             //Check if filter is set
                             if (isset($_GET['category'])) {
@@ -35,6 +103,11 @@
                                 $SQL = "SELECT * FROM projects WHERE category = '$category'";
                             } else {
                                 $SQL = "SELECT * FROM projects";
+                            }
+
+                            if (isset($_GET['community'])) {
+                                $com = $_GET['community'];
+                                $SQL = "SELECT DISTINCT * FROM projects inner join communities on projects.pID=communities.pID and communities.community='$com'";
                             }
                             //add this to add filters
                             
@@ -51,6 +124,8 @@
                                 $community = $row['community'];
                                 $funded = $row['funded'];
                                 $percentage = round(($funded / $goal) * 100);
+                                $liked = $row['likes'];
+                                $disliked = $row['dislikes'];
 
                                 //get the name of the owner of project
                                 $SQL2 = "SELECT * FROM users WHERE email = '$creator'";
@@ -74,14 +149,26 @@
                                             <?php } else { ?>
                                                 <h4><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></h4>
                                             <?php } ?>         
-                                            <p>Created by: <?=$name?></p>                      
+                                            <p>Created by: <?=$name?></p>
+
+
+                                            <p><span class="glyphicon glyphicon-globe"></span> 
+                                                <?php
+                                                    $commz = array();
+                                                    $results = mysql_query("SELECT * FROM communities WHERE pID=$id");
+                                                    while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
+                                                        $community = $row['community'];
+                                                            if (!(in_array($community, $commz))) {
+                                                            $commz[] = $community;
+                                                        ?>
+                                                        <a href="browse.php?community=<?=$community?>"><?=$community?></a>
+                                                        <?php
+                                                        }
+                                                    } ?>
+                                            </p>                      
                                             <p class="smallaf"><?=$desc?></p>
                                             <div class="row">
-                                                <div class="col-sm-6 col-lg-6">
-                                                    <p>
-                                                    <span class="glyphicon glyphicon-globe"></span>
-                                                    <?=$community?></p>
-                                                </div>
+                                                
                                                 <div class="col-sm-6 col-lg-6">
                                                     <p><span class="glyphicon glyphicon-usd"></span>
                                                     <?=number_format($funded)?> funded!
@@ -108,6 +195,22 @@
                                                     <?=$percentage?>% of $<?=number_format($goal)?>
                                                     </div>
                                                 <?php } ?>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <p>
+                                                        <div class='up text-center'>
+                                                        <a href="" class="like" name="up" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $liked; ?> liked!</a>
+                                                        </div>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <p>
+                                                        <div class='down text-center'>
+                                                        <a href="" class="like" name="down" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-down"></span> <?php echo $disliked; ?> disliked!</a>
+                                                        </div>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
