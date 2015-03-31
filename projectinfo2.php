@@ -1,3 +1,51 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $(".like").click(function()
+        {
+            var id=$(this).attr("id");
+            var name=$(this).attr("name");
+            var dataString = 'id='+ id;
+            var parent = $(this);
+
+            if (name=='up'){
+                $(this).fadeIn(100).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "upvote.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html)
+                    {
+                        parent.html(html);
+                    } 
+                });
+            } else {
+                $(this).fadeIn(10).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "downvote.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html)
+                    {
+                        parent.html(html);
+                    } 
+                });
+            }
+        });
+
+        // Close button action
+        $(".close").click(function()
+        {
+            $("#votebox").slideUp("slow");
+        });
+    });
+</script>
 <?php include("assets/templates/header.php"); ?>
 <?php
 function process_date($raw_date) {
@@ -70,6 +118,8 @@ function process_date($raw_date) {
     $community = $row['community'];
     $funded = $row['funded'];
     $percentage = round(($funded / $goal) * 100);
+    $liked = $row['likes'];
+    $disliked = $row['dislikes'];
 	
 	//get creator info
 	$SQL = "SELECT * FROM users WHERE email = '$creatoremail'";
@@ -217,10 +267,11 @@ function process_date($raw_date) {
                                     </div>
                                 </div>
                             </div>
+                             <hr>
                         <?php
                         }
                     ?>
-                    <hr>
+                   
                     <h4 class="text-center">Funding</h4>
                     <!-- Project Descriptions and stuff -->
 
@@ -238,14 +289,30 @@ function process_date($raw_date) {
                         <?php } elseif ($percentage >= 100){ ?>
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?=$percentage?>
                             aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
-                            <?=$percentage?>% of $<?=number_format($goal)?>
+                            <?=$percentage?>%
                             </div>
                         <?php } else { ?>
                             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=<?=$percentage?>
                             aria-valuemin="0" aria-valuemax="100" style='width:<?=$percentage?>%'>
-                            <?=$percentage?>% of $<?=number_format($goal)?>
+                            <?=$percentage?>%
                             </div>
                         <?php } ?>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6">
+                            <p>
+                                <div class='up text-center'>
+                                <a href="" class="like" name="up" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $liked; ?> liked!</a>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-sm-6 col-lg-6">
+                            <p>
+                                <div class='down text-center'>
+                                <a href="" class="like" name="down" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-down"></span> <?php echo $disliked; ?> disliked!</a>
+                                </div>
+                            </p>
+                        </div>
                     </div>
 
                     <hr>

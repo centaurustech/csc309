@@ -109,6 +109,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 $com = $_GET['community'];
                                 $SQL = "SELECT DISTINCT * FROM projects inner join communities on projects.pID=communities.pID and communities.community='$com'";
                             }
+
+                            if (isset($_GET['search'])) {
+                                $search = $_GET['search'];
+                                $SQL = "SELECT * FROM projects WHERE title = '$search' OR category = '$search'";
+                            }
                             //add this to add filters
                             
                             $result = mysql_query($SQL);
@@ -119,6 +124,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 $id = $row['pID'];
                                 $desc = $row['description'];
                                 $creator = $row['creator'];
+                                $category = $row['category'];
                                 $goal = $row['goal'];
                                 $date = $row['date'];
                                 $community = $row['community'];
@@ -150,6 +156,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                                 <h4><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></h4>
                                             <?php } ?>         
                                             <p>Created by: <?=$name?></p>
+                                            <p><?=$category?> </p>
 
 
                                             <p><span class="glyphicon glyphicon-globe"></span> 

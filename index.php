@@ -30,9 +30,9 @@
         <div class="social-media">
             <div class="social-media-inner container text-center">
                 <ul class="list-inline">
-                    <form class="navbar-form navbar-center" role="search">
+                    <form action="browse.php" method="get" class="navbar-form navbar-center" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Projects">
+                            <input type="text" name="search" class="form-control" placeholder="Search Projects">
                         </div>
                     </form>
                 </ul>
