@@ -255,7 +255,7 @@ function process_date($raw_date) {
                     $creatoremail = "'".$creatoremail."'";
                     $currentemail = strtolower($currentemail);
                     $creatoremail = strtolower($creatoremail);
-                    if (strcmp($currentemail, $creatoremail) == 0){
+                    if ((strcmp($currentemail, $creatoremail) == 0) or ($_SESSION['admin'] == 1)){
                         ?>
                         <!-- Side Widget Well -->
                             <div class="text-center">
@@ -277,7 +277,7 @@ function process_date($raw_date) {
                     <!-- Project Descriptions and stuff -->
 
                     <p class="text-center"><span class="glyphicon glyphicon-usd"></span>
-                    <?=number_format($funded)?> funded of $<?=$goal?> goal!
+                    <?=number_format($funded)?> funded of $<?=number_format($goal)?> goal!
                     </p>
                     <!-- Progress bar -->
                     <div class="progress">

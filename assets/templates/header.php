@@ -57,6 +57,9 @@
                         if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                             echo '<li class="nav-item"><a href="profile.php">My Account</a></li>';
                             echo '<li class="nav-item"><a href="logout.php">Logout</a></li>';
+                            if ($_SESSION['admin'] == 1){
+                                echo '<li class="nav-item"><a href="admin.php">Admin</a></li>';
+                            }
                         }
                         else{
                             echo '<li class="nav-item"><a href="login_new.php">Login</a></li>';

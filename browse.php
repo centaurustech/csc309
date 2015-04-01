@@ -178,7 +178,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                             <p class="smallaf"><?=$desc?></p>
 
                                             <p class="text-center"><span class="glyphicon glyphicon-usd"></span>
-                                            <?=number_format($funded)?> funded of $<?=$goal?> goal!
+                                            <?=number_format($funded)?> funded of $<?=number_format($goal)?> goal!
                                             </p>
                                                 
 

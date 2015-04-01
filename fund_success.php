@@ -35,6 +35,10 @@
 	$funder_email = $_SESSION['email'];
 	$SQL3 = "INSERT INTO transactions VALUES(DEFAULT, $id, $funder_email, $amount, DEFAULT)";
 	$result = mysql_query($SQL3);
+
+    if ($new_amount >= $goal) {
+        mysql_query("UPDATE projects SET datefunded=CURRENT_TIMESTAMP WHERE pID = $id");
+    }
     
 	header ("Location: projectinfo2.php?id=$id");
 ?>
