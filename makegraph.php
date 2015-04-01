@@ -7,21 +7,21 @@
   $data=mysql_fetch_assoc($result);
   $tech = $data['total'];
 
-  $result=mysql_query("SELECT count(*) as total from projects where category='Health'");
+  $result=mysql_query("SELECT count(*) as total from projects where category='Art'");
   $data=mysql_fetch_assoc($result);
-  $health = $data['total'];
+  $art = $data['total'];
 
-  $result=mysql_query("SELECT count(*) as total from projects where category='Education'");
+  $result=mysql_query("SELECT count(*) as total from projects where category='Music'");
   $data=mysql_fetch_assoc($result);
-  $education = $data['total'];
+  $music = $data['total'];
 
-  $result=mysql_query("SELECT count(*) as total from projects where category='Finance'");
+  $result=mysql_query("SELECT count(*) as total from projects where category='Photography'");
   $data=mysql_fetch_assoc($result);
-  $finance = $data['total'];
+  $photo = $data['total'];
 
-  $result=mysql_query("SELECT count(*) as total from projects where category='Travel'");
+  $result=mysql_query("SELECT count(*) as total from projects where category='Food'");
   $data=mysql_fetch_assoc($result);
-  $travel = $data['total'];
+  $food = $data['total'];
 
   $result=mysql_query("SELECT count(*) as total from projects where category='Film and Video'");
   $data=mysql_fetch_assoc($result);
@@ -36,7 +36,7 @@
   $games = $data['total'];
 
 
-  $array = array($tech, $health, $education, $finance, $travel, $film, $design, $games);
+  $array = array($tech, $art, $music, $photo, $food, $film, $design, $games);
 
   //graph
   $graph = new Graph(600,350);
@@ -52,9 +52,9 @@
   $plot->SetFillColor(array('#FFFF00', '#FFEE00', '#FFDD00', '#FFCC00', '#FFBB00', '#FFAA00', '#FF9900'));
   $graph->Add($plot);
 
-  $graph->yaxis->SetTitle("Number of Ideas", "middle");
+  $graph->yaxis->SetTitle("Number of Projects", "middle");
   $graph->xaxis->SetTitle("Categories", "middle");
-  $days = array('Technology', 'Health', 'Education', 'Finance', 'Travel', 'Film and Video','Design', 'Games'); 
+  $days = array('Technology', 'Art', 'Music', 'Photography', 'Food', 'Film and Video','Design', 'Games'); 
   $graph->xaxis->SetTickLabels($days);
   $graph->Stroke();
   ?>
