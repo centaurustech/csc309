@@ -99,8 +99,19 @@ function process_date($raw_date) {
             <br>
             <br>
             <br>
-            <a class="btn btn-cta-secondary" href="Edit.php" >Edit</a>
-            <h2 class="title text-center profile_headings">Welcome to your profile <?=$name?>!</h2>
+			<?php
+				if (!isset($_GET['id'])) {
+			?>
+					<a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
+					<h2 class="title text-center profile_headings">Welcome to your profile <?=$name?>!</h2>
+			<?php
+				}
+				else {
+			?>
+					<h2 class="title text-center profile_headings"><?=$name?>!</h2>
+			<?php
+				}
+			?>
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 			<div id="recent_activity">
 				<h2 class="profile_headings">My Recent Activity</h2>

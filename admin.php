@@ -1,6 +1,6 @@
 <?php
 //check for admin status
-session_start();
+//session_start();
 if ($_SESSION['admin'] != "1"){
     header ("Location: index.php");
 }
@@ -30,19 +30,19 @@ if ($_SESSION['admin'] != "1"){
   $result=mysql_query("SELECT count(*) as total from projects where funded >= goal");
   $data=mysql_fetch_assoc($result);
   $num_of_funded = $data['total']; 
-  $percentage_of_funded = round(($num_of_funded/ $num_of_projects) * 100);
+  $percentage_of_funded = round(($num_of_funded / $num_of_projects) * 100);
 
   //partially funded
   $result2=mysql_query("SELECT count(*) as total from projects where funded > 0 and funded < goal");
   $data2=mysql_fetch_assoc($result2);
   $num_of_partially_funded = $data2['total']; 
-  $percentage_of_partially_funded = round(($num_of_partially_funded/ $num_of_projects) * 100);
+  $percentage_of_partially_funded = round(($num_of_partially_funded / $num_of_projects) * 100);
 
   //not funded
   $result3=mysql_query("SELECT count(*) as total from projects where funded = 0");
   $data3=mysql_fetch_assoc($result3);
   $num_of_nonfunded = $data3['total']; 
-  $percentage_of_nonfunded = round(($num_of_nonfunded/ $num_of_projects) * 100);
+  $percentage_of_nonfunded = round(($num_of_nonfunded / $num_of_projects) * 100);
   
 ?>
 <?php include("assets/templates/header.php"); ?>

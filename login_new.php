@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                   <span class="help-block"></span>
                               </div>
                               <button type="submit" class="btn btn-success btn-block">Login</button>
-                              <a href="#" class="btn btn-default btn-block">Can't Login</a>
+                              <a href="contact.html" class="btn btn-default btn-block">Can't Login</a>
                           </form>
                       </div>
                   </div>
