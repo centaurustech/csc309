@@ -94,74 +94,85 @@ function process_date($raw_date) {
 	$SQL4 = "SELECT projects.pID, title FROM projects JOIN current_contributions WHERE projects.pID = current_contributions.pID";
 	$result3 = mysql_query($SQL4);
 ?>
-    <section id="profile">
-        <div class="container">
-            <br>
-            <br>
-            <br>
-			<?php
-				if (!isset($_GET['id'])) {
-			?>
-					<a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
-					<h2 class="title text-center profile_headings">Welcome to your profile <?=$name?>!</h2>
-			<?php
-				}
-				else {
-			?>
-					<h2 class="title text-center profile_headings"><?=$name?>!</h2>
-			<?php
-				}
-			?>
+
+<div class="container">
+	<br>
+	<br>
+	<br>
+    <a class="btn btn-cta-secondary" href="Edit.php" >Edit</a>
+    <h2 class="title text-center profile_headings">Welcome to <?=$name?>'s Profile!</h2>
+    <div class="row">
+        <div class="col-md-3">
+        <br>
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
-			<div id="recent_activity">
-				<h2 class="profile_headings">My Recent Activity</h2>
-				<ul>
-					<li>A1</li>
-					<li>A2</li>
-					<li>A3</li>
-					<li>A4</li>
-					<li>A5</li>
-				</ul>
-			</div>
-			<div id="basic_info">
-				<p id="reputation">Reputation Score: <?=$reputation?></p>
-				<p id="location">Location: <?=$location?></p>
-				<p id="join_date">Date Joined: <?=$date?></p>
-			</div>
-			<div id="bio">
-				<h3 class="profile_headings">About Me</h3>
-				<p><?=$bio?></p>
-			</div>
-			<div id="profile_projects">
-				<h2 class="profile_headings">My Projects</h2>
-				<ul>
+		</div>
+		<div class="col-md-4">
+			<h2 class="profile_headings">My Friends</h2>
+			<ul>
 				<?php
-					while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
-						$title = $row2['title'];
-						$id = $row2['pID'];
-				?>
-					
-					<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
-				<?php 
-						}
-				 ?>
-				</ul>
-			</div>
-			<div id="profile_contributions">
-				<h2 class="profile_headings">My contributions</h2>
-				<ul>
-					<?php
-					while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
-						$title = $row3['title'];
-						$id = $row3['pID'];
-				?>
-					
-					<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
-				<?php 
-						}
-				 ?>
-				</ul>
-			</div>
-        </div>
-    </section>
+				$result3 = mysql_query("SELECT * FROM friends WHERE userid='$user_id'");
+				$friends = array();
+				while ($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)) {
+					$project = $row3['pid'];
+					$result4 = mysql_query("SELECT * FROM friends WHERE pID='$project' AND userid != '$user_id'");
+					while($row4 = mysql_fetch_array($result4, MYSQL_ASSOC)){
+						$friendid = $row4['userid'];
+						$result5 = mysql_query("SELECT * FROM users WHERE userid='$friendid'");
+						$row5 = mysql_fetch_array($result5, MYSQL_ASSOC);
+						$friend = $row5['name'];
+						if (!(in_array($friend, $friends))) {
+							$friends[] = $friend;
+						?>
+						<li><a href="profile.php?id=<?=$friendid?>"><?=$friend?></a></li>
+						<?php
+					}
+						
+					}
+				}
+                ?>
+			</ul>
+		</div>
+	</div>
+	<br>
+	<div id="basic_info">
+		<p id="reputation">Reputation Score: <?=$reputation?></p>
+		<p id="join_date">Date Joined: <?=$date?></p>
+	</div>
+	<div id="bio">
+		<h3 class="profile_headings">About Me</h3>
+		<p><?=$bio?></p>
+	</div>
+	<div id="profile_projects">
+		<h2 class="profile_headings">My Projects</h2>
+		<ul>
+		<?php
+			while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
+				$title = $row2['title'];
+				$id = $row2['pID'];
+		?>
+			
+			<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
+		<?php 
+				}
+		 ?>
+		</ul>
+	</div>
+	<div id="profile_contributions">
+		<h2 class="profile_headings">My contributions</h2>
+		<ul>
+			<?php
+			while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
+				$title = $row3['title'];
+				$id = $row3['pID'];
+		?>
+			
+			<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
+		<?php 
+				}
+		 ?>
+		</ul>
+	</div>
+</div>
+</div>
+
 <?php include("assets/templates/footer.html"); ?>

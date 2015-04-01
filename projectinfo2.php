@@ -130,12 +130,8 @@ function process_date($raw_date) {
 ?>
 
 <!-- Page Content -->
-    <br>
-    <br>
-    <br>
     <div class="container">
-
-        <div class="row">
+        <div class="row" style="margin-top:100px">
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
@@ -156,20 +152,7 @@ function process_date($raw_date) {
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
-                 <p><span class="glyphicon glyphicon-globe"></span> Communities:
-                    <?php
-                        $commz = array();
-                        $results = mysql_query("SELECT * FROM communities WHERE pID=$id");
-                        while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
-                            $community = $row['community'];
-                                if (!(in_array($community, $commz))) {
-                                $commz[] = $community;
-                            ?>
-                            <a href="browse.php?community=<?=$community?>"><?=$community?></a>
-                            <?php
-                            }
-                        } ?>
-                </p>  
+ 
                 
                 <hr>
 

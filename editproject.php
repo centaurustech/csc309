@@ -18,7 +18,6 @@ if (isset($_GET['d'])) {
     $desc = $_POST['desc'];
     $email = $_SESSION['email'];
     $id = $_GET['id'];
-    $community = $_POST['community'];
     $goal = $_POST['goal'];
 
            
@@ -27,7 +26,6 @@ if (isset($_GET['d'])) {
     $desc = htmlspecialchars($desc);
     $email = htmlspecialchars($email);
     $category = htmlspecialchars($category);
-    $community = htmlspecialchars($community);
     $goal = htmlspecialchars($goal);
 
     if ($db_found) {
@@ -46,7 +44,6 @@ if (isset($_GET['d'])) {
             mysql_query("update projects set description='$desc' where pID='$id'");
             mysql_query("update projects set category='$category' where pID='$id'");
             mysql_query("update projects set goal='$goal' where pID='$id'");
-            mysql_query("INSERT INTO communities (community, pID) VALUES ('$community', '$pID')");
 
 
             $errorMessage= "Changes Saved!";
@@ -126,21 +123,6 @@ if (isset($_GET['d'])) {
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="InputCategory">Choose a community for your project!</label>
-                        <div class="input-group">
-                            <select name="community" class="form-control" required>
-                                <?php
-                                $result3 = mysql_query("SELECT * FROM communities");
-                                while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
-                                    $community = $row3['community'];
-                                    echo '<option>' . $community . '</option>';
-                                }
-                                ?>
-                            </select>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                        </div>
-                    </div>
                     <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
                 </div>
             </form>

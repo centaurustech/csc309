@@ -39,6 +39,13 @@
     if ($new_amount >= $goal) {
         mysql_query("UPDATE projects SET datefunded=CURRENT_TIMESTAMP WHERE pID = $id");
     }
+
+    //add user to community
+    $result = mysql_query("SELECT * FROM users WHERE email=$funder_email");
+    $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    $userid = $row['userid'];
+
+    mysql_query("INSERT INTO friends (pid, userid) VALUES ('$id', '$userid')");
     
 	header ("Location: projectinfo2.php?id=$id");
 ?>

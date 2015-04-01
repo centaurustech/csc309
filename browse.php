@@ -57,9 +57,9 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $db_handle = mysql_connect($server, $user_name, $pass_word);
     $db_found = mysql_select_db($database, $db_handle);
 ?>
-    <section class="about section">
-        <div class="container">
-            <div class="row">
+  
+        <div class="container ">
+            <div class="row" style="margin-top:100px">
                 <div class="col-md-2">
                     <h3><font color="#E74C3C">Categories</h3>
                     <div class="list-group">
@@ -72,24 +72,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                         <a href="browse.php?category=<?='Film and Video'?>" class="list-group-item">Film and Video</a>
                         <a href="browse.php?category=<?='Design'?>" class="list-group-item">Design</a>
                         <a href="browse.php?category=<?='Games'?>" class="list-group-item">Games</a>
-                    </div>
-                    <!-- communities -->
-                    <h3>Communities</h3>
-                    <div class="list-group">
-                        <?php
-                        $comitems = array();
-                        $comresult = mysql_query("SELECT * FROM communities");
-                        while ($row = mysql_fetch_array($comresult, MYSQL_ASSOC)){
-                            $com = $row['community'];
-                            
-                            if (!(in_array($com, $comitems))) {
-                                $comitems[] = $com;
-                        ?>
-                        <a href="browse.php?community=<?=$com?>" class="list-group-item"><?=$com?></a>
-                        <?php
-                            }
-                        }
-                        ?>
                     </div>
                 </div>
                 <div class="col-md-10">
@@ -107,7 +89,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
                             if (isset($_GET['community'])) {
                                 $com = $_GET['community'];
-                                $SQL = "SELECT DISTINCT * FROM projects inner join communities on projects.pID=communities.pID and communities.community='$com'";
+                                $SQL = "SELECT * FROM projects WHERE community='$com'";
                             }
 
                             if (isset($_GET['search'])) {
@@ -158,23 +140,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                             <?php } ?>         
                                             <p>Created by <a href="profile.php?id=<?=$creatorid?>"><?=$name?></a></p>
 
-                                            <p><?=$category?> </p>
-
-
-                                            <p><span class="glyphicon glyphicon-globe"></span> 
-                                                <?php
-                                                    $commz = array();
-                                                    $results = mysql_query("SELECT * FROM communities WHERE pID=$id");
-                                                    while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
-                                                        $community = $row['community'];
-                                                            if (!(in_array($community, $commz))) {
-                                                            $commz[] = $community;
-                                                        ?>
-                                                        <a href="browse.php?community=<?=$community?>"><?=$community?></a>
-                                                        <?php
-                                                        }
-                                                    } ?>
-                                            </p>                      
+                                            <p><?=$category?> </p>                     
                                             <p class="smallaf"><?=$desc?></p>
 
                                             <p class="text-center"><span class="glyphicon glyphicon-usd"></span>
@@ -228,5 +194,5 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 </div>
             </div>
         </div>
-    </section>
+ 
 <?php include("assets/templates/footer.html"); ?>

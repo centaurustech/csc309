@@ -1,6 +1,6 @@
 <?php
 //check for admin status
-//session_start();
+session_start();
 if ($_SESSION['admin'] != "1"){
     header ("Location: index.php");
 }
@@ -58,9 +58,6 @@ if ($_SESSION['admin'] != "1"){
       
       <ul class="nav nav-stacked">
         <li><a href="admin.php"><i class="glyphicon glyphicon-flash"></i> Stats</a></li>
-        <li><a href="admin_proj.php"><i class="glyphicon glyphicon-flash"></i> Projects</a></li>
-        <li><a href="admin_usr.php"><i class="glyphicon glyphicon-link"></i> Users</a></li>
-        <li><a href="admin_com.php"><i class="glyphicon glyphicon-list-alt"></i> Communities</a></li>
       </ul>
       
       <hr>

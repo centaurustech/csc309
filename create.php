@@ -24,13 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $desc = $_POST['desc'];
     $email = $_SESSION['email'];
     $goal = $_POST['goal'];
-    $community = $_POST['community'];
            
     /* strip of any sketchy characters */
     $title = htmlspecialchars($title);
     $desc = htmlspecialchars($desc);
     $category = htmlspecialchars($category);
-    $community = htmlspecialchars($community);
     $goal = htmlspecialchars($goal);
     
 
@@ -45,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $errorMessage = "Project name already taken";
         }
         else {
-            $SQL = "INSERT INTO projects (title, description, creator, category, goal, community) VALUES ('$title', '$desc', 
-                $email, '$category', '$goal', '$community')";
+            $SQL = "INSERT INTO projects (title, description, creator, category, goal) VALUES ('$title', '$desc', 
+                $email, '$category', '$goal')";
             
             //execute
             $result = mysql_query($SQL);
@@ -54,17 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             //$errorMessage= 'Email: ' . $email . 'Goal: ' . $goal . 'Community: ' . $community;
             
             //get pid 
+            $SQL2 = "SELECT * FROM users WHERE email = $email";
+            $result = mysql_query($SQL2);
+            $row = mysql_fetch_array($result, MYSQL_ASSOC);
+            $id = $row['userid'];
+
+           
+            //get project id
             $SQL2 = "SELECT * FROM projects WHERE title = '$title'";
             $result = mysql_query($SQL2);
             $row = mysql_fetch_array($result, MYSQL_ASSOC);
-            $id = $row['pID'];
+            $pid = $row['pID'];
 
             // assign new community to new project
-            mysql_query("INSERT INTO communities (community, pID) VALUES ('$community', '$id')");
+            mysql_query("INSERT INTO friends (pid, userid) VALUES ('$pid', '$id')");
+
             mysql_close($db_handle);
 
             // redirect to project info
-            header ("Location: projectinfo2.php?id=" . $id);
+            header ("Location: projectinfo2.php?id=" . $pid);
         }
     }
     else {
@@ -124,22 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                             <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="InputCategory">Choose a community for your project!</label>
-                        <div class="input-group">
-                            <select name="community" class="form-control" required>
-                                <?php
-        						$result3 = mysql_query("SELECT * FROM communities");
-    							while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
-    								$community = $row3['community'];
-    								echo '<option>' . $community . '</option>';
-    							}
-                                ?>
-                            </select>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                        </div>
-                    </div>
+                     
                     <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
                 </div>
             </form>
