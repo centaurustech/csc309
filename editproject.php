@@ -146,4 +146,4 @@ if (isset($_GET['d'])) {
             </form>
         </div>
     </div>
-<?php include("assets/templates/footer.php"); ?>
+<?php include("assets/templates/footer.html"); ?>
