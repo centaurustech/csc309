@@ -109,7 +109,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 $category = $row['category'];
                                 $goal = $row['goal'];
                                 $date = $row['date'];
-                                $community = $row['community'];
                                 $funded = $row['funded'];
                                 $percentage = round(($funded / $goal) * 100);
                                 $liked = $row['likes'];

@@ -99,38 +99,44 @@ function process_date($raw_date) {
 	<br>
 	<br>
 	<br>
-    <a class="btn btn-cta-secondary" href="Edit.php" >Edit</a>
+	<?php
+		if (!isset($_GET['id'])) {
+	?>
+			<a class="btn btn-cta-secondary" href="Edit.php">Edit</a>
+	<?php
+		}
+	?>
     <h2 class="title text-center profile_headings">Welcome to <?=$name?>'s Profile!</h2>
     <div class="row">
         <div class="col-md-3">
         <br>
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 		</div>
-		<div class="col-md-4">
-			<h2 class="profile_headings">My Friends</h2>
-			<ul>
-				<?php
-				$result3 = mysql_query("SELECT * FROM friends WHERE userid='$user_id'");
-				$friends = array();
-				while ($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)) {
-					$project = $row3['pid'];
-					$result4 = mysql_query("SELECT * FROM friends WHERE pID='$project' AND userid != '$user_id'");
-					while($row4 = mysql_fetch_array($result4, MYSQL_ASSOC)){
-						$friendid = $row4['userid'];
-						$result5 = mysql_query("SELECT * FROM users WHERE userid='$friendid'");
-						$row5 = mysql_fetch_array($result5, MYSQL_ASSOC);
-						$friend = $row5['name'];
-						if (!(in_array($friend, $friends))) {
-							$friends[] = $friend;
-						?>
-						<li><a href="profile.php?id=<?=$friendid?>"><?=$friend?></a></li>
-						<?php
+		<div id="profile_friends">
+				<h2 class="profile_headings">My Friends</h2>
+				<ul>
+					<?php
+					$result3 = mysql_query("SELECT * FROM friends WHERE userid='$user_id'");
+					$friends = array();
+					while ($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)) {
+						$project = $row3['pid'];
+						$result4 = mysql_query("SELECT * FROM friends WHERE pID='$project' AND userid != '$user_id'");
+						while($row4 = mysql_fetch_array($result4, MYSQL_ASSOC)){
+							$friendid = $row4['userid'];
+							$result5 = mysql_query("SELECT * FROM users WHERE userid='$friendid'");
+							$row5 = mysql_fetch_array($result5, MYSQL_ASSOC);
+							$friend = $row5['name'];
+							if (!(in_array($friend, $friends))) {
+								$friends[] = $friend;
+							?>
+							<li><a href="profile.php?id=<?=$friendid?>"><?=$friend?></a></li>
+							<?php
+						}
+							
+						}
 					}
-						
-					}
-				}
-                ?>
-			</ul>
+					?>
+				</ul>
 		</div>
 	</div>
 	<br>

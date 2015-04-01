@@ -8,21 +8,17 @@ $sender_name = trim($_POST["sender_name"]);
 $sender_email = trim($_POST["sender_email"]);
 $sender_message = trim($_POST["sender_message"]);
 
-//Validate form input.
-if ($sender_name == "" OR $sender_email == "" OR $sender_message == "") {
-	echo "Please make sure to fill out all of the areas of the contact form.";
-	exit;
-}
-
 if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
-    echo "Please ensure that you have provided a valid e-mail address.";
+	$message = "Please ensure that you have provided a valid e-mail address!";
+    header("Location:contact_result.php?message=$message");
 	exit;
 }
 
 //To guard against e-mail injection.
 foreach($_POST as $value) {
 	if (stripos($value, 'Content-Type:') !== FALSE) {
-		echo "I'm sorry, but there was a problem with the input you entered.";
+		$message = "I'm sorry, but there was a problem with your input.";
+		header("Location:contact_result.php?message=$message");
 		exit;
 	}
 }
@@ -46,12 +42,12 @@ $mail->addAddress("contactcommunityfund@gmail.com");
 $mail->Subject = "User Commentary"; //Maybe add a new input field to the contact form later?
 
 if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    //echo 'Mailer Error: ' . $mail->ErrorInfo;
+	$message = "We're sorry, but there was an error in attempting to send your message: " . $mail->ErrorInfo;
+    header("Location:contact_result.php?message=$message");
 } else {
-    echo 'Message has been sent';
+	$message = "Thank you! You're message has been sent. We'll get back to you as soon as we are able!";
+    header("Location:contact_result.php?message=$message");
 }
 
-header('Refresh: 3;url=index.php');
-//TODO: Add a client side script to bring up a dialogue box confirming that the message was sent.
+//header('Refresh: 3;url=index.php');
 ?>

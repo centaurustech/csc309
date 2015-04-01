@@ -1,12 +1,8 @@
-<?php include("assets/templates/header.php"); ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-	</head>
-	<body>
-		<div id="contact">
-				<div class="container">
+<?php 
+include("assets/templates/header.php"); 
+?>
+		<div class="container">
+				<div id="contact">
 					<h2 class="title  text-center">Contact Us</h2>
 					<p class="intro  text-center"> Feel free to contact us if you have any questions or suggestions.</p>
 					<form action="contact_process.php" method="post" class="intro text-center">
@@ -21,5 +17,6 @@
 					</form>
 				</div>
 			</div>
-	</body>
-</html>
+<?php 
+include("assets/templates/footer.html");
+?>

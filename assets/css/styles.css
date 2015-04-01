@@ -752,6 +752,20 @@ textarea { height: auto; }
 /* ======= Contact ======= */
 #contact{
 	text-align: center;
+	margin-top: 10%;
+}
+
+#contact_result{
+	text-align: center;
+	margin-top: 25%;
+}
+
+#contact_result h1{
+	color: #E74C3C;
+}
+
+#contact_result a{
+	color: #428BCA;
 }
 
 /* ======= Profile ======= */
@@ -810,7 +824,7 @@ textarea { height: auto; }
 	list-style: none;
 }
 #profile_projects ul a{
-	color: #E74C3C;
+	color: #428BCA;
 }
 
 #profile_contributions {
@@ -824,7 +838,19 @@ textarea { height: auto; }
 }
 
 #profile_contributions ul a{
-	color: #E74C3C;
+	color: #428BCA;
+}
+
+#profile_friends{
+	text-align: center;
+}
+
+#profile_friends ul{
+	list-style: none;
+}
+
+#profile_friends ul a{
+	color: #428BCA;
 }
 
 .wrapper {
