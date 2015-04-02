@@ -57,9 +57,9 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $db_handle = mysql_connect($server, $user_name, $pass_word);
     $db_found = mysql_select_db($database, $db_handle);
 ?>
-    <section class="about section">
-        <div class="container">
-            <div class="row">
+  
+        <div class="container ">
+            <div class="row" style="margin-top:100px">
                 <div class="col-md-2">
                     <h3><font color="#E74C3C">Categories</h3>
                     <div class="list-group">
@@ -107,7 +107,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
                             if (isset($_GET['community'])) {
                                 $com = $_GET['community'];
-                                $SQL = "SELECT DISTINCT * FROM projects inner join communities on projects.pID=communities.pID and communities.community='$com'";
+                                $SQL = "SELECT * FROM projects WHERE community='$com'";
                             }
 
                             if (isset($_GET['search'])) {
@@ -164,7 +164,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                             <p><span class="glyphicon glyphicon-globe"></span> 
                                                 <?php
                                                     $commz = array();
-                                                    $results = mysql_query("SELECT * FROM communities WHERE pID=$id");
+                                                    $results = mysql_query("SELECT * FROM projects WHERE pID=$id");
                                                     while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
                                                         $community = $row['community'];
                                                             if (!(in_array($community, $commz))) {
@@ -228,5 +228,5 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 </div>
             </div>
         </div>
-    </section>
+ 
 <?php include("assets/templates/footer.html"); ?>

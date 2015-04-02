@@ -54,17 +54,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             //$errorMessage= 'Email: ' . $email . 'Goal: ' . $goal . 'Community: ' . $community;
             
             //get pid 
+            $SQL2 = "SELECT * FROM users WHERE email = $email";
+            $result = mysql_query($SQL2);
+            $row = mysql_fetch_array($result, MYSQL_ASSOC);
+            $id = $row['userid'];
+
+            // assign new community to new project
+            mysql_query("INSERT INTO communities (community, userid) VALUES ('$community', '$id')");
+           
+            //get project id
             $SQL2 = "SELECT * FROM projects WHERE title = '$title'";
             $result = mysql_query($SQL2);
             $row = mysql_fetch_array($result, MYSQL_ASSOC);
-            $id = $row['pID'];
+            $pid = $row['pID'];
 
-            // assign new community to new project
-            mysql_query("INSERT INTO communities (community, pID) VALUES ('$community', '$id')");
             mysql_close($db_handle);
 
             // redirect to project info
-            header ("Location: projectinfo2.php?id=" . $id);
+            header ("Location: projectinfo2.php?id=" . $pid);
         }
     }
     else {
