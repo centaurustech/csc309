@@ -73,24 +73,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                         <a href="browse.php?category=<?='Design'?>" class="list-group-item">Design</a>
                         <a href="browse.php?category=<?='Games'?>" class="list-group-item">Games</a>
                     </div>
-                    <!-- communities -->
-                    <h3>Communities</h3>
-                    <div class="list-group">
-                        <?php
-                        $comitems = array();
-                        $comresult = mysql_query("SELECT * FROM communities");
-                        while ($row = mysql_fetch_array($comresult, MYSQL_ASSOC)){
-                            $com = $row['community'];
-                            
-                            if (!(in_array($com, $comitems))) {
-                                $comitems[] = $com;
-                        ?>
-                        <a href="browse.php?community=<?=$com?>" class="list-group-item"><?=$com?></a>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </div>
                 </div>
                 <div class="col-md-10">
                     <h3>Projects</h3>
@@ -158,23 +140,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                             <?php } ?>         
                                             <p>Created by <a href="profile.php?id=<?=$creatorid?>"><?=$name?></a></p>
 
-                                            <p><?=$category?> </p>
-
-
-                                            <p><span class="glyphicon glyphicon-globe"></span> 
-                                                <?php
-                                                    $commz = array();
-                                                    $results = mysql_query("SELECT * FROM projects WHERE pID=$id");
-                                                    while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
-                                                        $community = $row['community'];
-                                                            if (!(in_array($community, $commz))) {
-                                                            $commz[] = $community;
-                                                        ?>
-                                                        <a href="browse.php?community=<?=$community?>"><?=$community?></a>
-                                                        <?php
-                                                        }
-                                                    } ?>
-                                            </p>                      
+                                            <p><?=$category?> </p>                     
                                             <p class="smallaf"><?=$desc?></p>
 
                                             <p class="text-center"><span class="glyphicon glyphicon-usd"></span>

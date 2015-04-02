@@ -152,20 +152,7 @@ function process_date($raw_date) {
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
-                 <p><span class="glyphicon glyphicon-globe"></span> Communities:
-                    <?php
-                        $commz = array();
-                        $results = mysql_query("SELECT * FROM projects WHERE pID=$id");
-                        while($row = mysql_fetch_array($results, MYSQL_ASSOC)){
-                            $community = $row['community'];
-                                if (!(in_array($community, $commz))) {
-                                $commz[] = $community;
-                            ?>
-                            <a href="browse.php?community=<?=$community?>"><?=$community?></a>
-                            <?php
-                            }
-                        } ?>
-                </p>  
+ 
                 
                 <hr>
 
