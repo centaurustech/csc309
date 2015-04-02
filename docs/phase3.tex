@@ -59,17 +59,8 @@ https://mega.co.nz/#!EoMWhYoJ!k3MZ6tYcm-0HXnZOH4bv7oAG-jG89aZ3ozhByB2r1U8
 
 -Added the justification of using MySQL
 
--Not testing real Paypal payments
+-Added clarification on testing strategy
 
--Validating code styling
-
--Employing more unit testing
-
--Testing in multiple web browsers
-
--Using Netbean’s XDebug
-
--Beta website deployment phase
 
 
 \item[1.] Key Feature and Functionality Specification
@@ -86,7 +77,7 @@ Features:
 -Create button
 
 Description: The user should be able to register, login, and reach the contact form from here.
-Trying to create a project before the ser logs in should result in a redirect to the login page.
+Trying to create a project before the user logs in should result in a redirect to the login page.
 The user should, however, be able to browse projects, and only need to login in if they are going to fund it.
 
 \textbf{Register Page}
@@ -148,7 +139,7 @@ alterable by the user.
 
 The date joined, and reputation score are not alterable by the user, but determined automatically.
 The reputation score will be a numeric value computed by combining all of the ratings for projects initiated by the given user with 
-the number of likes their comments have recieved. In this way, a person's reputation is determined by their behaviour as both an initiator
+the number of likes their comments have received. In this way, a person's reputation is determined by their behaviour as both an initiator
 and as a broader member of the community.
 
 The page should also contain a feed, which displays a user's most recent activity, in the form of comments made on projects, ratings of projects,
@@ -166,7 +157,7 @@ Features:
 -Project info box
 
 Description:
-The use should be able to filter out the projects within their community according to the pre-specified cateogires provided.
+The use should be able to filter out the projects within their community according to the pre-specified categorises provided.
 Moreover, the user should be able to enter a search term, and all of those projects associated with the term, 
 and which are posted within communities
 that the given user is a member off, should be filtered and shown to the user.
@@ -207,12 +198,13 @@ As the name suggests, this page is to allow users to provide the details of thei
 -Project Review section (to comment on and rate projects)
 
 Description:
-This is the online pitch that other community members see when deciding to fund a project.
+This is the on-line pitch that other community members see when deciding to fund a project.
 It should include a video or representative image of the project as well as a written description detailing the 
 project and its founders.
 Other users within the community should be able to rate the project (on a 5 point scale), as well as leace comments/reviews
 concerning the product. The funding funding page should be accessible from this point, and all of the information pertaining
 to the funding goal, how much they currently have, and how much is left to fund should be present.
+
 \textbf{Fund page}
 
 -Funding amount entry box
@@ -222,7 +214,7 @@ to the funding goal, how much they currently have, and how much is left to fund 
 Description:
 Users should be able to enter their payment information details as well as the amount of money they want to donate to
 the given project.
-It should redirect the user back to the project from whence they came upon completetion of the payment process.
+It should redirect the user back to the project from whence they came upon completion of the payment process.
 
 \textbf{Admin page}
 
@@ -234,8 +226,8 @@ Features:
 -Average time to reach a funding goal
 
 Description:
-The admin page will provide the administrator with the capacity to select for viewing a number of important pre-specified statisitics.
-These pre-specified statisticas will include those in the feature list, as well as any additional decided upon as development progresses.
+The admin page will provide the administrator with the capacity to select for viewing a number of important pre-specified statistics.
+These pre-specified statistics will include those in the feature list, as well as any additional decided upon as development progresses.
 
 
 \begin{figure}[ht!]
@@ -249,7 +241,7 @@ These pre-specified statisticas will include those in the feature list, as well 
 
 \textbf{General protocol}
 
-Communication:Weekly meetings will occur on wednesday's before class to discuss any issues related to development and write the weekly report. Moreover, Skype and Facebook will serve as methods of contact for resolving any immediate issues.
+Communication:Weekly meetings will occur on Wednesday's before class to discuss any issues related to development and write the weekly report. Moreover, Skype and Facebook will serve as methods of contact for resolving any immediate issues.
 
 Team Roles: These will be contingent on the phase of development, and assigned for the given week at each weekly meeting. To be decided: We may segregate the team into front-end and back-end specializations.
 
@@ -292,13 +284,13 @@ We will also have a database connector module that will be used by all of the we
 
 All of the individual manager components are subsets of the functionality of the webpages themselves, and are therefore connected to the central database inasmuch as the webpages are connected to it.
 
-The filter manager is the core software componenet that subserves all of the search functionality of the browse pages (both project and community). The filter manager will, in effect, be a more specialized instance of the code utilized for universal search throughout the website.
+The filter manager is the core software component that sub-serves all of the search functionality of the browse pages (both project and community). The filter manager will, in effect, be a more specialized instance of the code utilized for universal search throughout the website.
 
-The transaction manager will require interaction with the central repository, since transactions will be logged in addition to processed. It will, of course, have a subfunction that verifies the payement by interacting with a third party (Paypal/credit card company).
+The transaction manager will require interaction with the central repository, since transactions will be logged in addition to processed. It will, of course, have a subfunction that verifies the payment by interacting with a third party (Paypal/credit card company).
 
 The review manager provides the functionality to each project page which allows for funders to comment on projects as well as the reviews of other funders. It will need to be decomposed into both a rating system as well as a comment system.
 
-The admin analytics componentt subserves the unique features of the admin view. It interacts with the central database, using the data stored there to compute statistics. This will need to be further decomposed into various functions that compute said statistics.
+The admin analytics component sub-serves the unique features of the admin view. It interacts with the central database, using the data stored there to compute statistics. This will need to be further decomposed into various functions that compute said statistics.
 
 In terms of errors, we will display the corresponding error to the user. If the database is down and a user tries to access it, we will report to the user that database servers are down. All of this is already implemented for phase 3.
 

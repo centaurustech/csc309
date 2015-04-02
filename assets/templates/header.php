@@ -27,7 +27,11 @@
     <![endif]-->
     
 </head> 
-
+<?php 
+if (!isset($_SESSION)) {
+	session_start();
+}
+?>
 <body data-spy="scroll">
 <div id="wrapper">
     <div id="header">
@@ -51,8 +55,7 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a href="index.php">Home</a></li>
-                        <?php   
-                        session_start();                     
+                        <?php                        
 						//Added a condition to the if clause.
                         if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                             echo '<li class="nav-item"><a href="profile.php">My Account</a></li>';

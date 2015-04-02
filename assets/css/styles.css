@@ -748,11 +748,13 @@ inputs:-webkit-input-placeholder {
 }
 textarea { height: auto; }
 
-/* ======= Profile ======= */
 
-#profile {
-	//background: linear-gradient(to bottom, #2980B9, white);
+/* ======= Contact ======= */
+#contact{
+	text-align: center;
 }
+
+/* ======= Profile ======= */
 
 #profile_pic {
 	display: inline-block;
@@ -804,11 +806,27 @@ textarea { height: auto; }
 	left: 12%;
 }
 
+#profile_projects ul {
+	list-style: none;
+}
+#profile_projects ul a{
+	color: #E74C3C;
+}
+
 #profile_contributions {
 	float: right;
 	position: relative;
 	right: 12%;
 }
+
+#profile_contributions ul{
+	list-style: none;
+}
+
+#profile_contributions ul a{
+	color: #E74C3C;
+}
+
 .wrapper {
   min-height: 100%;
   height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
