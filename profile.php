@@ -107,29 +107,14 @@ function process_date($raw_date) {
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 		</div>
 		<div class="col-md-4">
-			<h2 class="profile_headings">My Communities</h2>
-			<ul>
-				<?php
-				$result3 = mysql_query("SELECT * FROM communities WHERE userid='$user_id'");
-				while ($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)) {
-					$community = $row3['community'];
-					?>
-
-					<li><a href="browse.php?community=<?=$community?>"><?=$community?></a></li>
-					<?php
-				}
-                ?>
-			</ul>
-		</div>
-		<div class="col-md-4">
 			<h2 class="profile_headings">My Friends</h2>
 			<ul>
 				<?php
-				$result3 = mysql_query("SELECT * FROM communities WHERE userid='$user_id'");
+				$result3 = mysql_query("SELECT * FROM friends WHERE userid='$user_id'");
 				$friends = array();
 				while ($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)) {
-					$community = $row3['community'];
-					$result4 = mysql_query("SELECT * FROM communities WHERE community='$community' AND userid != '$user_id'");
+					$project = $row3['pid'];
+					$result4 = mysql_query("SELECT * FROM friends WHERE pID='$project' AND userid != '$user_id'");
 					while($row4 = mysql_fetch_array($result4, MYSQL_ASSOC)){
 						$friendid = $row4['userid'];
 						$result5 = mysql_query("SELECT * FROM users WHERE userid='$friendid'");

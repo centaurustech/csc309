@@ -45,7 +45,7 @@
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
     $userid = $row['userid'];
 
-    mysql_query("INSERT INTO communities (community, userid) VALUES ('$community', '$userid')");
+    mysql_query("INSERT INTO friends (pid, userid) VALUES ('$id', '$userid')");
     
 	header ("Location: projectinfo2.php?id=$id");
 ?>
