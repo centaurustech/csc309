@@ -84,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="row" style="margin-top:130px">
             <h2 class="title text-center"> Tell us about your Idea!</h2>
             <h3 class="title text-center"><?=$errorMessage?> </h3>
-            <h3><?=$community?></h3>
             <br>
             <form action="create.php" method="post" role="form">
                 <div class="col-lg-3"></div>

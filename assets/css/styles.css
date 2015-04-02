@@ -797,7 +797,6 @@ textarea { height: auto; }
 }
 
 #join_date {
-	/* background-color: #2980B9; */
 	width: 22%;
 }
 
@@ -817,7 +816,7 @@ textarea { height: auto; }
 #profile_projects {
 	float: left;
 	position: relative;
-	left: 12%;
+	left: 7%;
 }
 
 #profile_projects ul {
@@ -828,9 +827,9 @@ textarea { height: auto; }
 }
 
 #profile_contributions {
-	float: right;
+	float: left;
 	position: relative;
-	right: 12%;
+	left: 27%;
 }
 
 #profile_contributions ul{
@@ -852,6 +851,23 @@ textarea { height: auto; }
 #profile_friends ul a{
 	color: #428BCA;
 }
+
+#like_buttons{
+	text-align: center;
+}
+
+#like_function{
+	float: left;
+	position: relative;
+	left: 17%;
+}
+
+#like_function button{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+
 
 .wrapper {
   min-height: 100%;

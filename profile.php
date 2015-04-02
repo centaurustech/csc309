@@ -48,7 +48,6 @@ function process_date($raw_date) {
 
 ?>
 <?php
-//TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.
 	if (isset($_GET['id'])) {
 		$userid = $_GET['id'];
 		$SQL = "SELECT * FROM users WHERE userid = $userid";
@@ -92,10 +91,10 @@ function process_date($raw_date) {
 	
 	//Find info for projects contributed to by the current user.
 	$SQL4 = "SELECT projects.pID, title FROM projects JOIN current_contributions WHERE projects.pID = current_contributions.pID";
-	$result3 = mysql_query($SQL4);
+	$result6 = mysql_query($SQL4);
 ?>
 
-<div class="container">
+<div class="container" id="profile_container">
 	<br>
 	<br>
 	<br>
@@ -113,7 +112,7 @@ function process_date($raw_date) {
 			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
 		</div>
 		<div id="profile_friends">
-				<h2 class="profile_headings">My Friends</h2>
+				<h2 class="profile_headings">My Community</h2>
 				<ul>
 					<?php
 					$result3 = mysql_query("SELECT * FROM friends WHERE userid='$user_id'");
@@ -152,9 +151,9 @@ function process_date($raw_date) {
 		<h2 class="profile_headings">My Projects</h2>
 		<ul>
 		<?php
-			while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
-				$title = $row2['title'];
-				$id = $row2['pID'];
+			while($row6 = mysql_fetch_array($result2, MYSQL_ASSOC)){
+				$title = $row6['title'];
+				$id = $row6['pID'];
 		?>
 			
 			<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>
@@ -163,13 +162,39 @@ function process_date($raw_date) {
 		 ?>
 		</ul>
 	</div>
+	<?php
+		//echo var_dump(isset($_GET['id']));
+		if (isset($_SESSION['name']) AND isset($_GET['id']) AND in_array($_SESSION['name'], $friends)) {
+	?>
+			<div id="like_function">
+				<?php
+					if (isset($_GET['message'])) {
+				?>
+						<h4><?=$_GET['message']?></h4>
+				<?php
+					}
+					else {
+				?>
+						<h4>What do you think of my work?</h4>
+						<form action="process_rep.php" method="post">
+							<div id="like_buttons">
+								<button name="like" type="submit" value="1">Like</button>
+								<button name="dislike" type="submit" value="1">Dislike</button>
+								<input type="hidden" name="user_id" value="<?=$user_id?>"></hidden>
+							</div>
+						</form>
+				<?php
+					}
+				}
+				?>
+		
 	<div id="profile_contributions">
 		<h2 class="profile_headings">My contributions</h2>
 		<ul>
 			<?php
-			while($row3 = mysql_fetch_array($result3, MYSQL_ASSOC)){
-				$title = $row3['title'];
-				$id = $row3['pID'];
+			while($row4 = mysql_fetch_array($result6, MYSQL_ASSOC)){
+				$title = $row4['title'];
+				$id = $row4['pID'];
 		?>
 			
 			<li><a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a></li>

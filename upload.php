@@ -1,5 +1,4 @@
 <?php
-//TODO: Need to add code to check if the user logged in is viewing the profile, to determine if edit button and other stuff should be visible.  
     $email = $_SESSION['email'];
     $email = htmlspecialchars($email);
 

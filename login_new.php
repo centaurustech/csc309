@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         /* if query returned */
         if ($result) {
             $num_rows = mysql_num_rows($result);
-            /* if there is atleast one row, user exists */
+            /* if there is at least one row, user exists */
             if ($num_rows > 0) {
                 $errorMessage= "logged on ";
                 /* create session */
@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['admin'] = $row['admin'];
+				$_SESSION['current_user_id'] = $row['userid'];
                 header ("Location: index.php");
             }
             else {
@@ -96,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                   <span class="help-block"></span>
                               </div>
                               <button type="submit" class="btn btn-success btn-block">Login</button>
-                              <a href="contact.html" class="btn btn-default btn-block">Can't Login</a>
+                              <a href="contact.php" class="btn btn-default btn-block">Can't Login</a>
                           </form>
                       </div>
                   </div>
