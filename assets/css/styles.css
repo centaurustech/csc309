@@ -816,7 +816,7 @@ textarea { height: auto; }
 #profile_projects {
 	float: left;
 	position: relative;
-	left: 7%;
+	left: 5%;
 }
 
 #profile_projects ul {
@@ -829,7 +829,7 @@ textarea { height: auto; }
 #profile_contributions {
 	float: left;
 	position: relative;
-	left: 27%;
+	left: 25%; 
 }
 
 #profile_contributions ul{
@@ -859,7 +859,7 @@ textarea { height: auto; }
 #like_function{
 	float: left;
 	position: relative;
-	left: 17%;
+	left: 15%;
 }
 
 #like_function button{

@@ -162,31 +162,36 @@ function process_date($raw_date) {
 		 ?>
 		</ul>
 	</div>
-	<?php
-		//echo var_dump(isset($_GET['id']));
-		if (isset($_SESSION['name']) AND isset($_GET['id']) AND in_array($_SESSION['name'], $friends)) {
-	?>
-			<div id="like_function">
-				<?php
-					if (isset($_GET['message'])) {
-				?>
-						<h4><?=$_GET['message']?></h4>
-				<?php
-					}
-					else {
-				?>
-						<h4>What do you think of my work?</h4>
-						<form action="process_rep.php" method="post">
-							<div id="like_buttons">
-								<button name="like" type="submit" value="1">Like</button>
-								<button name="dislike" type="submit" value="1">Dislike</button>
-								<input type="hidden" name="user_id" value="<?=$user_id?>"></hidden>
-							</div>
-						</form>
-				<?php
-					}
+	<div id="like_function">
+		<?php
+			if (isset($_SESSION['name']) AND isset($_GET['id']) AND in_array($_SESSION['name'], $friends)) {
+						
+				if (isset($_GET['message'])) {
+		?>
+					<h4><?=$_GET['message']?></h4>
+		<?php
 				}
-				?>
+				else {
+		?>
+					<h4>What do you think of my work?</h4>
+					<form action="process_rep.php" method="post">
+						<div id="like_buttons">
+							<button name="like" type="submit" value="1">Like</button>
+							<button name="dislike" type="submit" value="1">Dislike</button>
+							<input type="hidden" name="user_id" value="<?=$user_id?>"></hidden>
+						</div>
+					</form>
+		<?php
+				}
+			}
+			else if (isset($_GET['id'])) {
+				echo "<h4>Get to know this user in order to vote!</h4>";
+			}
+			else {
+				echo "<h4>Look at all you've done!</h4>";
+			}
+		?>
+	</div>
 		
 	<div id="profile_contributions">
 		<h2 class="profile_headings">My contributions</h2>
