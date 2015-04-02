@@ -749,6 +749,9 @@ inputs:-webkit-input-placeholder {
 textarea { height: auto; }
 
 
+
+/* ======= Custom CSS Start ======= */
+
 /* ======= Contact ======= */
 #contact{
 	text-align: center;
@@ -867,7 +870,13 @@ textarea { height: auto; }
 	margin-right: 5%;
 }
 
+/* ======= Create Page ======= */
 
+#create_message{
+	text-align: center;
+}
+
+/* ======= Custom CSS END ======= */
 
 .wrapper {
   min-height: 100%;

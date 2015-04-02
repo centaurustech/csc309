@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="cardNumber">CARD NUMBER</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number"  autofocus data-stripe="number" autocomplete="off"/>
+                                        <input required type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number"  autofocus data-stripe="number" autocomplete="off"/>
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
                                 </div>                            
@@ -57,17 +57,17 @@
                                 <div class="form-group">
                                     <label for="expMonth">EXPIRATION DATE</label>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" name="expMonth" placeholder="MM"  data-stripe="exp_month" autocomplete="off" />
+                                        <input required type="text" class="form-control" name="expMonth" placeholder="MM"  data-stripe="exp_month" autocomplete="off" />
                                     </div>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" name="expYear" placeholder="YY"  data-stripe="exp_year" autocomplete="off"/>
+                                        <input required type="text" class="form-control" name="expYear" placeholder="YY"  data-stripe="exp_year" autocomplete="off"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
                                     <label for="cvCode">CV CODE</label>
-                                    <input type="password" class="form-control" name="cvCode" placeholder="CV"  data-stripe="cvc" autocomplete="off"/>
+                                    <input required type="password" class="form-control" name="cvCode" placeholder="CV"  data-stripe="cvc" autocomplete="off"/>
                                 </div>
                             </div>
                         </div>

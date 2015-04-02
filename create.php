@@ -30,6 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $desc = htmlspecialchars($desc);
     $category = htmlspecialchars($category);
     $goal = htmlspecialchars($goal);
+	
+	if ($goal <= 0) {
+		header("Location:create.php?not_positive=1");
+		exit;
+	}
     
 
     if ($db_found) {
@@ -83,6 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <div class="container well">
         <div class="row" style="margin-top:130px">
             <h2 class="title text-center"> Tell us about your Idea!</h2>
+			<?php
+				if (isset($_GET['not_positive'])) {
+					echo "<h3 id='create_message'>Please make sure that the funding goal value is positive!</h3>";
+				}
+			?>
             <h3 class="title text-center"><?=$errorMessage?> </h3>
             <br>
             <form action="create.php" method="post" role="form">
