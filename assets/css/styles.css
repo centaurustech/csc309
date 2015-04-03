@@ -795,10 +795,6 @@ textarea { height: auto; }
 	width: 22%;
 }
 
-#location {
-	width: 22%;
-}
-
 #join_date {
 	width: 22%;
 }
@@ -822,11 +818,17 @@ textarea { height: auto; }
 	left: 5%;
 }
 
-#profile_projects ul {
+#profile_projects ul li{
 	list-style: none;
+	text-align: center;
 }
 #profile_projects ul a{
 	color: #428BCA;
+}
+
+#profile_projects ul li p{
+	text-align: center;
+	display: inline;
 }
 
 #profile_contributions {
@@ -837,10 +839,16 @@ textarea { height: auto; }
 
 #profile_contributions ul{
 	list-style: none;
+	text-align: center;
 }
 
 #profile_contributions ul a{
 	color: #428BCA;
+}
+
+#profile_contributions ul li p{
+	display: inline;
+	text-align: center;
 }
 
 #profile_friends{
