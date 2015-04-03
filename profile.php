@@ -109,7 +109,7 @@ function process_date($raw_date) {
     <div class="row">
         <div class="col-md-3">
         <br>
-			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="<?=$user_id?>" width=250 height=250>
+			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="profile picture" width=250 height=250>
 		</div>
 		<div id="profile_friends">
 				<h2 class="profile_headings">My Community</h2>
