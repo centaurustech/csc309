@@ -1,28 +1,23 @@
 <?php
-    $email = $_SESSION['email'];
-    $email = htmlspecialchars($email);
+    if (isset($_GET['id'])) {
+        $userid = $_GET['id'];
+        $SQL = "SELECT * FROM users WHERE userid = $userid";
+    } else {
+        $email = $_SESSION['email'];
+        $SQL = "SELECT * FROM users WHERE email = $email";
+    }
+    
 
     /*connect to database */
-    $user_name = "root";
-    $pass_word = "csc309";
-    $database = "users";
-    $server = "104.236.231.174:3306";
-
-    // Create connection
+   include("sql.php");
     
-    $db_handle = mysql_connect($server, $user_name, $pass_word, $database);
-    if (!$db_handle) {
-    	die("Connection failed: " . mysqli_connect_error());
-	}
-
-    $SQL = "SELECT userid FROM $database WHERE email = $email";
-    $result = mysqli_query($db_handle, $SQL);
-
+    $result = mysql_query($SQL);
     //retrieve user data from sql server
     $row = mysql_fetch_assoc($result);
     $user_id = $row['userid'];
-    
-    $profile_pic_location = "user_" . $user_id . "_pic.jpg"; //Might have to add code which checks the file format.
+
+
+    $profile_pic_location = "user_" . $user_id . "_pic.jpg"; 
 
     $username = htmlspecialchars($_POST['nameInput']);
     $pass = htmlspecialchars($_POST['passwordInput']);
@@ -31,12 +26,24 @@
     $bio = htmlspecialchars($_POST['bioInput']);
     $email = htmlspecialchars($_POST['emailInput']);
 
-    $sql3 = "UPDATE $database SET name=$username, password=$pass, location=$location, bio=$bio, email=$email WHERE id=$user_id";
-    if (!mysqli_query($db_handle, $sql3)) {
-    	//Done 
-	} 
-
-	mysqli_close($db_handle);
+    if ($db_found) {
+        $sql_user = "UPDATE $database SET name=$username WHERE id=$user_id";
+        $sql_pass = "UPDATE $database SET password=$pass WHERE id=$user_id";
+        $sql_location = "UPDATE $database SET location=$location WHERE id=$user_id";
+        $sql_bio = "UPDATE $database SET bio=$bio WHERE id=$user_id";
+        $sql_email = "UPDATE $database SET email=$email WHERE id=$user_id";
+    
+        mysql_query($sql_user);
+        mysql_query($sql_pass);
+        mysql_query($sql_location);
+        mysql_query($sql_bio);
+        mysql_query($sql_email);
+        echo "Updated data successfully\n";
+	    mysql_close($db_handle);
+    }else
+    {
+        $errorMessage = "Database Not Found";
+    }
 ?>
 <?php
 $target_dir = "assets/images/profile_pics/";
@@ -61,7 +68,7 @@ if ($_FILES["fileToUpload"]["size"] > 5000000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "jpeg"){
+if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType !="gif"){
 	//$imageFileType != "png" && 
     //&& $imageFileType != "gif" ) {
     //echo "Sorry, only Jpeg files are allowed.";
@@ -75,7 +82,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
-      //  echo "Sorry, there was an error uploading your file.";
+        echo "Sorry, there was an error uploading your file.";
     }
 }
 

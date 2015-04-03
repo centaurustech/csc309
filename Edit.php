@@ -14,13 +14,7 @@
 	$email = htmlspecialchars($email);
 
 	/*connect to database */
-    $user_name = "root";
-    $pass_word = "csc309";
-    $database = "users";
-    $server = "104.236.231.174:3306";;
-    
-    $db_handle = mysql_connect($server, $user_name, $pass_word);
-    $db_found = mysql_select_db($database, $db_handle);
+    include("sql.php");
 
     $SQL = "SELECT * FROM users WHERE email = $email";
     $result = mysql_query($SQL);
@@ -46,8 +40,8 @@
             <br>
             Login Information<br>
             <input type="text" name="nameInput" class="inputs" placeholder="Name"><br>
-            <input type="text" name="passwordInput" class="inputs" placeholder="Password"><br>
-            <input type="text" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
+            <input type="password" name="passwordInput" class="inputs" placeholder="Password"><br>
+            <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
             <input type="text" name="emailInput" class="inputs" placeholder="E-mail"><br>
             <br>
             <a class="btn btn-cta-secondary" href="profile.php">Back</a>
@@ -61,7 +55,7 @@
             <input type="text" name="CountryInput" class="inputs" placeholder="Country"><br>
             <br>
             Talk about yourself:<br>
-            <textarea rows="6" cols="50" name="bioInput" class="inputs" placeholder="Comments"></textarea>
+            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comments"></textarea>
             <br>
         </div>
         <div style="clear: both;"/>

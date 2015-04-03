@@ -58,13 +58,7 @@ function process_date($raw_date) {
 	
 
 	/*connect to database */
-    $user_name = "root";
-    $pass_word = "csc309";
-    $database = "users";
-    $server = "104.236.231.174:3306";
-    
-    $db_handle = mysql_connect($server, $user_name, $pass_word);
-    $db_found = mysql_select_db($database, $db_handle);
+    include("sql.php");
 
     
     $result = mysql_query($SQL);
@@ -109,7 +103,7 @@ function process_date($raw_date) {
     <div class="row">
         <div class="col-md-3">
         <br>
-			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="Profile picture" width=250 height=250>
+			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="<?=$user_id?>" width=250 height=250>
 		</div>
 		<div id="profile_friends">
 				<h2 class="profile_headings">My Community</h2>
