@@ -46,17 +46,12 @@
             <input type="text" name="nameInput" class="inputs" placeholder="Name"><br>
             <input type="password" name="passwordInput" class="inputs" placeholder="Password"><br>
             <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
-            <input type="text" name="emailInput" class="inputs" placeholder="E-mail"><br>
             <br>
             <a class="btn btn-cta-secondary" href="profile.php">Back</a>
             <input type="submit" name="submit" class="btn btn-cta-secondary">
         </form>
         </div> 
         <div class="floatright">
-            Address<br>
-            <input type="text" name="cityInput" class="inputs" placeholder="City"><br>
-            <input type="text" name="stateInput" class="inputs" placeholder="State"><br>
-            <input type="text" name="CountryInput" class="inputs" placeholder="Country"><br>
             <br>
             Talk about yourself:<br>
             <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comment"></textarea>

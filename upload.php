@@ -22,23 +22,16 @@
     $username = htmlspecialchars($_POST['nameInput']);
     $pass = htmlspecialchars($_POST['passwordInput']);
     $pass2 = htmlspecialchars($_POST['passwordInput2']);
-    $location = htmlspecialchars($_POST['cityInput']. $_POST['stateInput']. $_POST['CountryInput'] );
     $bio = htmlspecialchars($_POST['bioInput']);
-    $email = htmlspecialchars($_POST['emailInput']);
 
     if ($db_found) {
-        $sql_user = "UPDATE $database SET name=$username WHERE id=$user_id";
-        $sql_pass = "UPDATE $database SET password=$pass WHERE id=$user_id";
-        $sql_location = "UPDATE $database SET location=$location WHERE id=$user_id";
-        $sql_bio = "UPDATE $database SET bio=$bio WHERE id=$user_id";
-        $sql_email = "UPDATE $database SET email=$email WHERE id=$user_id";
+        $sql_user = "UPDATE $database SET name='$username' WHERE userid='$user_id'";
+        $sql_pass = "UPDATE $database SET password='$pass' WHERE userid='$user_id'";
+        $sql_bio = "UPDATE $database SET bio='$bio' WHERE userid='$user_id'";
     
         mysql_query($sql_user);
         mysql_query($sql_pass);
-        mysql_query($sql_location);
         mysql_query($sql_bio);
-        mysql_query($sql_email);
-        echo "Updated data successfully\n";
 	    mysql_close($db_handle);
     }else
     {
