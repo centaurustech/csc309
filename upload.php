@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if (isset($_GET['id'])) {
         $userid = $_GET['id'];
         $SQL = "SELECT * FROM users WHERE userid = $userid";
@@ -14,8 +15,7 @@
     $result = mysql_query($SQL);
     //retrieve user data from sql server
     $row = mysql_fetch_assoc($result);
-    $user_id = $row['userid'];
-
+    $user_id = $_SESSION['uid'];
 
     $profile_pic_location = "user_" . $user_id . "_pic.jpg"; 
 

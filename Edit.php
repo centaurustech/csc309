@@ -23,7 +23,11 @@
     while($row = mysql_fetch_array($result, MYSQL_ASSOC)){
     	$name = $row['name'];
   		$email = $row['email'];
+        $uid = $row['userid'];
     }
+    session_start();
+    $_SESSION['uid']=$uid;
+    header("upload.php");
     echo getcwd() . "\n";
 ?>
     <section id="profile" class="about section">
@@ -55,7 +59,7 @@
             <input type="text" name="CountryInput" class="inputs" placeholder="Country"><br>
             <br>
             Talk about yourself:<br>
-            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comments"></textarea>
+            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comment"></textarea>
             <br>
         </div>
         <div style="clear: both;"/>
