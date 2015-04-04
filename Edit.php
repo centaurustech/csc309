@@ -1,12 +1,13 @@
 <?php 
     include("assets/templates/header.php");
+	session_start();
 	$email = $_SESSION['email'];
 	$email = htmlspecialchars($email);
 
 	/*connect to database */
     include("sql.php");
 
-    $SQL = "SELECT * FROM users WHERE email = $email";
+    $SQL = "SELECT * FROM users WHERE email = '$email'";
     $result = mysql_query($SQL);
 
     //retrieve data from sql server
@@ -15,7 +16,6 @@
   		$email = $row['email'];
         $uid = $row['userid'];
     }
-    session_start();
     $_SESSION['uid']=$uid;
     header("upload.php");
     echo getcwd() . "\n";
