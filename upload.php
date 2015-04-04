@@ -2,7 +2,7 @@
     session_start();
     if (isset($_GET['id'])) {
         $userid = $_GET['id'];
-        $SQL = "SELECT * FROM users WHERE userid = '$userid'";
+        $SQL = "SELECT * FROM users WHERE userid = $userid";
     } else {
         $email = $_SESSION['email'];
         $SQL = "SELECT * FROM users WHERE email = '$email'";
@@ -23,7 +23,6 @@
     $pass = htmlspecialchars($_POST['passwordInput']);
     $pass2 = htmlspecialchars($_POST['passwordInput2']);
     $bio = htmlspecialchars($_POST['bioInput']);
-	echo $bio;
 
     if ($db_found) {
         $sql_user = "UPDATE $database SET name='$username' WHERE userid='$user_id'";
@@ -46,7 +45,7 @@ $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-	$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -79,11 +78,13 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+
+
 ?> 
 <html>
   <body onload="document.getElementById('lnkhome').click();">
     <a href="profile.php" id="lnkhome">Go to Home Page</a>
   </body>
 </html>
-
  

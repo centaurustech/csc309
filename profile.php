@@ -3,7 +3,7 @@
 <?php
 	if (isset($_GET['id'])) {
 		$userid = $_GET['id'];
-		$SQL = "SELECT * FROM users WHERE userid = '$userid'";
+		$SQL = "SELECT * FROM users WHERE userid = $userid";
 	} else {
 		$email = $_SESSION['email'];
 		$SQL = "SELECT * FROM users WHERE email = '$email'";
