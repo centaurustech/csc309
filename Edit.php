@@ -15,6 +15,8 @@
     	$name = $row['name'];
   		$email = $row['email'];
         $uid = $row['userid'];
+        $password = $row['password'];
+        $bio = $row['bio'];
     }
     $_SESSION['uid']=$uid;
     header("upload.php");
@@ -33,8 +35,8 @@
             <input type="file" name="fileToUpload" id="fileToUpload" >
             <br>
             Login Information<br>
-            <input type="text" name="nameInput" class="inputs" placeholder="Name"><br>
-            <input type="password" name="passwordInput" class="inputs" placeholder="Password"><br>
+            <input type="text" name="nameInput" class="inputs" placeholder="Name" value=<?=$name?>><br>
+            <input type="password" name="passwordInput" class="inputs" placeholder="Password" value=<?=$password?>><br>
             <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
             <br>
             <a class="btn btn-cta-secondary" href="profile.php">Back</a>
@@ -44,7 +46,7 @@
         <div class="floatright">
             <br>
             Talk about yourself:<br>
-            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comment"></textarea>
+            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comment" value=<?=$bio?>></textarea>
             <br>
         </div>
         <div style="clear: both;"/>
