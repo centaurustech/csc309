@@ -43,8 +43,14 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         $(".close").click(function()
         {
             $("#votebox").slideUp("slow");
-        });
-    });
+        });   
+    } 
+    );
+    function comment()
+       {
+           
+       }
+    
 </script>
 <?php include("assets/templates/header.php"); ?>
 <?php
@@ -163,6 +169,10 @@ function process_date($raw_date) {
 
                 <!-- Blog Comments -->
 
+
+                
+                
+                
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
@@ -170,7 +180,7 @@ function process_date($raw_date) {
                         <div class="form-group">
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type='button' class="btn btn-primary" name='comment' onclick="comment()" value='Submit'>
                     </form>
                 </div>
 
@@ -178,44 +188,53 @@ function process_date($raw_date) {
 
                 <!-- Posted Comments -->
 
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
+                
+                <?php
+                    $SQL = "SELECT * FROM comments WHERE pID = $id";
+                    $result = mysql_query($SQL);
+                    
+                    $num_rows = mysql_num_rows($result);
+                        if ($num_rows > 0 == false) {
+                            echo "No comments yet. Be the first to give feedback!";
+                        }
+                    
+                    
+                    while(($row = mysql_fetch_assoc($result))) { 
 
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
+                        $userid = $row['userid'];
+                        $profile_pic_location = "user_" . $userid . "_pic.jpg";
+                        $date = process_date($row['date']);
+                        $comment = $row['comment'];
+                        
+                        
+                        //get commenter's name
+                        $SQL = "SELECT * FROM users WHERE userid = $userid";
+                        $resultT = mysql_query($SQL);
+                        $row = mysql_fetch_array($resultT, MYSQL_ASSOC);
+                        $name = $row['name'];
+                        $profile =  "profile.php?id=" . $userid;
+                                ?>
+                        <!-- Comment -->
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64>
+                        </a>
+                        <div class="media-body">
+                        
+                            <h4 class="media-heading"><a href="<?=$profile?>" > <?=$name?></a>
+                            <small><?=$date?></small>
+                        </h4>
+                        <?php echo $comment ?> <br><br>
                         </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
+                </div>        
+                            
+                            
+                    <?php }
+                ?>
+                                
+
+
+               
 
             </div>
 
@@ -298,12 +317,6 @@ function process_date($raw_date) {
                     <p>You can support this project by funding it. To fund, press the button below!</p>
                     <h2 class="text-center"><a class="btn btn-cta-secondary" href="fund.php?id=<?=$id?>">Fund this project!</a></h2>
 
-                </div>
-
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
 
             </div>
