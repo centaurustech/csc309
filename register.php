@@ -17,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim($_POST['email']);
     $name = trim($_POST['name']);
     $pass = trim($_POST['pass']);
-	  $pass2 = trim($_POST['pass2']);
+	$pass2 = trim($_POST['pass2']);
     
     //make sure all fields are set
     if (!empty($email) && !empty($pass) && !empty($name) && !empty($pass2)){
         
-    /* strip of any whitespace characters */
+    /* strip of any sketchy characters */
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $pass = htmlspecialchars($pass);
-	  $pass2 = htmlspecialchars($pass2);
+	$pass2 = htmlspecialchars($pass2);
     /*connect to database */
     include("sql.php");
     if ($db_found) {
@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 		
 		else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			echo $email;
 			$errorMessage = "Please make sure to provide a valid e-mail address!";
 		}
 		
