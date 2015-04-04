@@ -4,9 +4,9 @@ require_once("PHPMailer/class.phpmailer.php");
 require_once("PHPMailer/class.smtp.php");
 
 //Extract form input.
-$sender_name = trim($_POST["sender_name"]);
-$sender_email = trim($_POST["sender_email"]);
-$sender_message = trim($_POST["sender_message"]);
+$sender_name = htmlspecialchars(trim($_POST["sender_name"]));
+$sender_email = htmlspecialchars(trim($_POST["sender_email"]));
+$sender_message = htmlspecialchars(trim($_POST["sender_message"]));
 
 if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
 	$message = "Please ensure that you have provided a valid e-mail address!";

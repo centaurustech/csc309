@@ -14,35 +14,47 @@ function quote_smart($value, $handle) {
 $errorMessage = "";
 /*if page is accessed after attempt */
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $pass = $_POST['pass'];
+    $email = trim($_POST['email']);
+    $name = trim($_POST['name']);
+    $pass = trim($_POST['pass']);
+	$pass2 = trim($_POST['pass2']);
     
     //make sure all fields are set
-    if (!empty($email) && !empty($pass) && !empty($name)){
+    if (!empty($email) && !empty($pass) && !empty($name) && !empty($pass2)){
         
-    /* strip of any sketchy characters */
+    /* strip of any whitespace characters */
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $pass = htmlspecialchars($pass);
-
+	$pass2 = htmlspecialchars($pass2);
     /*connect to database */
     include("sql.php");
     if ($db_found) {
 
-        $email = quote_smart($email, $db_handle);
         $name = quote_smart($name, $db_handle);
         $pass = quote_smart($pass, $db_handle);
+		$pass2 = quote_smart($pass2, $db_handle);
         
         /*check if user exists */
         
-        $SQL = "SELECT * FROM users WHERE email = $email";
+        $SQL = "SELECT * FROM users WHERE email = '$email'";
         $result = mysql_query($SQL);
         $num_rows = mysql_num_rows($result);
 
         if ($num_rows > 0) {
-            $errorMessage = "Username already taken";
+            $errorMessage = "Username already taken!";
         }
+		
+		else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			echo $email;
+			$errorMessage = "Please make sure to provide a valid e-mail address!";
+		}
+		
+		else if ($pass != $pass2) {
+			$errorMessage = "Please make sure that your passwords match!";
+		}
+		
+		
         else {
 
             $SQL = "INSERT INTO users (email, name, password, location, bio) VALUES ($email, $name, $pass, '', '')";
@@ -60,9 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     else {
         $errorMessage = "Database Not Found";
     }
-}
-    else {
-        $errorMessage = "Please enter all the fields!";
 }
 }
 ?>
