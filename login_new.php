@@ -48,8 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['admin'] = $row['admin'];
-				$_SESSION['current_user_id'] = $row['userid'];
-                header ("Location: index.php");
+				        $_SESSION['current_user_id'] = $row['userid'];
+
+                if (isset($_GET['r'])){
+                  header ("Location: create.php");
+                } else {
+                  header ("Location: index.php");
+                }
+                
             }
             else {
                 $errorMessage= "Incorrect email or password!";               
@@ -79,7 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <div class="col-xs-6">
                       <div class="well">
                           <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
-                          <form action="login_new.php" method="post" class="intro text-center">
+                            <?php //redirect from create
+                            if (isset($_GET['r'])){
+                              echo '<form action="login_new.php?r=1" method="post" class="intro text-center">';
+                            } else {
+                              echo '<form action="login_new.php" method="post" class="intro text-center">';
+                            }
+                            ?>
                               <div class="form-group">
                                   <label for="username" class="control-label">Email</label>
                                   <input type="text" class="form-control" id="email" name="email" value="" required title="Please enter your email" placeholder="example@gmail.com">
@@ -104,7 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           <li><span class="fa fa-check text-success"></span> Join/Create Communities</li>
                           <li><span class="fa fa-check text-success"></span> Takes only 2 minutes</li>
                       </ul>
-                      <p><a href="register.php" class="btn btn-info btn-block">Register now!</a></p>
+                        <?php //redirect from create
+                          if (isset($_GET['r'])){
+                            echo '<p><a href="register.php?r=1" class="btn btn-info btn-block">Register now!</a></p>';
+                          } else {
+                            echo '<p><a href="register.php" class="btn btn-info btn-block">Register now!</a></p>';
+                          }
+                        ?>
                   </div>
               </div>
           </div>

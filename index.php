@@ -10,7 +10,7 @@
 						$create_permission = "create.php";
 					}
 					else {
-						$create_permission = "login_new.php";
+						$create_permission = "login_new.php?r=1";
 					}
 				?>
                 <a class="btn btn-cta-secondary" href=<?=$create_permission?>>Create</a>

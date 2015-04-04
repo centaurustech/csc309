@@ -26,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $pass = htmlspecialchars($pass);
-	$pass2 = htmlspecialchars($pass2);
+	  $pass2 = htmlspecialchars($pass2);
     /*connect to database */
     include("sql.php");
     if ($db_found) {
 
         $name = quote_smart($name, $db_handle);
         $pass = quote_smart($pass, $db_handle);
-		$pass2 = quote_smart($pass2, $db_handle);
+		    $pass2 = quote_smart($pass2, $db_handle);
         
         /*check if user exists */
         
@@ -66,8 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             session_start();
             $_SESSION['login'] = "1";
             $_SESSION['email'] = $email;
-            header ("Location: index.php");
-        }
+            if (isset($_GET['r'])){
+              header ("Location: create.php");
+            } else {
+              header ("Location: index.php");
+            }
+    }
     }
     else {
         $errorMessage = "Database Not Found";
@@ -88,7 +92,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                   <div class="col-xs-12">
                       <div class="well">
                           <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
-                          <form action="register.php" method="post" class="intro text-center">
+                            <?php //redirect from create
+                            if (isset($_GET['r'])){
+                              echo '<form action="register.php?r=1" method="post" class="intro text-center">';
+                            } else {
+                              echo '<form action="register.php" method="post" class="intro text-center">';
+                            }
+                            ?>
                               <div class="form-group">
                                   <label for="username" class="control-label">Name</label>
                                   <input  class="form-control" type="text" name="name" placeholder="Name" class="inputs" required><br>
