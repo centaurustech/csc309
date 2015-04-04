@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 ?>
 <?php include("assets/templates/header.php"); ?>
     <div class="container well">
-        <div class="row" style="margin-top:130px">
+        <div class="row" style="margin-top:80px">
             <h2 class="title text-center"> Tell us about your Idea!</h2>
 			<?php
 				if (isset($_GET['not_positive'])) {

@@ -53,7 +53,7 @@ function process_date($raw_date) {
 		$SQL = "SELECT * FROM users WHERE userid = $userid";
 	} else {
 		$email = $_SESSION['email'];
-		$SQL = "SELECT * FROM users WHERE email = $email";
+		$SQL = "SELECT * FROM users WHERE email = '$email'";
 	}
 	
 

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim($_POST['email']);
     $name = trim($_POST['name']);
     $pass = trim($_POST['pass']);
-	$pass2 = trim($_POST['pass2']);
+	  $pass2 = trim($_POST['pass2']);
     
     //make sure all fields are set
     if (!empty($email) && !empty($pass) && !empty($name) && !empty($pass2)){
@@ -30,13 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     /*connect to database */
     include("sql.php");
     if ($db_found) {
-
-        $name = quote_smart($name, $db_handle);
-        $pass = quote_smart($pass, $db_handle);
-		    $pass2 = quote_smart($pass2, $db_handle);
         
-        /*check if user exists */
-        
+        /*check if user exists */  
         $SQL = "SELECT * FROM users WHERE email = '$email'";
         $result = mysql_query($SQL);
         $num_rows = mysql_num_rows($result);
@@ -53,12 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		else if ($pass != $pass2) {
 			$errorMessage = "Please make sure that your passwords match!";
 		}
-		
-		
         else {
 
-            $SQL = "INSERT INTO users (email, name, password, location, bio) VALUES ($email, $name, $pass, '', '')";
-            $errorMessage= "registered!";
+            $SQL = "INSERT INTO users (email, name, password) VALUES ('$email', '$name', '$pass')";
+            $errorMessage= "Email: ". $email . "Name: " . $name;
             $result = mysql_query($SQL);
             mysql_close($db_handle);
                 
