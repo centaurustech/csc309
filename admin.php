@@ -1,11 +1,11 @@
 <?php
-//check for admin status
-session_start();
-if ($_SESSION['admin'] != "1"){
-    header ("Location: index.php");
-}
-?>
-<?php 
+  //check for admin status
+  session_start();
+  if ($_SESSION['admin'] != "1"){
+      header ("Location: index.php");
+  }
+
+  //db connect
   include("sql.php");
 
   // admin status changes
@@ -51,23 +51,9 @@ if ($_SESSION['admin'] != "1"){
   
   <!-- upper section -->
   <div class="row" style="margin-top:80px">
-	<div class="col-sm-3">
-      <!-- left -->
-      <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
-      <hr>
-      
-      <ul class="nav nav-stacked">
-        <li><a href="admin.php"><i class="glyphicon glyphicon-flash"></i> Stats</a></li>
-      </ul>
-      
-      <hr>
-      
-  	</div><!-- /span-3 -->
-    <div class="col-sm-9">
-      	
+    <div class="col-sm-12">
       <!-- column 2 -->	
-       <h3><i class="glyphicon glyphicon-dashboard"></i> Dashboard</h3>  
-            
+       <h3><i class="glyphicon glyphicon-dashboard"></i> Statistics</h3>   
        <hr>
       
 	   <div class="row">
@@ -144,19 +130,11 @@ if ($_SESSION['admin'] != "1"){
                       <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                   </div>
               </div>
-              
               <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
-                
-            </form>
-              
-			</div><!--/col-span-6-->
-     
+            </form>   
+			     </div><!--/col-span-6-->
        </div><!--/row-->
   	</div><!--/col-span-9-->
-    
   </div><!--/row-->
-  <!-- /upper section -->
-
-
-  
+  <!-- /upper section -->  
 <?php include("assets/templates/footer.html"); ?>

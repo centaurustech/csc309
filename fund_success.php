@@ -16,7 +16,6 @@
     $creator = $row['creator'];
     $goal = $row['goal'];
     $date = $row['date'];
-    $community = $row['community'];
     $funded = $row['funded'];
     $amount = $_POST['amount'];
     $percentage = round(($funded / $goal) * 100);

@@ -1,8 +1,7 @@
 <?php
     /*connect to database */
     include("sql.php");
-
-
+    
     if($_POST['id'])
     {
         $id=mysql_escape_String($_POST['id']);

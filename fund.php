@@ -14,7 +14,6 @@
     $creator = $row['creator'];
     $goal = $row['goal'];
     $date = $row['date'];
-    $community = $row['community'];
     $funded = $row['funded'];
     $percentage = round(($funded / $goal) * 100);
 ?>
@@ -51,10 +50,10 @@
                                 <div class="form-group">
                                     <label for="expMonth">EXPIRATION DATE</label>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input required type="text" class="form-control" name="expMonth" placeholder="MM"  data-stripe="exp_month" autocomplete="off" />
+                                        <input required type="number" class="form-control" name="expMonth" placeholder="MM"  data-stripe="exp_month" autocomplete="off" />
                                     </div>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input required type="text" class="form-control" name="expYear" placeholder="YY"  data-stripe="exp_year" autocomplete="off"/>
+                                        <input required type="number" class="form-control" name="expYear" placeholder="YY"  data-stripe="exp_year" autocomplete="off"/>
                                     </div>
                                 </div>
                             </div>

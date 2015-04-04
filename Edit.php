@@ -1,15 +1,5 @@
-<?php include("assets/templates/header.php"); ?>
-<?php	
-	function quote_smart($value, $handle) {
-	   if (get_magic_quotes_gpc()) {
-	       $value = stripslashes($value);
-	   }
-
-	   if (!is_numeric($value)) {
-	       $value = "'" . mysql_real_escape_string($value, $handle) . "'";
-	   }
-	   return $value;
-	}
+<?php 
+    include("assets/templates/header.php");
 	$email = $_SESSION['email'];
 	$email = htmlspecialchars($email);
 
@@ -60,6 +50,4 @@
         <div style="clear: both;"/>
         </div>
     </section>
-
-
 <?php include("assets/templates/footer.html"); ?>

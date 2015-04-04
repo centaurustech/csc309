@@ -24,7 +24,6 @@ if (isset($_GET['d'])) {
 
     if ($db_found) {
         
-        
         /*check if project exists */
         $SQL = "SELECT * FROM projects WHERE title = '$title''";
         $result = mysql_query($SQL);
@@ -39,13 +38,11 @@ if (isset($_GET['d'])) {
             mysql_query("update projects set category='$category' where pID='$id'");
             mysql_query("update projects set goal='$goal' where pID='$id'");
 
-
             $errorMessage= "Changes Saved!";
             mysql_close($db_handle);
 
             // redirect to project info
-            header ("Location: projectinfo2.php?id=" . $id);
-            
+            header ("Location: projectinfo2.php?id=" . $id);      
         }
     }
     else {

@@ -1,15 +1,4 @@
 <?php
-function quote_smart($value, $handle) {
-
-   if (get_magic_quotes_gpc()) {
-       $value = stripslashes($value);
-   }
-
-   if (!is_numeric($value)) {
-       $value = "'" . mysql_real_escape_string($value, $handle) . "'";
-   }
-   return $value;
-}
 //Initialize error message.
 $errorMessage = "";
 /*if page is accessed after attempt */

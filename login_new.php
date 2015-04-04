@@ -1,16 +1,5 @@
 <?php 
 
-function quote_smart($value, $handle) {
-
-   if (get_magic_quotes_gpc()) {
-       $value = stripslashes($value);
-   }
-
-   if (!is_numeric($value)) {
-       $value = "'" . mysql_real_escape_string($value, $handle) . "'";
-   }
-   return $value;
-}
 //This variable needs to be declared outside of the if block so that it is not undefined when people initially load the login page.
 $errorMessage = "";
 /*if page is accessed after attempt */
@@ -27,12 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     /* if dabatase connected */
     if ($db_found) {
-        /*prevent SQL injection */
-        $email = quote_smart($email, $db_handle);
-		    $pass = quote_smart($pass, $db_handle);
         
         /* build sql query */
-        $SQL = "SELECT * FROM users WHERE email = $email AND password = $pass";
+        $SQL = "SELECT * FROM users WHERE email = '$email' AND password = '$pass'";
         $result = mysql_query($SQL);
         
         /* if query returned */

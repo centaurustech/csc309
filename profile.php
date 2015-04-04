@@ -1,53 +1,6 @@
 <?php include("assets/templates/header.php"); ?>
 
 <?php
-function process_date($raw_date) {
-	$date_elements[0] = substr($raw_date, 0, 4);
-	$date_elements[1] = substr($raw_date, 5, 2);
-	$date_elements[2] = substr($raw_date, 8, 2);
-	switch ($date_elements[1]) {
-		case "01":
-			$month ="January";
-			break;
-		case "02":
-			$month ="February";
-			break;
-		case "03":
-			$month ="March";
-			break;
-		case "04":
-			$month ="April";
-			break;
-		case "05":
-			$month ="May";
-			break;
-		case "06":
-			$month ="June";
-			break;
-		case "07":
-			$month ="July";
-			break;
-		case "08":
-			$month ="August";
-			break;
-		case "09":
-			$month ="September";
-			break;
-		case "10":
-			$month ="October";
-			break;
-		case "11":
-			$month ="November";
-			break;
-		case "12":
-			$month ="December";
-			break;
-	}
-	return $month . " " . $date_elements[2] . ", " . $date_elements[0];
-}
-
-?>
-<?php
 	if (isset($_GET['id'])) {
 		$userid = $_GET['id'];
 		$SQL = "SELECT * FROM users WHERE userid = $userid";
@@ -70,7 +23,6 @@ function process_date($raw_date) {
 	$user_id = $row['userid'];
 	$raw_date = $row['date'];
 	$reputation = $row['reputation'];
-	$location = $row['location'];
 	$bio = $row['bio'];
 	$date = process_date($raw_date);
 	$profile_pic_location = "user_" . $user_id . "_pic.jpg"; 

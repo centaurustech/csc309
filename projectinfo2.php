@@ -53,53 +53,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     
 </script>
 <?php include("assets/templates/header.php"); ?>
-<?php
-function process_date($raw_date) {
-    $date_elements[0] = substr($raw_date, 0, 4);
-    $date_elements[1] = substr($raw_date, 5, 2);
-    $date_elements[2] = substr($raw_date, 8, 2);
-    switch ($date_elements[1]) {
-        case "01":
-            $month ="January";
-            break;
-        case "02":
-            $month ="February";
-            break;
-        case "03":
-            $month ="March";
-            break;
-        case "04":
-            $month ="April";
-            break;
-        case "05":
-            $month ="May";
-            break;
-        case "06":
-            $month ="June";
-            break;
-        case "07":
-            $month ="July";
-            break;
-        case "08":
-            $month ="August";
-            break;
-        case "09":
-            $month ="September";
-            break;
-        case "10":
-            $month ="October";
-            break;
-        case "11":
-            $month ="November";
-            break;
-        case "12":
-            $month ="December";
-            break;
-    }
-    return $month . " " . $date_elements[2] . ", " . $date_elements[0];
-}
 
-?>
 <?php          
     /*connect to database */
     include("sql.php");
@@ -115,7 +69,6 @@ function process_date($raw_date) {
     $creatoremail = $row['creator'];
     $goal = $row['goal'];
     $date = process_date($row['date']);
-    $community = $row['community'];
     $funded = $row['funded'];
     $percentage = round(($funded / $goal) * 100);
     $liked = $row['likes'];
@@ -145,33 +98,20 @@ function process_date($raw_date) {
                 <p class="lead">
                     by <a href="profile.php?id=<?=$creatorid?>"><?=$creator?></a>
                 </p>
-
-
-
                 <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
- 
-                
                 <hr>
 
                 <!-- Preview Image -->
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
                 <hr>
 
                 <!-- Post Content -->
                 <h4> Project Description </h4>
                 <p class="lead"><?=$desc?></p>
-
                 <hr>
-
-                <!-- Blog Comments -->
-
-
-                
-                
                 
                 <!-- Comments Form -->
                 <div class="well">
@@ -183,12 +123,9 @@ function process_date($raw_date) {
                         <input type='button' class="btn btn-primary" name='comment' onclick="comment()" value='Submit'>
                     </form>
                 </div>
-
                 <hr>
 
                 <!-- Posted Comments -->
-
-                
                 <?php
                     $SQL = "SELECT * FROM comments WHERE pID = $id";
                     $result = mysql_query($SQL);
@@ -216,32 +153,23 @@ function process_date($raw_date) {
                                 ?>
                         <!-- Comment -->
                         <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64>
-                        </a>
-                        <div class="media-body">
-                        
-                            <h4 class="media-heading"><a href="<?=$profile?>" > <?=$name?></a>
-                            <small><?=$date?></small>
-                        </h4>
-                        <?php echo $comment ?> <br><br>
-                        </div>
-                </div>        
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64>
+                            </a>
+                            <div class="media-body">
                             
-                            
+                                <h4 class="media-heading"><a href="<?=$profile?>" > <?=$name?></a>
+                                <small><?=$date?></small>
+                            </h4>
+                            <?php echo $comment ?> <br><br>
+                            </div>
+                        </div>                                  
                     <?php }
                 ?>
-                                
-
-
-               
-
             </div>
 
-            <!-- Blog Sidebar Widgets Column -->
             <br>
             <div class="col-md-4">
-
 
                 <!-- Funding Info Well -->
                 <div class="well">
@@ -318,11 +246,7 @@ function process_date($raw_date) {
                     <h2 class="text-center"><a class="btn btn-cta-secondary" href="fund.php?id=<?=$id?>">Fund this project!</a></h2>
 
                 </div>
-
             </div>
-
         </div>
-        <!-- /.row -->
     </div>
-
 <?php include("assets/templates/footer.html"); ?>
