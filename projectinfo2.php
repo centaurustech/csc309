@@ -123,9 +123,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <?php
                 }
                 ?>
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
 
                 <!-- Post Content -->
                 <h4> Project Description </h4>
