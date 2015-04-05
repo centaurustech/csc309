@@ -20,9 +20,8 @@
     $profile_pic_location = "user_" . $user_id . "_pic.jpg"; 
 
     $username = htmlspecialchars($_POST['nameInput']);
-    $pass = htmlspecialchars($_POST['passwordInput']);
-    $pass2 = htmlspecialchars($_POST['passwordInput2']);
-    $bio = htmlspecialchars($_POST['bioInput']);
+    $pass = htmlspecialchars($_POST['password']);
+    $bio = mysql_escape_string($_POST['bio']);
 
     if ($db_found) {
         $sql_user = "UPDATE $database SET name='$username' WHERE userid='$user_id'";
