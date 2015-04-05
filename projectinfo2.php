@@ -144,7 +144,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     <?php
                     } 
                     else {        
-                    echo "You must be logged on to comment";                
+                    echo '<p>You must be logged on to comment</p>';                
                     }
                     ?>                
                 </div>
@@ -197,7 +197,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     <?php 
                     if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                         $currentemail = $_SESSION['email'];
-                        $creatoremail = "'".$creatoremail."'";
                         $currentemail = strtolower($currentemail);
                         $creatoremail = strtolower($creatoremail);
                         if ((strcmp($currentemail, $creatoremail) == 0) or ($_SESSION['admin'] == 1)){
