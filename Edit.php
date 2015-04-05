@@ -46,7 +46,7 @@
         <div class="floatright">
             <br>
             Talk about yourself:<br>
-            <textarea rows="6" cols="50" name="bioInput" id="bioInput" class="inputs" placeholder="Comment" value=<?=$bio?>></textarea>
+            <textarea rows="6" cols="50" name="bio" id="bio" class="inputs" placeholder="Comment" value=<?=$bio?>></textarea>
             <br>
         </div>
         <div style="clear: both;"/>
