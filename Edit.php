@@ -26,30 +26,37 @@
         <div class="container">
             <br>
             <br>
-            <h2 class="title text-center">Welcome to Edit profile page</h2> 
+            <h2 class="title text-center">Welcome to your profile edit page!</h2> 
+			<?php
+				if (isset($_GET['password_status'])) {
+					echo '<h3 class="text-center">Please ensure that your passwords match!</h3>';
+				}
+			?>
             <br>
-        <div class="wrap">
-        <div class="floatleft">
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload" >
-            <br>
-            Login Information<br>
-            <input type="text" name="nameInput" class="inputs" placeholder="Name" value=<?=$name?>><br>
-            <input type="password" name="password" class="inputs" placeholder="Password" value=<?=$password?>><br>
-            <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password" value=<?=$password?>><br>
-            <br>
-            <a class="btn btn-cta-secondary" href="profile.php">Back</a>
-            <input type="submit" name="submit" class="btn btn-cta-secondary">
-        </form>
+        <div id="edit_content">
+			<form action="upload.php" method="post" enctype="multipart/form-data">
+				Select image to upload:
+				<input type="file" name="fileToUpload" id="fileToUpload" >
+				<br>
+				<label for="name">Name:</label>
+				<br>
+				<input type="text" id="name" name="nameInput" class="inputs" placeholder="Name" value=<?=$name?>>
+				<br>
+				<label for="password">Password:</label>
+				<br>
+				<input type="password" id="password" name="password" class="inputs" placeholder="Password" value=<?=$password?>>
+				<br>
+				<label for="confirm_password">Confirm Password:</label>
+				<br>
+				<input type="password" id="confirm_password" name="password2" class="inputs" placeholder="Retype your password" value=<?=$password?>><br>
+				<br>
+				<label for="bio">About Me:</label>
+				<br>
+				<textarea id="bio" rows="6" cols="50" name="bio" id="bio" class="inputs"><?=$bio?></textarea>
+				<br>
+				<a class="btn btn-cta-secondary" href="profile.php">Back</a>
+				<input type="submit" name="submit" class="btn btn-cta-secondary">
+			</form>
         </div> 
-        <div class="floatright">
-            <br>
-            Talk about yourself:<br>
-            <textarea rows="6" cols="50" name="bio" id="bio" class="inputs" placeholder="Comment" value=<?=$bio?>></textarea>
-            <br>
-        </div>
-        <div style="clear: both;"/>
-        </div>
     </section>
 <?php include("assets/templates/footer.html"); ?>

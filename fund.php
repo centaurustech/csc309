@@ -29,9 +29,8 @@
     <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
 			<?php
-				if(isset($_GET['message'])) {
-					$message = $_GET['message'];
-					echo "<h3>$message</h3>";
+				if(isset($_GET['input_status'])) {
+					echo "<h3>Please ensure you have provided a positive donation value!</h3>";
 				}
 			?>
             <div class="panel panel-default">

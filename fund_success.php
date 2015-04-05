@@ -21,7 +21,7 @@
     //Check to make sure that the amount is positive, and redirect to the funding page if not.
 	$amount = $_POST['amount'];
     if ($amount <= 0) {
-		header("Location: fund.php?id=$id&message=Please ensure that you provide a positive donation value!");
+		header("Location: fund.php?id=$id&input_status=0");
 		exit;
 	}
 	

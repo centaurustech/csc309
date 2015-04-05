@@ -20,13 +20,23 @@
     $profile_pic_location = "user_" . $user_id . "_pic.jpg"; 
 
     $username = htmlspecialchars($_POST['nameInput']);
-    $pass = htmlspecialchars($_POST['password']);
-    $bio = mysql_escape_string($_POST['bio']);
+    
+	$pass = htmlspecialchars($_POST['password']);
+	$pass2 = htmlspecialchars($_POST['password2']);
+	
+	if ($pass != $pass2) {
+		header("Location: Edit.php?password_status=0");
+		exit;
+	}
+    
+	$bio = mysql_escape_string($_POST['bio']);
 
+	//Update the database according to the user submitted changes.
     if ($db_found) {
         $sql_user = "UPDATE $database SET name='$username' WHERE userid='$user_id'";
         $sql_pass = "UPDATE $database SET password='$pass' WHERE userid='$user_id'";
         $sql_bio = "UPDATE $database SET bio='$bio' WHERE userid='$user_id'";
+		$_SESSION['name'] = $username;
     
         mysql_query($sql_user);
         mysql_query($sql_pass);
