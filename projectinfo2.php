@@ -275,10 +275,4 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         </div>
     </div>
 <?php 
-
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-
-
 include("assets/templates/footer.html"); ?>
