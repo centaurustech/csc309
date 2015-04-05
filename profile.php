@@ -24,7 +24,7 @@
 	$raw_date = $row['date'];
 	$reputation = $row['reputation'];
 	$bio = $row['bio'];
-	$date = process_date($raw_date);
+	$date = date("F j, Y", strtotime($raw_date));
 	$profile_pic_location = "user_" . $user_id . "_pic.jpg"; 
 	
 	//Variables for profile vote status check.
@@ -112,7 +112,7 @@
 		?>
 			
 			<li>
-				<p>Created <a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a> on <?=process_date($date_created)?></p>
+				<p>Created <a href="projectinfo2.php?id=<?=$id?>"><?=$title?></a> on <?=date("F j, Y", strtotime($date_created))?></p>
 			</li>
 			<br>
 		<?php 
