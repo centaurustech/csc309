@@ -72,7 +72,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $desc = $row['description'];
     $creatoremail = $row['creator'];
     $goal = $row['goal'];
-    $date = process_date($row['date']);
+    $date = date("F j, Y", strtotime($row['date']));
     $funded = $row['funded'];
     $percentage = ceil(($funded / $goal) * 100);
     $liked = $row['likes'];
@@ -134,7 +134,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
                 <!-- Posted Comments -->
                 <?php
-                    $SQL = "SELECT * FROM comments WHERE pID = $id";
+                
+                    $SQL = "SELECT * FROM comments WHERE pID = $id ORDER BY date DESC";
                     $result = mysql_query($SQL);
                     $num_rows = mysql_num_rows($result);
                         if ($num_rows > 0 == false) {
@@ -143,7 +144,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     while(($row = mysql_fetch_assoc($result))) { 
                         $userid = $row['userid'];
                         $profile_pic_location = "user_" . $userid . "_pic.jpg";
-                        $date = process_date($row['date']);
+                        $date = date("F j, Y H:i:s", strtotime($row['date']));
                         $comment = $row['comment'];                   
                         //get commenter's name
                         $SQL = "SELECT * FROM users WHERE userid = $userid";
