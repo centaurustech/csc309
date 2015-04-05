@@ -122,6 +122,9 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 
                 <!-- Comments Form -->
                 <div class="well">
+                    <?php
+                    if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
+		    ?>		
                     <h4>Leave a Comment:</h4>
                     <form id="addCommentForm" method="post" action="">
                         <div class="form-group">
@@ -129,6 +132,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                         </div>
                         <input type="submit" class="btn btn-primary"  id="submit" value="Submit" />
                     </form>
+                    <?php } 
+                    else {        
+                    echo "You must be logged on to comment";                
+                    }
+                    ?>                
                 </div>
                 <hr>
 
@@ -155,8 +163,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 ?>
                         <!-- Comment -->
                         <div class="well">
-                            <a class="pull-right" href="#">
-                                <img class="media-object" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64>
+                            <a class="pull-right" href="<?=$profile?>">
+                                <img class="img-rounded" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64 >
                             </a>
                             <div class="media-body">
                             
@@ -251,5 +259,14 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             </div>
         </div>
     </div>
+
+
+
+
 <?php 
+
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+
 include("assets/templates/footer.html"); ?>
