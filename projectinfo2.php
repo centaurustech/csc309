@@ -123,16 +123,16 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <!-- Comments Form -->
                 <div class="well">
                     <?php
-                    if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
-		    ?>		
-                    <h4>Leave a Comment:</h4>
-                    <form id="addCommentForm" method="post" action="">
-                        <div class="form-group">
-                            <textarea class="form-control" name="body" id="body" rows="3"></textarea>
-                        </div>
-                        <input type="submit" class="btn btn-primary"  id="submit" value="Submit" />
-                    </form>
-                    <?php } 
+                    if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){ ?>		
+                        <h4>Leave a Comment:</h4>
+                        <form id="addCommentForm" method="post" action="">
+                            <div class="form-group">
+                                <textarea class="form-control" name="body" id="body" rows="3"></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-primary"  id="submit" value="Submit" />
+                        </form>
+                    <?php
+                    } 
                     else {        
                     echo "You must be logged on to comment";                
                     }
@@ -160,7 +160,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                         $row = mysql_fetch_array($resultT, MYSQL_ASSOC);
                         $name = $row['name'];
                         $profile =  "profile.php?id=" . $userid;
-                                ?>
+                        ?>
                         <!-- Comment -->
                         <div class="well">
                             <a class="pull-right" href="<?=$profile?>">
@@ -185,26 +185,28 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <div class="well">
                     <!-- Edit and Delete idea buttons -->
                     <?php 
-                    $currentemail = $_SESSION['email'];
-                    $creatoremail = "'".$creatoremail."'";
-                    $currentemail = strtolower($currentemail);
-                    $creatoremail = strtolower($creatoremail);
-                    if ((strcmp($currentemail, $creatoremail) == 0) or ($_SESSION['admin'] == 1)){
-                        ?>
-                        <!-- Side Widget Well -->
-                            <div class="text-center">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <a class="btn btn-success" href="editproject.php?id=<?=$id?>">Edit Project!</a>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="deleteproject.php?id=<?=$id?>">Delete Project!</a>
+                    if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
+                        $currentemail = $_SESSION['email'];
+                        $creatoremail = "'".$creatoremail."'";
+                        $currentemail = strtolower($currentemail);
+                        $creatoremail = strtolower($creatoremail);
+                        if ((strcmp($currentemail, $creatoremail) == 0) or ($_SESSION['admin'] == 1)){
+                            ?>
+                            <!-- Side Widget Well -->
+                                <div class="text-center">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a class="btn btn-success" href="editproject.php?id=<?=$id?>">Edit Project!</a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="deleteproject.php?id=<?=$id?>">Delete Project!</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                             <hr>
-                        <?php
+                                <hr>
+                    <?php
                         }
+                    }
                     ?>
                    
                     <h4 class="text-center">Funding</h4>
