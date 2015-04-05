@@ -77,6 +77,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $percentage = ceil(($funded / $goal) * 100);
     $liked = $row['likes'];
     $disliked = $row['dislikes'];
+    $youtube = $row['youtube'];
 	
 	//get creator info
 	$SQL = "SELECT * FROM users WHERE email = '$creatoremail'";
@@ -110,7 +111,18 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
                 <hr>
-
+                
+                <?php 
+                if ($youtube!=null) {
+                    $youtubelead = "https://www.youtube.com/embed/";
+                    $uurl = "hi" . $youtube;
+                ?>
+                <div class="well" style="text-align:center">
+                <iframe width="700" height="577" src="https://www.youtube.com/embed/<?=$youtube?>"  frameborder="0" allowfullscreen></iframe>
+                </div>
+                <?php
+                }
+                ?>
                 <!-- Preview Image -->
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                 <hr>
@@ -119,6 +131,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <h4> Project Description </h4>
                 <p class="lead"><?=$desc?></p>
                 <hr>
+                
                 
                 <!-- Comments Form -->
                 <div class="well">
@@ -261,14 +274,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             </div>
         </div>
     </div>
-
-
-
-
 <?php 
 
 echo '<pre>';
 var_dump($_SESSION);
 echo '</pre>';
+
 
 include("assets/templates/footer.html"); ?>

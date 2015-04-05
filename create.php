@@ -18,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $desc = $_POST['desc'];
     $email = $_SESSION['email'];
     $goal = $_POST['goal'];
+    $youtube = $_POST['youtube'];
+    
+    
            
     /* strip of any sketchy characters */
     $title = htmlspecialchars($title);
@@ -29,6 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		header("Location:create.php?not_positive=1");
 		exit;
 	}
+        if (!strpos(youtube,'www.youtube.com/watch?v=')) {
+		header("Location:create.php?not_youtube=1");
+		exit;
+	}
+        parse_str( parse_url( $youtube, PHP_URL_QUERY ), $get_args);
+        $youtube = $get_args['v'];
     
 
     if ($db_found) {
@@ -42,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $errorMessage = "Project name already taken";
         }
         else {
-            $SQL = "INSERT INTO projects (title, description, creator, category, goal) VALUES ('$title', '$desc', 
-                '$email', '$category', '$goal')";
+            $SQL = "INSERT INTO projects (title, description, creator, category, goal, youtube) VALUES ('$title', '$desc', 
+                '$email', '$category', '$goal', '$youtube')";
             
             //execute
             $result = mysql_query($SQL);
@@ -86,6 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				if (isset($_GET['not_positive'])) {
 					echo "<h3 id='create_message'>Please make sure that the funding goal value is positive!</h3>";
 				}
+                                if (isset($_GET['not_youtube'])) {
+					echo "<h3 id='create_message'>Please make sure that the YouTube link is valid!</h3>";
+				}
 			?>
             <h3 class="title text-center"><?=$errorMessage?> </h3>
             <br>
@@ -123,6 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <div class="input-group">
                             <textarea name="desc" id="desc" class="form-control" rows="5" required placeholder="i.e. An amazing smartwatch with an LCD display..."></textarea>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="InputName">Youtube link</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="youtube" id="youtube" placeholder="i.e. https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                            <span class="input-group-addon"><span class=""></span></span>
                         </div>
                     </div>
 

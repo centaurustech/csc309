@@ -13,6 +13,7 @@ if (isset($_GET['d'])) {
     $email = $_SESSION['email'];
     $id = $_GET['id'];
     $goal = $_POST['goal'];
+    $youtube = $_POST['youtube'];
 
            
     /* strip of any sketchy characters */
@@ -21,6 +22,9 @@ if (isset($_GET['d'])) {
     $email = htmlspecialchars($email);
     $category = htmlspecialchars($category);
     $goal = htmlspecialchars($goal);
+    $youtube = htmlspecialchars($youtube);
+    parse_str( parse_url( $youtube, PHP_URL_QUERY ), $get_args);
+    $youtube = $get_args['v'];
 
     if ($db_found) {
         
@@ -37,6 +41,7 @@ if (isset($_GET['d'])) {
             mysql_query("update projects set description='$desc' where pID='$id'");
             mysql_query("update projects set category='$category' where pID='$id'");
             mysql_query("update projects set goal='$goal' where pID='$id'");
+            mysql_query("update projects set youtube='$youtube' where pID='$id'");
 
             $errorMessage= "Changes Saved!";
             mysql_close($db_handle);
@@ -61,12 +66,14 @@ if (isset($_GET['d'])) {
     $desc = $row['description'];
     $category = $row['category'];
     $goal = $row['goal'];
+    $youtube = $row['youtube'];
 }
 ?>
 <?php include("assets/templates/header.php"); ?>
     <div class="container well">
         <div class="row"  style="margin-top:130px">
             <h2 class="title text-center"> Edit your idea!</h2>
+
             <h3 class="title text-center"><?=$errorMessage?> </h3>
             <br>
             <form action="editproject.php?id=<?=$id?>&d=1" method="post" role="form">
@@ -103,6 +110,14 @@ if (isset($_GET['d'])) {
                         <div class="input-group">
                             <textarea name="desc" id="desc" class="form-control" rows="5" required placeholder="i.e. An amazing smartwatch with an LCD display..."><?=$desc?></textarea>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="InputName">Youtube link</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="youtube" id="youtube" value="https://www.youtube.com/watch?v=<?=$youtube?>" placeholder="i.e. https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                            <span class="input-group-addon"><span class=""></span></span>
                         </div>
                     </div>
 
