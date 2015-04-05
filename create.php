@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         else {
             $SQL = "INSERT INTO projects (title, description, creator, category, goal) VALUES ('$title', '$desc', 
-                $email, '$category', '$goal')";
+                '$email', '$category', '$goal')";
             
             //execute
             $result = mysql_query($SQL);
