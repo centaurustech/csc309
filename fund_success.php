@@ -21,12 +21,12 @@
     $percentage = round(($funded / $goal) * 100);
     $new_amount = $funded + $amount;
 
-    $SQL2 = "UPDATE projects SET funded=$new_amount WHERE pID = $id";
+    $SQL2 = "UPDATE projects SET funded=$new_amount WHERE pID = '$id'";
     mysql_query($SQL2);
 	
 	//Alter the transactions table in the database.
 	$funder_email = $_SESSION['email'];
-	$SQL3 = "INSERT INTO transactions VALUES(DEFAULT, $id, $funder_email, $amount, DEFAULT)";
+	$SQL3 = "INSERT INTO transactions VALUES(DEFAULT, '$id', '$funder_email', '$amount', DEFAULT)";
 	$result = mysql_query($SQL3);
 
     if ($new_amount >= $goal) {
@@ -34,7 +34,7 @@
     }
 
     //add user to community
-    $result = mysql_query("SELECT * FROM users WHERE email=$funder_email");
+    $result = mysql_query("SELECT * FROM users WHERE email='$funder_email'");
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
     $userid = $row['userid'];
 
