@@ -15,7 +15,7 @@
     	$name = $row['name'];
   		$email = $row['email'];
         $uid = $row['userid'];
-        $password = $row['password'];
+        $password = $row['pass'];
         $bio = $row['bio'];
     }
     $_SESSION['uid']=$uid;
