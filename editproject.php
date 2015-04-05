@@ -21,7 +21,13 @@ if (isset($_GET['d'])) {
     $desc = htmlspecialchars($desc);
     $email = htmlspecialchars($email);
     $category = htmlspecialchars($category);
-    $goal = htmlspecialchars($goal);
+    
+	$goal = htmlspecialchars($goal);
+	if ($goal <= 0) {
+		header("Location: editproject.php?id=$id&not_positive=1");
+		exit;
+	}
+	
     $youtube = htmlspecialchars($youtube);
     parse_str( parse_url( $youtube, PHP_URL_QUERY ), $get_args);
     $youtube = $get_args['v'];
@@ -73,7 +79,11 @@ if (isset($_GET['d'])) {
     <div class="container well">
         <div class="row"  style="margin-top:130px">
             <h2 class="title text-center"> Edit your idea!</h2>
-
+			<?php
+				if (isset($_GET['not_positive'])) {
+					echo '<h3 class="text-center">Please make sure that the funding goal value is positive!</h3>';
+				}
+			?>
             <h3 class="title text-center"><?=$errorMessage?> </h3>
             <br>
             <form action="editproject.php?id=<?=$id?>&d=1" method="post" role="form">
