@@ -10,7 +10,7 @@ $sender_message = htmlspecialchars(trim($_POST["sender_message"]));
 
 if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
 	$message = "Please ensure that you have provided a valid e-mail address!";
-    header("Location:contact_result.php?message=$message");
+    header("Location:contact_result.php?message=$message&success=0");
 	exit;
 }
 
@@ -18,7 +18,7 @@ if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
 foreach($_POST as $value) {
 	if (stripos($value, 'Content-Type:') !== FALSE) {
 		$message = "I'm sorry, but there was a problem with your input.";
-		header("Location:contact_result.php?message=$message");
+		header("Location:contact_result.php?message=$message&success=0");
 		exit;
 	}
 }
@@ -43,10 +43,10 @@ $mail->Subject = "User Commentary"; //Maybe add a new input field to the contact
 
 if(!$mail->send()) {
 	$message = "We're sorry, but there was an error in attempting to send your message: " . $mail->ErrorInfo;
-    header("Location:contact_result.php?message=$message");
+    header("Location:contact_result.php?message=$message&success=0");
 } else {
 	$message = "Thank you! You're message has been sent. We'll get back to you as soon as we are able!";
-    header("Location:contact_result.php?message=$message");
+    header("Location:contact_result.php?message=$message&success=1");
 }
 
 //header('Refresh: 3;url=index.php');
