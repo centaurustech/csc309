@@ -176,7 +176,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <div class="well">
                     <!-- Edit and Delete idea buttons -->
                     <?php 
-                    $currentemail = $_SESSION['email.'];
+                    $currentemail = $_SESSION['email'];
                     $creatoremail = "'".$creatoremail."'";
                     $currentemail = strtolower($currentemail);
                     $creatoremail = strtolower($creatoremail);
