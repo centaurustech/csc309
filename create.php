@@ -32,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		header("Location:create.php?not_positive=1");
 		exit;
 	}
-        if (!strpos(youtube,'www.youtube.com/watch?v=')) {
-		header("Location:create.php?not_youtube=1");
-		exit;
+        if (!strpos($youtube,'www.youtube.com/watch?v=')) {
+			header("Location:create.php?not_youtube=1");
+			exit;
 	}
-        parse_str( parse_url( $youtube, PHP_URL_QUERY ), $get_args);
+        parse_str(parse_url($youtube, PHP_URL_QUERY ), $get_args);
         $youtube = $get_args['v'];
     
 
