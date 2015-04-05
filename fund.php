@@ -28,6 +28,12 @@
 <div class="container" style="margin-top:40px">
     <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
+			<?php
+				if(isset($_GET['message'])) {
+					$message = $_GET['message'];
+					echo "<h3>$message</h3>";
+				}
+			?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3>

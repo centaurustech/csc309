@@ -17,8 +17,15 @@
     $goal = $row['goal'];
     $date = $row['date'];
     $funded = $row['funded'];
-    $amount = $_POST['amount'];
-    $percentage = round(($funded / $goal) * 100);
+	
+    //Check to make sure that the amount is positive, and redirect to the funding page if not.
+	$amount = $_POST['amount'];
+    if ($amount <= 0) {
+		header("Location: fund.php?id=$id&message=Please ensure that you provide a positive donation value!");
+		exit;
+	}
+	
+	$percentage = round(($funded / $goal) * 100);
     $new_amount = $funded + $amount;
 
     $SQL2 = "UPDATE projects SET funded=$new_amount WHERE pID = '$id'";
