@@ -15,7 +15,7 @@
     	$name = $row['name'];
   		$email = $row['email'];
         $uid = $row['userid'];
-        $password = $row['pass'];
+        $password = $row['password'];
         $bio = $row['bio'];
     }
     $_SESSION['uid']=$uid;
@@ -36,8 +36,8 @@
             <br>
             Login Information<br>
             <input type="text" name="nameInput" class="inputs" placeholder="Name" value=<?=$name?>><br>
-            <input type="password" name="passwordInput" class="inputs" placeholder="Password" value=<?=$password?>><br>
-            <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password"><br>
+            <input type="password" name="password" class="inputs" placeholder="Password" value=<?=$password?>><br>
+            <input type="password" name="passwordInput2" class="inputs" placeholder="Retype your password" value=<?=$password?>><br>
             <br>
             <a class="btn btn-cta-secondary" href="profile.php">Back</a>
             <input type="submit" name="submit" class="btn btn-cta-secondary">
