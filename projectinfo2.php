@@ -38,6 +38,14 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 });
             }
         });
+        
+    $('#addCommentForm').submit(function(e){
+        var page = "submit_comment.php?pid=";
+        var pid = <?php echo $_GET['id']; ?>;
+        var stringpid = pid.toString();
+        var des = page.concat(stringpid);
+        $.post(des,$(this).serialize(),function(msg){});
+    });
 
         // Close button action
         $(".close").click(function()
@@ -46,10 +54,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         });   
     } 
     );
-    function comment()
-       {
-           
-       }
     
 </script>
 <?php include("assets/templates/header.php"); ?>
@@ -80,6 +84,9 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$creator = $row['name'];
     $creatorid= $row['userid'];
+    
+    
+    
 ?>
 
 <!-- Page Content -->
@@ -116,11 +123,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form id="addCommentForm" method="post" action="">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" name="body" id="body" rows="3"></textarea>
                         </div>
-                        <input type='button' class="btn btn-primary" name='comment' onclick="comment()" value='Submit'>
+                        <input type="submit" class="btn btn-primary"  id="submit" value="Submit" />
                     </form>
                 </div>
                 <hr>
@@ -129,21 +136,15 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <?php
                     $SQL = "SELECT * FROM comments WHERE pID = $id";
                     $result = mysql_query($SQL);
-                    
                     $num_rows = mysql_num_rows($result);
                         if ($num_rows > 0 == false) {
                             echo "No comments yet. Be the first to give feedback!";
                         }
-                    
-                    
                     while(($row = mysql_fetch_assoc($result))) { 
-
                         $userid = $row['userid'];
                         $profile_pic_location = "user_" . $userid . "_pic.jpg";
                         $date = process_date($row['date']);
-                        $comment = $row['comment'];
-                        
-                        
+                        $comment = $row['comment'];                   
                         //get commenter's name
                         $SQL = "SELECT * FROM users WHERE userid = $userid";
                         $resultT = mysql_query($SQL);
@@ -152,8 +153,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                         $profile =  "profile.php?id=" . $userid;
                                 ?>
                         <!-- Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
+                        <div class="well">
+                            <a class="pull-right" href="#">
                                 <img class="media-object" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64>
                             </a>
                             <div class="media-body">
@@ -163,7 +164,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                             </h4>
                             <?php echo $comment ?> <br><br>
                             </div>
-                        </div>                                  
+                         </div>    
                     <?php }
                 ?>
             </div>
@@ -175,7 +176,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <div class="well">
                     <!-- Edit and Delete idea buttons -->
                     <?php 
-                    $currentemail = $_SESSION['email'];
+                    $currentemail = $_SESSION['email.'];
                     $creatoremail = "'".$creatoremail."'";
                     $currentemail = strtolower($currentemail);
                     $creatoremail = strtolower($creatoremail);
@@ -249,4 +250,5 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             </div>
         </div>
     </div>
-<?php include("assets/templates/footer.html"); ?>
+<?php 
+include("assets/templates/footer.html"); ?>
