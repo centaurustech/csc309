@@ -14,9 +14,9 @@ if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
 	exit;
 }
 
-//To guard against e-mail injection.
+//To guard against e-mail injection and spamming.
 foreach($_POST as $value) {
-	if (stripos($value, 'Content-Type:') !== FALSE) {
+	if ((stripos($value, 'Content-Type:') !== FALSE) OR ($_POST['spam_honeypot'] != '')) {
 		$message = "I'm sorry, but there was a problem with your input.";
 		header("Location:contact_result.php?message=$message&success=0");
 		exit;
