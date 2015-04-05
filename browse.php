@@ -86,7 +86,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
                     if (isset($_GET['search'])) {
                         $search = $_GET['search'];
-                        $SQL = "SELECT * FROM projects WHERE title = '$search' OR category = '$search'";
+                        $SQL = "SELECT * FROM projects WHERE title LIKE '%$search%' OR category LIKE '%$search%'";
                     }
                     //add this to add filters
                     
