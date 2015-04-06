@@ -22,22 +22,22 @@
     
 ?>
 <?php include("assets/templates/header.php"); ?>
-
-    <section id="profile" class="about section">
-        <div class="container">
-            <br>
-            <br>
-            <h2 class="title text-center">Welcome to your profile edit page!</h2> 
-			<?php
-				if (isset($_GET['password_status'])) {
-					echo '<h3 class="text-center">Please ensure that your passwords match!</h3>';
-				}
-			?>
-            <br>
-        <div id="edit_content">
-			<form action="upload.php" method="post" enctype="multipart/form-data">
-				Select image to upload:
-				<input type="file" name="fileToUpload" id="fileToUpload" >
+<div class="container text-center">
+	<div style="margin-top:60px">
+        <br>
+        <br>
+        <h2 class="title text-center">Welcome to your profile edit page!</h2> 
+		<?php
+			if (isset($_GET['password_status'])) {
+				echo '<h3 class="text-center">Please ensure that your passwords match!</h3>';
+			}
+		?>
+        <br>
+        <div id="edit_content" class="well">
+			<form action="upload.php" method="post" enctype="multipart/form-data">		
+				<span class="btn btn-default btn-file">
+				    Select image to upload: <input type="file" class="inputs" name="fileToUpload" id="fileToUpload">
+				</span>
 				<br>
 				<label for="name">Name:</label>
 				<br>
@@ -59,5 +59,6 @@
 				<input type="submit" name="submit" class="btn btn-cta-secondary">
 			</form>
         </div> 
-    </section>
+    </div>
+</div>
 <?php include("assets/templates/footer.html"); ?>
