@@ -57,13 +57,13 @@
 	<?php
 		}
 	?>
-    <h2 class="title text-center profile_headings">Welcome to <?=$name?>'s Profile!</h2>
+    <h1 class="title text-center profile_headings">Welcome to <?=$name?>'s Profile!</h1>
     <div class="row">
         <div class="col-md-3">
         <br>
-			<img id="profile_pic" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="profile picture" width=250 height=250>
+			<img id="profile_pic" class="img-rounded" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="profile picture" width=250 height=250>
 		</div>
-		<div id="profile_friends">
+		<div id="profile_friends" >
 				<h2 class="profile_headings">My Community</h2>
 				<ul>
 					<?php
@@ -91,14 +91,19 @@
 		</div>
 	</div>
 	<br>
-	<div id="basic_info">
-		<p id="reputation">Reputation Score: <?=$reputation?></p>
-		<p id="join_date">Date Joined: <?=$date?></p>
-	</div>
-	<div id="bio">
+	<div id="bio" class="well">
 		<h3 class="profile_headings">About Me</h3>
 		<p><?=$bio?></p>
 	</div>
+        
+        <div id="stat" class="well">
+		<p id="reputation">Reputation Score: <?=$reputation?></p>
+		<p id="join_date">Date Joined: <?=$date?></p>
+	</div>
+        
+		
+
+
 	<div id="profile_projects">
 		<ul>
 			<li>
