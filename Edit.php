@@ -1,5 +1,4 @@
-<?php 
-    include("assets/templates/header.php");
+<?php  
 	session_start();
 	$email = $_SESSION['email'];
 	$email = htmlspecialchars($email);
@@ -20,8 +19,10 @@
     }
     $_SESSION['uid']=$uid;
     header("upload.php");
-    echo getcwd() . "\n";
+    
 ?>
+<?php include("assets/templates/header.php"); ?>
+
     <section id="profile" class="about section">
         <div class="container">
             <br>
