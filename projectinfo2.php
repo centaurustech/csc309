@@ -9,7 +9,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             var name=$(this).attr("name");
             var dataString = 'id='+ id;
             var parent = $(this);
-
+            
+            //project liked
             if (name=='up'){
                 $(this).fadeIn(100).html('<img src="/assets/images/loading.gif" height="42" width="42"/>');
                 $.ajax
@@ -24,6 +25,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                     } 
                 });
             } else {
+                //project disliked
                 $(this).fadeIn(10).html('<img src="/assets/images/loading.gif" height="42" width="42"/>');
                 $.ajax
                 ({
@@ -38,7 +40,8 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 });
             }
         });
-        
+    
+    //add comment
     $('#addCommentForm').submit(function(e){
         var page = "submit_comment.php?pid=";
         var pid = <?php echo $_GET['id']; ?>;
@@ -59,7 +62,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <?php include("assets/templates/header.php"); ?>
 
 <?php          
-    /*connect to database */
+    //connect to database
     include("sql.php");
 
     $id = $_GET['id'];
@@ -79,15 +82,12 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     $disliked = $row['dislikes'];
     $youtube = $row['youtube'];
 	
-	//get creator info
-	$SQL = "SELECT * FROM users WHERE email = '$creatoremail'";
-	$result = mysql_query($SQL);
+    //get creator info
+    $SQL = "SELECT * FROM users WHERE email = '$creatoremail'";
+    $result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
-	$creator = $row['name'];
+    $creator = $row['name'];
     $creatorid= $row['userid'];
-    
-    
-    
 ?>
 
 <!-- Page Content -->
@@ -96,8 +96,6 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-
-                <!-- Blog Post -->
 
                 <!-- Title -->
                 <h1><?=$title?></h1>
@@ -108,31 +106,31 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 </p>
                 <hr>
 
-                <!-- Date/Time -->
+                <!-- Date -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
                 <hr>
                 
+                <!-- YouTube video, optional -->
                 <?php 
                 if ($youtube!=null) {
                     $youtubelead = "https://www.youtube.com/embed/";
                     $uurl = "hi" . $youtube;
                 ?>
                 <div class="well" style="text-align:center">
-                <iframe width="700" height="577" src="https://www.youtube.com/embed/<?=$youtube?>"  frameborder="0" allowfullscreen></iframe>
+                    <iframe width="700" height="577" src="https://www.youtube.com/embed/<?=$youtube?>"  frameborder="0" allowfullscreen></iframe>
                 </div>
                 <?php
-                }
-                ?>
-
-                <!-- Post Content -->
+                } ?>
+                
+                <!-- Description -->
                 <h4> Project Description </h4>
                 <p class="lead"><?=$desc?></p>
                 <hr>
                 
-                
                 <!-- Comments Form -->
                 <div class="well">
                     <?php
+                    //only allow users whom are logged on to comment
                     if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){ ?>		
                         <h4>Leave a Comment:</h4>
                         <form id="addCommentForm" method="post" action="">
@@ -152,13 +150,15 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
                 <!-- Posted Comments -->
                 <?php
-                
+                    //get all comments for this project
                     $SQL = "SELECT * FROM comments WHERE pID = $id ORDER BY date DESC";
                     $result = mysql_query($SQL);
                     $num_rows = mysql_num_rows($result);
-                        if ($num_rows > 0 == false) {
-                            echo "No comments yet. Be the first to give feedback!";
-                        }
+                    if ($num_rows > 0 == false) {
+                        //no comments yet
+                        echo "No comments yet. Be the first to give feedback!";
+                    }
+                    //display all comments
                     while(($row = mysql_fetch_assoc($result))) { 
                         $userid = $row['userid'];
                         $profile_pic_location = "user_" . $userid . "_pic.jpg";
@@ -177,17 +177,15 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                                 <img class="img-rounded" src="assets/images/profile_pics/<?=$profile_pic_location?>" alt="" width=64 height=64 >
                             </a>
                             <div class="media-body">
-                            
                                 <h4 class="media-heading"><a href="<?=$profile?>" > <?=$name?></a>
                                 <small><?=$date?></small>
-                            </h4>
-                            <?php echo $comment ?> <br><br>
+                                </h4>
+                                <?php echo $comment ?> <br><br>
                             </div>
                          </div>    
-                    <?php }
-                ?>
+                    <?php
+                    } ?>
             </div>
-
             <br>
             <div class="col-md-4">
 
@@ -195,6 +193,7 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <div class="well">
                     <!-- Edit and Delete idea buttons -->
                     <?php 
+                    //check if logged on user is the creator or admin to grant him access to edit or delete the project 
                     if (isset($_SESSION['login']) AND $_SESSION['login'] == "1"){
                         $currentemail = $_SESSION['email'];
                         $currentemail = strtolower($currentemail);

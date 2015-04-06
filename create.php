@@ -19,9 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_SESSION['email'];
     $goal = $_POST['goal'];
     $youtube = $_POST['youtube'];
-    
-    
-           
+       
     /* strip of any sketchy characters */
     $title = htmlspecialchars($title);
     $desc = htmlspecialchars($desc);
@@ -29,17 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $goal = htmlspecialchars($goal);
     $youtube = htmlspecialchars($youtube);
 	
-	if ($goal <= 0) {
-		header("Location:create.php?not_positive=1");
-		exit;
-	}
-        if (!strpos($youtube,'www.youtube.com/watch?v=')) {
-			header("Location:create.php?not_youtube=1");
-			exit;
-	}
-        parse_str(parse_url($youtube, PHP_URL_QUERY ), $get_args);
-        $youtube = $get_args['v'];
-    
+    if ($goal <= 0) {
+        header("Location:create.php?not_positive=1");
+	exit;
+    }
+    if (!strpos($youtube,'www.youtube.com/watch?v=')) {
+        header("Location:create.php?not_youtube=1");
+	exit;
+    }
+    parse_str(parse_url($youtube, PHP_URL_QUERY ), $get_args);
+    $youtube = $get_args['v'];
 
     if ($db_found) {
         
@@ -65,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $result = mysql_query($SQL2);
             $row = mysql_fetch_array($result, MYSQL_ASSOC);
             $id = $row['userid'];
-
            
             //get project id
             $SQL2 = "SELECT * FROM projects WHERE title = '$title'";
@@ -85,14 +81,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     else {
         $errorMessage = "Database Not Found";
     }
-    
 }
 ?>
 <?php include("assets/templates/header.php"); ?>
     <div class="container well">
         <div class="row" style="margin-top:80px">
             <h2 class="title text-center"> Tell us about your Idea!</h2>
-			<?php
+			<?php   //user friendly validation handling
 				if (isset($_GET['not_positive'])) {
 					echo "<h3 id='create_message'>Please make sure that the funding goal value is positive!</h3>";
 				}
@@ -102,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			?>
             <h3 class="title text-center"><?=$errorMessage?> </h3>
             <br>
+           
             <form action="create.php" method="post" role="form">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
