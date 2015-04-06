@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $desc = htmlspecialchars($desc);
     $category = htmlspecialchars($category);
     $goal = htmlspecialchars($goal);
+    $youtube = htmlspecialchars($youtube);
 	
 	if ($goal <= 0) {
 		header("Location:create.php?not_positive=1");
