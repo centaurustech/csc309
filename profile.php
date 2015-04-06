@@ -1,5 +1,5 @@
-<?php include("assets/templates/header.php"); ?>
 
+<?php include("assets/templates/header.php"); ?>
 <?php
 	if (isset($_GET['id'])) {
 		$userid = $_GET['id'];
